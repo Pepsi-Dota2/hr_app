@@ -4,6 +4,7 @@ import 'package:hr_app/src/module/auth/pages/register.dart';
 import 'package:hr_app/src/module/dashboard/page/dashboard.dart';
 import 'package:hr_app/src/module/home/page/home.dart';
 import 'package:hr_app/src/module/profile/page/profile.dart';
+import 'package:hr_app/src/module/work_time_record/page/work_time_record.dart';
 
 part 'router.gr.dart';
 

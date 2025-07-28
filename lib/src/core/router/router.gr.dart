@@ -89,3 +89,19 @@ class RegisterRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [WorkTimeRecordPage]
+class WorkTimeRecordRoute extends PageRouteInfo<void> {
+  const WorkTimeRecordRoute({List<PageRouteInfo>? children})
+    : super(WorkTimeRecordRoute.name, initialChildren: children);
+
+  static const String name = 'WorkTimeRecordRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const WorkTimeRecordPage());
+    },
+  );
+}

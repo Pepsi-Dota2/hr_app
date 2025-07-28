@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hr_app/src/core/router/router.dart';
 import 'package:hr_app/src/module/home/cubit/home_cubit.dart';
 import 'package:hr_app/src/module/home/page/home.dart';
 import 'package:hr_app/src/module/profile/cubit/profile_cubit.dart';
@@ -23,7 +22,14 @@ class DashboardPage extends StatelessWidget {
       ],
       items: [
         PersistentBottomNavBarItem(icon: Icon(Icons.home), title: "home", activeColorPrimary: Colors.grey.shade500),
-        PersistentBottomNavBarItem(icon: Icon(Icons.location_city), title: "gps", activeColorPrimary: Colors.grey.shade500),
+        PersistentBottomNavBarItem(
+          icon: Icon(Icons.fingerprint, color: Colors.white),
+          activeColorPrimary: Colors.blue,
+          inactiveColorPrimary: Colors.blue,
+          inactiveIcon: Icon(Icons.fingerprint, color: Colors.white),
+          activeColorSecondary: Colors.white,
+          iconSize: 40,
+        ),
         PersistentBottomNavBarItem(icon: Icon(Icons.person), title: "Profile", activeColorPrimary: Colors.grey.shade500),
       ],
       backgroundColor: Colors.grey.shade200,
@@ -31,7 +37,7 @@ class DashboardPage extends StatelessWidget {
       stateManagement: true,
       hideNavigationBarWhenKeyboardAppears: true,
       navBarHeight: kBottomNavigationBarHeight,
-      navBarStyle: NavBarStyle.style9,
+      navBarStyle: NavBarStyle.style15,
       animationSettings: NavBarAnimationSettings(
         navBarItemAnimation: ItemAnimationSettings(curve: Curves.linear, duration: const Duration(milliseconds: 200)),
         screenTransitionAnimation: ScreenTransitionAnimationSettings(

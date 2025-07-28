@@ -20,7 +20,8 @@ class CardFeature extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(color: (iconColor ?? Colors.green).withOpacity(0.1), borderRadius: BorderRadius.circular(12)),
+              decoration: BoxDecoration(color: (iconColor ?? Colors.green).withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12)),
+
               child: Icon(icon, size: 28, color: iconColor ?? Colors.green.shade600),
             ),
             const SizedBox(height: 12),
