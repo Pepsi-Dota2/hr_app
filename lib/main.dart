@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/src/core/config/config.dart';
 import 'package:hr_app/src/core/router/router.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
   await configureDependencies();
+  await initializeDateFormatting('lo', null);
   runApp(MyApp());
 }
 

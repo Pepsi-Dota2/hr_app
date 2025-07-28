@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hr_app/src/core/router/router.dart';
+import 'package:hr_app/src/module/home/cubit/home_cubit.dart';
+import 'package:hr_app/src/module/home/page/home.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 @RoutePage()
@@ -12,7 +15,9 @@ class DashboardPage extends StatelessWidget {
     return PersistentTabView(
       context,
       screens: [
-        // BlocProvider<CustomerCubit>(create: (_) => CustomerCubit(), child: CustomerPage()),
+        BlocProvider<HomeCubit>(create: (_) => HomeCubit()..scheduleNextUpdate(), child: HomePage()),
+        Container(),
+        Container(),
       ],
       items: [
         PersistentBottomNavBarItem(icon: Icon(Icons.home), title: "home", activeColorPrimary: Colors.grey.shade500),
