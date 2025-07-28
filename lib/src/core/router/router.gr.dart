@@ -21,7 +21,7 @@ class AuthRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const AuthPage();
+      return WrappedRoute(child: const AuthPage());
     },
   );
 }
@@ -85,7 +85,7 @@ class RegisterRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const RegisterPage();
+      return WrappedRoute(child: const RegisterPage());
     },
   );
 }

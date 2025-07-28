@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$WorkTimeRecordState {
   Status get status => throw _privateConstructorUsedError;
+  StopWatchTimer? get timer => throw _privateConstructorUsedError;
+  bool get isStart => throw _privateConstructorUsedError;
+  DateTime? get startDateTime => throw _privateConstructorUsedError;
 
   /// Create a copy of WorkTimeRecordState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +36,12 @@ abstract class $WorkTimeRecordStateCopyWith<$Res> {
     $Res Function(WorkTimeRecordState) then,
   ) = _$WorkTimeRecordStateCopyWithImpl<$Res, WorkTimeRecordState>;
   @useResult
-  $Res call({Status status});
+  $Res call({
+    Status status,
+    StopWatchTimer? timer,
+    bool isStart,
+    DateTime? startDateTime,
+  });
 }
 
 /// @nodoc
@@ -50,13 +58,30 @@ class _$WorkTimeRecordStateCopyWithImpl<$Res, $Val extends WorkTimeRecordState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = null}) {
+  $Res call({
+    Object? status = null,
+    Object? timer = freezed,
+    Object? isStart = null,
+    Object? startDateTime = freezed,
+  }) {
     return _then(
       _value.copyWith(
             status: null == status
                 ? _value.status
                 : status // ignore: cast_nullable_to_non_nullable
                       as Status,
+            timer: freezed == timer
+                ? _value.timer
+                : timer // ignore: cast_nullable_to_non_nullable
+                      as StopWatchTimer?,
+            isStart: null == isStart
+                ? _value.isStart
+                : isStart // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            startDateTime: freezed == startDateTime
+                ? _value.startDateTime
+                : startDateTime // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
           )
           as $Val,
     );
@@ -72,7 +97,12 @@ abstract class _$$InitialImplCopyWith<$Res>
   ) = __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Status status});
+  $Res call({
+    Status status,
+    StopWatchTimer? timer,
+    bool isStart,
+    DateTime? startDateTime,
+  });
 }
 
 /// @nodoc
@@ -88,13 +118,30 @@ class __$$InitialImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = null}) {
+  $Res call({
+    Object? status = null,
+    Object? timer = freezed,
+    Object? isStart = null,
+    Object? startDateTime = freezed,
+  }) {
     return _then(
       _$InitialImpl(
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
                   as Status,
+        timer: freezed == timer
+            ? _value.timer
+            : timer // ignore: cast_nullable_to_non_nullable
+                  as StopWatchTimer?,
+        isStart: null == isStart
+            ? _value.isStart
+            : isStart // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        startDateTime: freezed == startDateTime
+            ? _value.startDateTime
+            : startDateTime // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
       ),
     );
   }
@@ -103,15 +150,27 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({this.status = Status.initial});
+  const _$InitialImpl({
+    this.status = Status.initial,
+    this.timer,
+    this.isStart = false,
+    this.startDateTime,
+  });
 
   @override
   @JsonKey()
   final Status status;
+  @override
+  final StopWatchTimer? timer;
+  @override
+  @JsonKey()
+  final bool isStart;
+  @override
+  final DateTime? startDateTime;
 
   @override
   String toString() {
-    return 'WorkTimeRecordState(status: $status)';
+    return 'WorkTimeRecordState(status: $status, timer: $timer, isStart: $isStart, startDateTime: $startDateTime)';
   }
 
   @override
@@ -119,11 +178,16 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.timer, timer) || other.timer == timer) &&
+            (identical(other.isStart, isStart) || other.isStart == isStart) &&
+            (identical(other.startDateTime, startDateTime) ||
+                other.startDateTime == startDateTime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode =>
+      Object.hash(runtimeType, status, timer, isStart, startDateTime);
 
   /// Create a copy of WorkTimeRecordState
   /// with the given fields replaced by the non-null parameter values.
@@ -135,10 +199,21 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements WorkTimeRecordState {
-  const factory _Initial({final Status status}) = _$InitialImpl;
+  const factory _Initial({
+    final Status status,
+    final StopWatchTimer? timer,
+    final bool isStart,
+    final DateTime? startDateTime,
+  }) = _$InitialImpl;
 
   @override
   Status get status;
+  @override
+  StopWatchTimer? get timer;
+  @override
+  bool get isStart;
+  @override
+  DateTime? get startDateTime;
 
   /// Create a copy of WorkTimeRecordState
   /// with the given fields replaced by the non-null parameter values.

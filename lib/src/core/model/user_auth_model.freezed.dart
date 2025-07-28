@@ -23,8 +23,7 @@ UserAuthModel _$UserAuthModelFromJson(Map<String, dynamic> json) {
 mixin _$UserAuthModel {
   String get user_email => throw _privateConstructorUsedError;
   String get user_password => throw _privateConstructorUsedError;
-  String get user_role => throw _privateConstructorUsedError;
-  String get user_status => throw _privateConstructorUsedError;
+  String get user_name => throw _privateConstructorUsedError;
 
   /// Serializes this UserAuthModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,12 +42,7 @@ abstract class $UserAuthModelCopyWith<$Res> {
     $Res Function(UserAuthModel) then,
   ) = _$UserAuthModelCopyWithImpl<$Res, UserAuthModel>;
   @useResult
-  $Res call({
-    String user_email,
-    String user_password,
-    String user_role,
-    String user_status,
-  });
+  $Res call({String user_email, String user_password, String user_name});
 }
 
 /// @nodoc
@@ -68,8 +62,7 @@ class _$UserAuthModelCopyWithImpl<$Res, $Val extends UserAuthModel>
   $Res call({
     Object? user_email = null,
     Object? user_password = null,
-    Object? user_role = null,
-    Object? user_status = null,
+    Object? user_name = null,
   }) {
     return _then(
       _value.copyWith(
@@ -81,13 +74,9 @@ class _$UserAuthModelCopyWithImpl<$Res, $Val extends UserAuthModel>
                 ? _value.user_password
                 : user_password // ignore: cast_nullable_to_non_nullable
                       as String,
-            user_role: null == user_role
-                ? _value.user_role
-                : user_role // ignore: cast_nullable_to_non_nullable
-                      as String,
-            user_status: null == user_status
-                ? _value.user_status
-                : user_status // ignore: cast_nullable_to_non_nullable
+            user_name: null == user_name
+                ? _value.user_name
+                : user_name // ignore: cast_nullable_to_non_nullable
                       as String,
           )
           as $Val,
@@ -104,12 +93,7 @@ abstract class _$$UserAuthModelImplCopyWith<$Res>
   ) = __$$UserAuthModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String user_email,
-    String user_password,
-    String user_role,
-    String user_status,
-  });
+  $Res call({String user_email, String user_password, String user_name});
 }
 
 /// @nodoc
@@ -128,8 +112,7 @@ class __$$UserAuthModelImplCopyWithImpl<$Res>
   $Res call({
     Object? user_email = null,
     Object? user_password = null,
-    Object? user_role = null,
-    Object? user_status = null,
+    Object? user_name = null,
   }) {
     return _then(
       _$UserAuthModelImpl(
@@ -141,13 +124,9 @@ class __$$UserAuthModelImplCopyWithImpl<$Res>
             ? _value.user_password
             : user_password // ignore: cast_nullable_to_non_nullable
                   as String,
-        user_role: null == user_role
-            ? _value.user_role
-            : user_role // ignore: cast_nullable_to_non_nullable
-                  as String,
-        user_status: null == user_status
-            ? _value.user_status
-            : user_status // ignore: cast_nullable_to_non_nullable
+        user_name: null == user_name
+            ? _value.user_name
+            : user_name // ignore: cast_nullable_to_non_nullable
                   as String,
       ),
     );
@@ -160,8 +139,7 @@ class _$UserAuthModelImpl implements _UserAuthModel {
   const _$UserAuthModelImpl({
     this.user_email = "",
     this.user_password = "",
-    this.user_role = "",
-    this.user_status = "",
+    this.user_name = "",
   });
 
   factory _$UserAuthModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -175,14 +153,11 @@ class _$UserAuthModelImpl implements _UserAuthModel {
   final String user_password;
   @override
   @JsonKey()
-  final String user_role;
-  @override
-  @JsonKey()
-  final String user_status;
+  final String user_name;
 
   @override
   String toString() {
-    return 'UserAuthModel(user_email: $user_email, user_password: $user_password, user_role: $user_role, user_status: $user_status)';
+    return 'UserAuthModel(user_email: $user_email, user_password: $user_password, user_name: $user_name)';
   }
 
   @override
@@ -194,21 +169,14 @@ class _$UserAuthModelImpl implements _UserAuthModel {
                 other.user_email == user_email) &&
             (identical(other.user_password, user_password) ||
                 other.user_password == user_password) &&
-            (identical(other.user_role, user_role) ||
-                other.user_role == user_role) &&
-            (identical(other.user_status, user_status) ||
-                other.user_status == user_status));
+            (identical(other.user_name, user_name) ||
+                other.user_name == user_name));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    user_email,
-    user_password,
-    user_role,
-    user_status,
-  );
+  int get hashCode =>
+      Object.hash(runtimeType, user_email, user_password, user_name);
 
   /// Create a copy of UserAuthModel
   /// with the given fields replaced by the non-null parameter values.
@@ -228,8 +196,7 @@ abstract class _UserAuthModel implements UserAuthModel {
   const factory _UserAuthModel({
     final String user_email,
     final String user_password,
-    final String user_role,
-    final String user_status,
+    final String user_name,
   }) = _$UserAuthModelImpl;
 
   factory _UserAuthModel.fromJson(Map<String, dynamic> json) =
@@ -240,9 +207,7 @@ abstract class _UserAuthModel implements UserAuthModel {
   @override
   String get user_password;
   @override
-  String get user_role;
-  @override
-  String get user_status;
+  String get user_name;
 
   /// Create a copy of UserAuthModel
   /// with the given fields replaced by the non-null parameter values.

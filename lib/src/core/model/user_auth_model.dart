@@ -5,11 +5,6 @@ part 'user_auth_model.g.dart';
 
 @freezed
 class UserAuthModel with _$UserAuthModel {
-  const factory UserAuthModel({
-    @Default("") String user_email,
-    @Default("") String user_password,
-    @Default("") String user_role,
-    @Default("") String user_status,
-  }) = _UserAuthModel;
+  const factory UserAuthModel({@Default("") String user_email, @Default("") String user_password, @Default("") String user_name}) = _UserAuthModel;
   factory UserAuthModel.fromJson(Map<String, dynamic> json) => _$UserAuthModelFromJson(json);
 }

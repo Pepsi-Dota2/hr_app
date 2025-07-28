@@ -15,7 +15,7 @@ class CardUserWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      color: Colors.white,
+      color: Colors.blue.shade50,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

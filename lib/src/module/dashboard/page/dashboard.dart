@@ -5,6 +5,8 @@ import 'package:hr_app/src/module/home/cubit/home_cubit.dart';
 import 'package:hr_app/src/module/home/page/home.dart';
 import 'package:hr_app/src/module/profile/cubit/profile_cubit.dart';
 import 'package:hr_app/src/module/profile/page/profile.dart';
+import 'package:hr_app/src/module/work_time_record/cubit/work_time_record_cubit.dart';
+import 'package:hr_app/src/module/work_time_record/page/work_time_record.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 @RoutePage()
@@ -17,7 +19,7 @@ class DashboardPage extends StatelessWidget {
       context,
       screens: [
         BlocProvider<HomeCubit>(create: (_) => HomeCubit()..scheduleNextUpdate(), child: HomePage()),
-        Container(),
+        BlocProvider<WorkTimeRecordCubit>(create: (_) => WorkTimeRecordCubit(), child: WorkTimeRecordPage()),
         BlocProvider<ProfileCubit>(create: (_) => ProfileCubit(), child: ProfilePage()),
       ],
       items: [

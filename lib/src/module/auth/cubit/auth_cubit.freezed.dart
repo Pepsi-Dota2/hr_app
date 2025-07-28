@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AuthState {
   Status get status => throw _privateConstructorUsedError;
+  UserAuthModel? get user => throw _privateConstructorUsedError;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,9 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({Status status});
+  $Res call({Status status, UserAuthModel? user});
+
+  $UserAuthModelCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -48,16 +51,34 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = null}) {
+  $Res call({Object? status = null, Object? user = freezed}) {
     return _then(
       _value.copyWith(
             status: null == status
                 ? _value.status
                 : status // ignore: cast_nullable_to_non_nullable
                       as Status,
+            user: freezed == user
+                ? _value.user
+                : user // ignore: cast_nullable_to_non_nullable
+                      as UserAuthModel?,
           )
           as $Val,
     );
+  }
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserAuthModelCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserAuthModelCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -70,7 +91,10 @@ abstract class _$$InitialImplCopyWith<$Res>
   ) = __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Status status});
+  $Res call({Status status, UserAuthModel? user});
+
+  @override
+  $UserAuthModelCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -86,13 +110,17 @@ class __$$InitialImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = null}) {
+  $Res call({Object? status = null, Object? user = freezed}) {
     return _then(
       _$InitialImpl(
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
                   as Status,
+        user: freezed == user
+            ? _value.user
+            : user // ignore: cast_nullable_to_non_nullable
+                  as UserAuthModel?,
       ),
     );
   }
@@ -101,15 +129,17 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({this.status = Status.initial});
+  const _$InitialImpl({this.status = Status.initial, this.user});
 
   @override
   @JsonKey()
   final Status status;
+  @override
+  final UserAuthModel? user;
 
   @override
   String toString() {
-    return 'AuthState(status: $status)';
+    return 'AuthState(status: $status, user: $user)';
   }
 
   @override
@@ -117,11 +147,12 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode => Object.hash(runtimeType, status, user);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -133,10 +164,13 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements AuthState {
-  const factory _Initial({final Status status}) = _$InitialImpl;
+  const factory _Initial({final Status status, final UserAuthModel? user}) =
+      _$InitialImpl;
 
   @override
   Status get status;
+  @override
+  UserAuthModel? get user;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.

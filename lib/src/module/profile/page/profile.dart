@@ -19,7 +19,7 @@ class ProfilePage extends StatelessWidget implements AutoRouteWrapper {
   Widget build(BuildContext context) {
     final cubit = context.read<ProfileCubit>();
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue.shade50,
       appBar: AppBar(
         title: Text("Profile", style: TextStyle(color: Colors.white)),
         centerTitle: true,
