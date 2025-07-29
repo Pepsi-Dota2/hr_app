@@ -43,6 +43,22 @@ class DashboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [EmployeePage]
+class EmployeeRoute extends PageRouteInfo<void> {
+  const EmployeeRoute({List<PageRouteInfo>? children})
+    : super(EmployeeRoute.name, initialChildren: children);
+
+  static const String name = 'EmployeeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const EmployeePage());
+    },
+  );
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})

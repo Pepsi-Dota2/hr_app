@@ -25,8 +25,10 @@ class AuthCubit extends Cubit<AuthState> {
       if (response.statusCode == 200) {
         final responseData = response.data['data'];
         final token = responseData['token'];
+        final user_id = responseData['user_id'];
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('accessToken', token);
+        await prefs.setString('user_id', user_id.toString());
         final userAuthModel = UserAuthModel.fromJson(responseData);
 
         emit(state.copyWith(status: Status.success, user: userAuthModel));

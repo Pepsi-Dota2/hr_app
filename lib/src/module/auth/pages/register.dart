@@ -33,7 +33,7 @@ class RegisterPage extends StatelessWidget implements AutoRouteWrapper {
           if (state.status == Status.loading) {
             const Center(child: CircularProgressIndicator());
           } else if (state.status == Status.success) {
-            context.router.replace(const DashboardRoute());
+            context.router.replace(const AuthRoute());
           } else if (state.status == Status.failure) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login failed"), backgroundColor: Colors.red));
           }
@@ -100,7 +100,7 @@ class RegisterPage extends StatelessWidget implements AutoRouteWrapper {
                         Gap(4),
                         InkWell(
                           onTap: () {
-                            context.router.push(RegisterRoute());
+                            context.router.push(AuthRoute());
                           },
                           child: Text("register", style: TextStyle(fontWeight: FontWeight.bold)),
                         ),

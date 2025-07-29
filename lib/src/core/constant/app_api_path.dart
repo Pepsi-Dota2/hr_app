@@ -5,4 +5,7 @@ class AppApiPath {
   static const String signUp = "${baseUrl}/auth/sign-up";
   static const String signIn = "${baseUrl}/auth/sign-in";
   static const String signOut = "${baseUrl}/auth/sign-out";
+
+  //upload
+  static const String uploadImage = "${baseUrl}/upload/image/local";
 }

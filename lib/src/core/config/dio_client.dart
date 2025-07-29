@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:hr_app/src/core/constant/app_api_path.dart';
+import 'package:hr_app/src/core/helper/body_builder_where.dart';
 import 'package:hr_app/src/core/service/token_storage.dart';
 
 class DioClient {
@@ -30,7 +31,8 @@ class DioClient {
             final refreshToken = await TokenStorage.getRefreshToken();
             if (refreshToken != null) {
               try {
-                final refreshResponse = await dio.post('https://your.api.com/auth/refresh', data: {'refresh_token': refreshToken});
+                final body = ApiBodyBuilderWhere.buildWhere({"refresh_token": refreshToken}, storeCode: "user_auth");
+                final refreshResponse = await dio.post(AppApiPath.refreshToken, data: body.toJson());
 
                 final newAccessToken = refreshResponse.data['access_token'];
 

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:hr_app/src/core/router/router.dart';
 import 'package:hr_app/src/module/home/cubit/home_cubit.dart';
 import 'package:hr_app/src/module/home/widget/card.dart';
 import 'package:hr_app/src/module/home/widget/card_feature.dart';
@@ -45,7 +46,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                     mainAxisSpacing: 12,
                     childAspectRatio: 1.0,
                     children: [
-                      CardFeature(icon: Icons.people, label: 'employee', onTap: () => print('Employee Management tapped')),
+                      CardFeature(icon: Icons.people, label: 'employee', onTap: () => context.router.push(EmployeeRoute())),
                       CardFeature(icon: Icons.attach_money, label: 'Salary ', onTap: () => print('Salary and Benefits tapped')),
                       CardFeature(icon: Icons.calendar_today, label: 'Leave', onTap: () => print('Leave Management tapped')),
                     ],

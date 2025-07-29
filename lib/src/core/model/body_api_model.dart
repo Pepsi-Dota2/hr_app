@@ -5,11 +5,6 @@ part 'body_api_model.g.dart';
 
 @freezed
 class BodyApiModel with _$BodyApiModel {
-  const factory BodyApiModel({
-    @Default("") String db_type,
-    @Default("") String store_code,
-    @Default({}) Map<String, dynamic> set,
-    @Default({}) Map<String, dynamic> where,
-  }) = _BodyApiModel;
+  const factory BodyApiModel({@Default("") String db_type, @Default("") String store_code, @Default({}) Map<String, dynamic> set}) = _BodyApiModel;
   factory BodyApiModel.fromJson(Map<String, dynamic> json) => _$BodyApiModelFromJson(json);
 }

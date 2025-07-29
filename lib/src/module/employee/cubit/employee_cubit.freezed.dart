@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'profile_cubit.dart';
+part of 'employee_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -16,54 +16,45 @@ final _privateConstructorUsedError = UnsupportedError(
 );
 
 /// @nodoc
-mixin _$ProfileState {
+mixin _$EmployeeState {
   Status get status => throw _privateConstructorUsedError;
   dynamic get image => throw _privateConstructorUsedError;
-  UserAuthModel? get user => throw _privateConstructorUsedError;
   String get localImagePath => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProfileState
+  /// Create a copy of EmployeeState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProfileStateCopyWith<ProfileState> get copyWith =>
+  $EmployeeStateCopyWith<EmployeeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(
-    ProfileState value,
-    $Res Function(ProfileState) then,
-  ) = _$ProfileStateCopyWithImpl<$Res, ProfileState>;
+abstract class $EmployeeStateCopyWith<$Res> {
+  factory $EmployeeStateCopyWith(
+    EmployeeState value,
+    $Res Function(EmployeeState) then,
+  ) = _$EmployeeStateCopyWithImpl<$Res, EmployeeState>;
   @useResult
-  $Res call({
-    Status status,
-    dynamic image,
-    UserAuthModel? user,
-    String localImagePath,
-  });
-
-  $UserAuthModelCopyWith<$Res>? get user;
+  $Res call({Status status, dynamic image, String localImagePath});
 }
 
 /// @nodoc
-class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
-    implements $ProfileStateCopyWith<$Res> {
-  _$ProfileStateCopyWithImpl(this._value, this._then);
+class _$EmployeeStateCopyWithImpl<$Res, $Val extends EmployeeState>
+    implements $EmployeeStateCopyWith<$Res> {
+  _$EmployeeStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProfileState
+  /// Create a copy of EmployeeState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = null,
     Object? image = freezed,
-    Object? user = freezed,
     Object? localImagePath = null,
   }) {
     return _then(
@@ -76,10 +67,6 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
                 ? _value.image
                 : image // ignore: cast_nullable_to_non_nullable
                       as dynamic,
-            user: freezed == user
-                ? _value.user
-                : user // ignore: cast_nullable_to_non_nullable
-                      as UserAuthModel?,
             localImagePath: null == localImagePath
                 ? _value.localImagePath
                 : localImagePath // ignore: cast_nullable_to_non_nullable
@@ -88,72 +75,45 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           as $Val,
     );
   }
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserAuthModelCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserAuthModelCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$ProfileStateImplCopyWith<$Res>
-    implements $ProfileStateCopyWith<$Res> {
-  factory _$$ProfileStateImplCopyWith(
-    _$ProfileStateImpl value,
-    $Res Function(_$ProfileStateImpl) then,
-  ) = __$$ProfileStateImplCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $EmployeeStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    Status status,
-    dynamic image,
-    UserAuthModel? user,
-    String localImagePath,
-  });
-
-  @override
-  $UserAuthModelCopyWith<$Res>? get user;
+  $Res call({Status status, dynamic image, String localImagePath});
 }
 
 /// @nodoc
-class __$$ProfileStateImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileStateImpl>
-    implements _$$ProfileStateImplCopyWith<$Res> {
-  __$$ProfileStateImplCopyWithImpl(
-    _$ProfileStateImpl _value,
-    $Res Function(_$ProfileStateImpl) _then,
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$EmployeeStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of ProfileState
+  /// Create a copy of EmployeeState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = null,
     Object? image = freezed,
-    Object? user = freezed,
     Object? localImagePath = null,
   }) {
     return _then(
-      _$ProfileStateImpl(
+      _$InitialImpl(
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
                   as Status,
         image: freezed == image ? _value.image! : image,
-        user: freezed == user
-            ? _value.user
-            : user // ignore: cast_nullable_to_non_nullable
-                  as UserAuthModel?,
         localImagePath: null == localImagePath
             ? _value.localImagePath
             : localImagePath // ignore: cast_nullable_to_non_nullable
@@ -165,11 +125,10 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProfileStateImpl implements _ProfileState {
-  const _$ProfileStateImpl({
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl({
     this.status = Status.initial,
     this.image = "",
-    this.user,
     this.localImagePath = "",
   });
 
@@ -180,24 +139,21 @@ class _$ProfileStateImpl implements _ProfileState {
   @JsonKey()
   final dynamic image;
   @override
-  final UserAuthModel? user;
-  @override
   @JsonKey()
   final String localImagePath;
 
   @override
   String toString() {
-    return 'ProfileState(status: $status, image: $image, user: $user, localImagePath: $localImagePath)';
+    return 'EmployeeState(status: $status, image: $image, localImagePath: $localImagePath)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProfileStateImpl &&
+            other is _$InitialImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other.image, image) &&
-            (identical(other.user, user) || other.user == user) &&
             (identical(other.localImagePath, localImagePath) ||
                 other.localImagePath == localImagePath));
   }
@@ -207,40 +163,36 @@ class _$ProfileStateImpl implements _ProfileState {
     runtimeType,
     status,
     const DeepCollectionEquality().hash(image),
-    user,
     localImagePath,
   );
 
-  /// Create a copy of ProfileState
+  /// Create a copy of EmployeeState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
-      __$$ProfileStateImplCopyWithImpl<_$ProfileStateImpl>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 }
 
-abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState({
+abstract class _Initial implements EmployeeState {
+  const factory _Initial({
     final Status status,
     final dynamic image,
-    final UserAuthModel? user,
     final String localImagePath,
-  }) = _$ProfileStateImpl;
+  }) = _$InitialImpl;
 
   @override
   Status get status;
   @override
   dynamic get image;
   @override
-  UserAuthModel? get user;
-  @override
   String get localImagePath;
 
-  /// Create a copy of ProfileState
+  /// Create a copy of EmployeeState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

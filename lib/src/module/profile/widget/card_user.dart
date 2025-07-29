@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -13,6 +14,7 @@ class CardUserWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final validImage = imagePath != null && imagePath!.startsWith('http');
     return Container(
       width: size.width,
       color: Colors.blue.shade50,
@@ -27,8 +29,18 @@ class CardUserWidget extends StatelessWidget {
                   CircleAvatar(
                     radius: 60,
                     backgroundColor: Colors.grey.shade200,
-                    backgroundImage: imagePath != null ? FileImage(File(imagePath!)) : null,
-                    child: imagePath == null ? const Icon(Icons.person, color: Colors.grey, size: 60) : null,
+                    child: ClipOval(
+                      child: validImage
+                          ? CachedNetworkImage(
+                              imageUrl: imagePath!,
+                              fit: BoxFit.cover,
+                              width: 120,
+                              height: 120,
+                              progressIndicatorBuilder: (context, url, progress) => CircularProgressIndicator(value: progress.progress),
+                              errorWidget: (context, url, error) => const Icon(Icons.error, color: Colors.red),
+                            )
+                          : const Icon(Icons.person, color: Colors.grey, size: 30),
+                    ),
                   ),
                   Positioned(
                     bottom: 0,
