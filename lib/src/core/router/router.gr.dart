@@ -107,6 +107,38 @@ class RegisterRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SalaryPage]
+class SalaryRoute extends PageRouteInfo<void> {
+  const SalaryRoute({List<PageRouteInfo>? children})
+    : super(SalaryRoute.name, initialChildren: children);
+
+  static const String name = 'SalaryRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const SalaryPage());
+    },
+  );
+}
+
+/// generated route for
+/// [SumarySalaryPage]
+class SumarySalaryRoute extends PageRouteInfo<void> {
+  const SumarySalaryRoute({List<PageRouteInfo>? children})
+    : super(SumarySalaryRoute.name, initialChildren: children);
+
+  static const String name = 'SumarySalaryRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const SumarySalaryPage());
+    },
+  );
+}
+
+/// generated route for
 /// [WorkTimeRecordPage]
 class WorkTimeRecordRoute extends PageRouteInfo<void> {
   const WorkTimeRecordRoute({List<PageRouteInfo>? children})

@@ -20,7 +20,7 @@ class DashboardPage extends StatelessWidget {
       screens: [
         BlocProvider<HomeCubit>(create: (_) => HomeCubit()..scheduleNextUpdate(), child: HomePage()),
         BlocProvider<WorkTimeRecordCubit>(create: (_) => WorkTimeRecordCubit(), child: WorkTimeRecordPage()),
-        BlocProvider<ProfileCubit>(create: (_) => ProfileCubit(), child: ProfilePage()),
+        BlocProvider<ProfileCubit>(create: (_) => ProfileCubit()..getMe(), child: ProfilePage()),
       ],
       items: [
         PersistentBottomNavBarItem(icon: Icon(Icons.home), title: "home", activeColorPrimary: Colors.grey.shade500),

@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                     childAspectRatio: 1.0,
                     children: [
                       CardFeature(icon: Icons.people, label: 'employee', onTap: () => context.router.push(EmployeeRoute())),
-                      CardFeature(icon: Icons.attach_money, label: 'Salary ', onTap: () => print('Salary and Benefits tapped')),
+                      CardFeature(icon: Icons.attach_money, label: 'Salary ', onTap: () => context.router.push(SalaryRoute())),
                       CardFeature(icon: Icons.calendar_today, label: 'Leave', onTap: () => print('Leave Management tapped')),
                     ],
                   ),

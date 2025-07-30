@@ -28,6 +28,15 @@ mixin _$EmployeesModel {
   String get emp_email => throw _privateConstructorUsedError;
   String get emp_tel => throw _privateConstructorUsedError;
   String get emp_birth_date => throw _privateConstructorUsedError;
+  String get position_name => throw _privateConstructorUsedError;
+  int get position_salary => throw _privateConstructorUsedError;
+  String get department_name => throw _privateConstructorUsedError;
+  String get department_code => throw _privateConstructorUsedError;
+  String get emp_gender => throw _privateConstructorUsedError;
+  String get emp_religion => throw _privateConstructorUsedError;
+  String get emp_bank_account => throw _privateConstructorUsedError;
+  String get emp_img => throw _privateConstructorUsedError;
+  String get created_at => throw _privateConstructorUsedError;
 
   /// Serializes this EmployeesModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,6 +63,15 @@ abstract class $EmployeesModelCopyWith<$Res> {
     String emp_email,
     String emp_tel,
     String emp_birth_date,
+    String position_name,
+    int position_salary,
+    String department_name,
+    String department_code,
+    String emp_gender,
+    String emp_religion,
+    String emp_bank_account,
+    String emp_img,
+    String created_at,
   });
 }
 
@@ -79,6 +97,15 @@ class _$EmployeesModelCopyWithImpl<$Res, $Val extends EmployeesModel>
     Object? emp_email = null,
     Object? emp_tel = null,
     Object? emp_birth_date = null,
+    Object? position_name = null,
+    Object? position_salary = null,
+    Object? department_name = null,
+    Object? department_code = null,
+    Object? emp_gender = null,
+    Object? emp_religion = null,
+    Object? emp_bank_account = null,
+    Object? emp_img = null,
+    Object? created_at = null,
   }) {
     return _then(
       _value.copyWith(
@@ -110,6 +137,42 @@ class _$EmployeesModelCopyWithImpl<$Res, $Val extends EmployeesModel>
                 ? _value.emp_birth_date
                 : emp_birth_date // ignore: cast_nullable_to_non_nullable
                       as String,
+            position_name: null == position_name
+                ? _value.position_name
+                : position_name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            position_salary: null == position_salary
+                ? _value.position_salary
+                : position_salary // ignore: cast_nullable_to_non_nullable
+                      as int,
+            department_name: null == department_name
+                ? _value.department_name
+                : department_name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            department_code: null == department_code
+                ? _value.department_code
+                : department_code // ignore: cast_nullable_to_non_nullable
+                      as String,
+            emp_gender: null == emp_gender
+                ? _value.emp_gender
+                : emp_gender // ignore: cast_nullable_to_non_nullable
+                      as String,
+            emp_religion: null == emp_religion
+                ? _value.emp_religion
+                : emp_religion // ignore: cast_nullable_to_non_nullable
+                      as String,
+            emp_bank_account: null == emp_bank_account
+                ? _value.emp_bank_account
+                : emp_bank_account // ignore: cast_nullable_to_non_nullable
+                      as String,
+            emp_img: null == emp_img
+                ? _value.emp_img
+                : emp_img // ignore: cast_nullable_to_non_nullable
+                      as String,
+            created_at: null == created_at
+                ? _value.created_at
+                : created_at // ignore: cast_nullable_to_non_nullable
+                      as String,
           )
           as $Val,
     );
@@ -133,6 +196,15 @@ abstract class _$$EmployeesModelImplCopyWith<$Res>
     String emp_email,
     String emp_tel,
     String emp_birth_date,
+    String position_name,
+    int position_salary,
+    String department_name,
+    String department_code,
+    String emp_gender,
+    String emp_religion,
+    String emp_bank_account,
+    String emp_img,
+    String created_at,
   });
 }
 
@@ -157,6 +229,15 @@ class __$$EmployeesModelImplCopyWithImpl<$Res>
     Object? emp_email = null,
     Object? emp_tel = null,
     Object? emp_birth_date = null,
+    Object? position_name = null,
+    Object? position_salary = null,
+    Object? department_name = null,
+    Object? department_code = null,
+    Object? emp_gender = null,
+    Object? emp_religion = null,
+    Object? emp_bank_account = null,
+    Object? emp_img = null,
+    Object? created_at = null,
   }) {
     return _then(
       _$EmployeesModelImpl(
@@ -188,6 +269,42 @@ class __$$EmployeesModelImplCopyWithImpl<$Res>
             ? _value.emp_birth_date
             : emp_birth_date // ignore: cast_nullable_to_non_nullable
                   as String,
+        position_name: null == position_name
+            ? _value.position_name
+            : position_name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        position_salary: null == position_salary
+            ? _value.position_salary
+            : position_salary // ignore: cast_nullable_to_non_nullable
+                  as int,
+        department_name: null == department_name
+            ? _value.department_name
+            : department_name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        department_code: null == department_code
+            ? _value.department_code
+            : department_code // ignore: cast_nullable_to_non_nullable
+                  as String,
+        emp_gender: null == emp_gender
+            ? _value.emp_gender
+            : emp_gender // ignore: cast_nullable_to_non_nullable
+                  as String,
+        emp_religion: null == emp_religion
+            ? _value.emp_religion
+            : emp_religion // ignore: cast_nullable_to_non_nullable
+                  as String,
+        emp_bank_account: null == emp_bank_account
+            ? _value.emp_bank_account
+            : emp_bank_account // ignore: cast_nullable_to_non_nullable
+                  as String,
+        emp_img: null == emp_img
+            ? _value.emp_img
+            : emp_img // ignore: cast_nullable_to_non_nullable
+                  as String,
+        created_at: null == created_at
+            ? _value.created_at
+            : created_at // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }
@@ -198,12 +315,21 @@ class __$$EmployeesModelImplCopyWithImpl<$Res>
 class _$EmployeesModelImpl implements _EmployeesModel {
   const _$EmployeesModelImpl({
     this.user_id = 0,
-    this.emp_name = '',
+    this.emp_name = "",
     this.emp_department_id = 0,
     this.emp_position_id = 0,
     this.emp_email = "",
     this.emp_tel = "",
     this.emp_birth_date = "",
+    this.position_name = "",
+    this.position_salary = 0,
+    this.department_name = "",
+    this.department_code = "",
+    this.emp_gender = "",
+    this.emp_religion = "",
+    this.emp_bank_account = "",
+    this.emp_img = "",
+    this.created_at = "",
   });
 
   factory _$EmployeesModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -230,10 +356,37 @@ class _$EmployeesModelImpl implements _EmployeesModel {
   @override
   @JsonKey()
   final String emp_birth_date;
+  @override
+  @JsonKey()
+  final String position_name;
+  @override
+  @JsonKey()
+  final int position_salary;
+  @override
+  @JsonKey()
+  final String department_name;
+  @override
+  @JsonKey()
+  final String department_code;
+  @override
+  @JsonKey()
+  final String emp_gender;
+  @override
+  @JsonKey()
+  final String emp_religion;
+  @override
+  @JsonKey()
+  final String emp_bank_account;
+  @override
+  @JsonKey()
+  final String emp_img;
+  @override
+  @JsonKey()
+  final String created_at;
 
   @override
   String toString() {
-    return 'EmployeesModel(user_id: $user_id, emp_name: $emp_name, emp_department_id: $emp_department_id, emp_position_id: $emp_position_id, emp_email: $emp_email, emp_tel: $emp_tel, emp_birth_date: $emp_birth_date)';
+    return 'EmployeesModel(user_id: $user_id, emp_name: $emp_name, emp_department_id: $emp_department_id, emp_position_id: $emp_position_id, emp_email: $emp_email, emp_tel: $emp_tel, emp_birth_date: $emp_birth_date, position_name: $position_name, position_salary: $position_salary, department_name: $department_name, department_code: $department_code, emp_gender: $emp_gender, emp_religion: $emp_religion, emp_bank_account: $emp_bank_account, emp_img: $emp_img, created_at: $created_at)';
   }
 
   @override
@@ -252,7 +405,24 @@ class _$EmployeesModelImpl implements _EmployeesModel {
                 other.emp_email == emp_email) &&
             (identical(other.emp_tel, emp_tel) || other.emp_tel == emp_tel) &&
             (identical(other.emp_birth_date, emp_birth_date) ||
-                other.emp_birth_date == emp_birth_date));
+                other.emp_birth_date == emp_birth_date) &&
+            (identical(other.position_name, position_name) ||
+                other.position_name == position_name) &&
+            (identical(other.position_salary, position_salary) ||
+                other.position_salary == position_salary) &&
+            (identical(other.department_name, department_name) ||
+                other.department_name == department_name) &&
+            (identical(other.department_code, department_code) ||
+                other.department_code == department_code) &&
+            (identical(other.emp_gender, emp_gender) ||
+                other.emp_gender == emp_gender) &&
+            (identical(other.emp_religion, emp_religion) ||
+                other.emp_religion == emp_religion) &&
+            (identical(other.emp_bank_account, emp_bank_account) ||
+                other.emp_bank_account == emp_bank_account) &&
+            (identical(other.emp_img, emp_img) || other.emp_img == emp_img) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -266,6 +436,15 @@ class _$EmployeesModelImpl implements _EmployeesModel {
     emp_email,
     emp_tel,
     emp_birth_date,
+    position_name,
+    position_salary,
+    department_name,
+    department_code,
+    emp_gender,
+    emp_religion,
+    emp_bank_account,
+    emp_img,
+    created_at,
   );
 
   /// Create a copy of EmployeesModel
@@ -294,6 +473,15 @@ abstract class _EmployeesModel implements EmployeesModel {
     final String emp_email,
     final String emp_tel,
     final String emp_birth_date,
+    final String position_name,
+    final int position_salary,
+    final String department_name,
+    final String department_code,
+    final String emp_gender,
+    final String emp_religion,
+    final String emp_bank_account,
+    final String emp_img,
+    final String created_at,
   }) = _$EmployeesModelImpl;
 
   factory _EmployeesModel.fromJson(Map<String, dynamic> json) =
@@ -313,6 +501,24 @@ abstract class _EmployeesModel implements EmployeesModel {
   String get emp_tel;
   @override
   String get emp_birth_date;
+  @override
+  String get position_name;
+  @override
+  int get position_salary;
+  @override
+  String get department_name;
+  @override
+  String get department_code;
+  @override
+  String get emp_gender;
+  @override
+  String get emp_religion;
+  @override
+  String get emp_bank_account;
+  @override
+  String get emp_img;
+  @override
+  String get created_at;
 
   /// Create a copy of EmployeesModel
   /// with the given fields replaced by the non-null parameter values.

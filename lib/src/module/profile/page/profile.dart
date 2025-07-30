@@ -14,7 +14,12 @@ class ProfilePage extends StatelessWidget implements AutoRouteWrapper {
   const ProfilePage({super.key});
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(create: (context) => ProfileCubit()..loadImagePath(), child: this);
+    return BlocProvider(
+      create: (context) => ProfileCubit()
+        ..loadImagePath()
+        ..getMe(),
+      child: this,
+    );
   }
 
   @override
@@ -28,37 +33,33 @@ class ProfilePage extends StatelessWidget implements AutoRouteWrapper {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.blue,
       ),
-      body: BlocBuilder<ProfileCubit, ProfileState>(
-        builder: (context, state) {
-          return Column(
-            children: [
-              Gap(10),
-              CardUserWidget(
-                name: "JonhDo",
-                imagePath: state.image,
-                position: "GM",
-                onTab: () async {
-                  final image = await cubit.pickImage();
-                  if (image != null) {
-                    await cubit.upLoadImage(image);
-                  }
-                },
-              ),
-              Gap(10),
-              ListTileWidget(
-                name: "Logout",
-                onTab: () {
-                  if (state.status == Status.success && state.user == null) {
-                    context.router.replace(const AuthRoute());
-                    cubit.logout();
-                  } else if (state.status == Status.failure) {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Logout failed. Please try again.")));
-                  }
-                },
-              ),
-            ],
-          );
+      body: BlocListener<ProfileCubit, ProfileState>(
+        listenWhen: (prev, curr) => prev.status != curr.status && curr.status == Status.success && curr.user == null,
+        listener: (context, state) {
+          context.router.replace(const AuthRoute());
         },
+        child: BlocBuilder<ProfileCubit, ProfileState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                Gap(10),
+                CardUserWidget(
+                  name: state.user?.emp_name ?? "",
+                  imagePath: state.image,
+                  position: state.user?.emp_email ?? "",
+                  onTab: () async {
+                    final image = await cubit.pickImage();
+                    if (image != null) {
+                      await cubit.upLoadImage(image);
+                    }
+                  },
+                ),
+                Gap(10),
+                ListTileWidget(name: "Logout", onTab: () => cubit.logout()),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

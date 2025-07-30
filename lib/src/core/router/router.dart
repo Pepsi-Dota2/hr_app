@@ -6,6 +6,8 @@ import 'package:hr_app/src/module/dashboard/page/dashboard.dart';
 import 'package:hr_app/src/module/employee/page/employee.dart';
 import 'package:hr_app/src/module/home/page/home.dart';
 import 'package:hr_app/src/module/profile/page/profile.dart';
+import 'package:hr_app/src/module/salary/page/salary.dart';
+import 'package:hr_app/src/module/salary/page/sumary_salary.dart';
 import 'package:hr_app/src/module/work_time_record/page/work_time_record.dart';
 
 part 'router.gr.dart';
@@ -19,5 +21,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: DashboardRoute.page, initial: true, guards: [AuthGuard()]),
     AutoRoute(page: HomeRoute.page, guards: [AuthGuard()]),
     AutoRoute(page: EmployeeRoute.page, guards: [AuthGuard()]),
+    AutoRoute(page: SalaryRoute.page, guards: [AuthGuard()]),
+    AutoRoute(page: SumarySalaryRoute.page, guards: [AuthGuard()]),
   ];
 }

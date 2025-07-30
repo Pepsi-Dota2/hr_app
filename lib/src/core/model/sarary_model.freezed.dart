@@ -22,8 +22,12 @@ SararyModel _$SararyModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SararyModel {
   int get emp_id => throw _privateConstructorUsedError;
-  int get current_salary => throw _privateConstructorUsedError;
+  String get emp_name => throw _privateConstructorUsedError;
+  String get position => throw _privateConstructorUsedError;
+  int get base_salary => throw _privateConstructorUsedError;
   int get net_salary => throw _privateConstructorUsedError;
+  int get total_deduction => throw _privateConstructorUsedError;
+  int get total_bonus => throw _privateConstructorUsedError;
 
   /// Serializes this SararyModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +46,15 @@ abstract class $SararyModelCopyWith<$Res> {
     $Res Function(SararyModel) then,
   ) = _$SararyModelCopyWithImpl<$Res, SararyModel>;
   @useResult
-  $Res call({int emp_id, int current_salary, int net_salary});
+  $Res call({
+    int emp_id,
+    String emp_name,
+    String position,
+    int base_salary,
+    int net_salary,
+    int total_deduction,
+    int total_bonus,
+  });
 }
 
 /// @nodoc
@@ -61,8 +73,12 @@ class _$SararyModelCopyWithImpl<$Res, $Val extends SararyModel>
   @override
   $Res call({
     Object? emp_id = null,
-    Object? current_salary = null,
+    Object? emp_name = null,
+    Object? position = null,
+    Object? base_salary = null,
     Object? net_salary = null,
+    Object? total_deduction = null,
+    Object? total_bonus = null,
   }) {
     return _then(
       _value.copyWith(
@@ -70,13 +86,29 @@ class _$SararyModelCopyWithImpl<$Res, $Val extends SararyModel>
                 ? _value.emp_id
                 : emp_id // ignore: cast_nullable_to_non_nullable
                       as int,
-            current_salary: null == current_salary
-                ? _value.current_salary
-                : current_salary // ignore: cast_nullable_to_non_nullable
+            emp_name: null == emp_name
+                ? _value.emp_name
+                : emp_name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            position: null == position
+                ? _value.position
+                : position // ignore: cast_nullable_to_non_nullable
+                      as String,
+            base_salary: null == base_salary
+                ? _value.base_salary
+                : base_salary // ignore: cast_nullable_to_non_nullable
                       as int,
             net_salary: null == net_salary
                 ? _value.net_salary
                 : net_salary // ignore: cast_nullable_to_non_nullable
+                      as int,
+            total_deduction: null == total_deduction
+                ? _value.total_deduction
+                : total_deduction // ignore: cast_nullable_to_non_nullable
+                      as int,
+            total_bonus: null == total_bonus
+                ? _value.total_bonus
+                : total_bonus // ignore: cast_nullable_to_non_nullable
                       as int,
           )
           as $Val,
@@ -93,7 +125,15 @@ abstract class _$$SararyModelImplCopyWith<$Res>
   ) = __$$SararyModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int emp_id, int current_salary, int net_salary});
+  $Res call({
+    int emp_id,
+    String emp_name,
+    String position,
+    int base_salary,
+    int net_salary,
+    int total_deduction,
+    int total_bonus,
+  });
 }
 
 /// @nodoc
@@ -111,8 +151,12 @@ class __$$SararyModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? emp_id = null,
-    Object? current_salary = null,
+    Object? emp_name = null,
+    Object? position = null,
+    Object? base_salary = null,
     Object? net_salary = null,
+    Object? total_deduction = null,
+    Object? total_bonus = null,
   }) {
     return _then(
       _$SararyModelImpl(
@@ -120,13 +164,29 @@ class __$$SararyModelImplCopyWithImpl<$Res>
             ? _value.emp_id
             : emp_id // ignore: cast_nullable_to_non_nullable
                   as int,
-        current_salary: null == current_salary
-            ? _value.current_salary
-            : current_salary // ignore: cast_nullable_to_non_nullable
+        emp_name: null == emp_name
+            ? _value.emp_name
+            : emp_name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        position: null == position
+            ? _value.position
+            : position // ignore: cast_nullable_to_non_nullable
+                  as String,
+        base_salary: null == base_salary
+            ? _value.base_salary
+            : base_salary // ignore: cast_nullable_to_non_nullable
                   as int,
         net_salary: null == net_salary
             ? _value.net_salary
             : net_salary // ignore: cast_nullable_to_non_nullable
+                  as int,
+        total_deduction: null == total_deduction
+            ? _value.total_deduction
+            : total_deduction // ignore: cast_nullable_to_non_nullable
+                  as int,
+        total_bonus: null == total_bonus
+            ? _value.total_bonus
+            : total_bonus // ignore: cast_nullable_to_non_nullable
                   as int,
       ),
     );
@@ -138,8 +198,12 @@ class __$$SararyModelImplCopyWithImpl<$Res>
 class _$SararyModelImpl implements _SararyModel {
   const _$SararyModelImpl({
     this.emp_id = 0,
-    this.current_salary = 0,
+    this.emp_name = "",
+    this.position = "",
+    this.base_salary = 0,
     this.net_salary = 0,
+    this.total_deduction = 0,
+    this.total_bonus = 0,
   });
 
   factory _$SararyModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -150,14 +214,26 @@ class _$SararyModelImpl implements _SararyModel {
   final int emp_id;
   @override
   @JsonKey()
-  final int current_salary;
+  final String emp_name;
+  @override
+  @JsonKey()
+  final String position;
+  @override
+  @JsonKey()
+  final int base_salary;
   @override
   @JsonKey()
   final int net_salary;
+  @override
+  @JsonKey()
+  final int total_deduction;
+  @override
+  @JsonKey()
+  final int total_bonus;
 
   @override
   String toString() {
-    return 'SararyModel(emp_id: $emp_id, current_salary: $current_salary, net_salary: $net_salary)';
+    return 'SararyModel(emp_id: $emp_id, emp_name: $emp_name, position: $position, base_salary: $base_salary, net_salary: $net_salary, total_deduction: $total_deduction, total_bonus: $total_bonus)';
   }
 
   @override
@@ -166,16 +242,32 @@ class _$SararyModelImpl implements _SararyModel {
         (other.runtimeType == runtimeType &&
             other is _$SararyModelImpl &&
             (identical(other.emp_id, emp_id) || other.emp_id == emp_id) &&
-            (identical(other.current_salary, current_salary) ||
-                other.current_salary == current_salary) &&
+            (identical(other.emp_name, emp_name) ||
+                other.emp_name == emp_name) &&
+            (identical(other.position, position) ||
+                other.position == position) &&
+            (identical(other.base_salary, base_salary) ||
+                other.base_salary == base_salary) &&
             (identical(other.net_salary, net_salary) ||
-                other.net_salary == net_salary));
+                other.net_salary == net_salary) &&
+            (identical(other.total_deduction, total_deduction) ||
+                other.total_deduction == total_deduction) &&
+            (identical(other.total_bonus, total_bonus) ||
+                other.total_bonus == total_bonus));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, emp_id, current_salary, net_salary);
+  int get hashCode => Object.hash(
+    runtimeType,
+    emp_id,
+    emp_name,
+    position,
+    base_salary,
+    net_salary,
+    total_deduction,
+    total_bonus,
+  );
 
   /// Create a copy of SararyModel
   /// with the given fields replaced by the non-null parameter values.
@@ -194,8 +286,12 @@ class _$SararyModelImpl implements _SararyModel {
 abstract class _SararyModel implements SararyModel {
   const factory _SararyModel({
     final int emp_id,
-    final int current_salary,
+    final String emp_name,
+    final String position,
+    final int base_salary,
     final int net_salary,
+    final int total_deduction,
+    final int total_bonus,
   }) = _$SararyModelImpl;
 
   factory _SararyModel.fromJson(Map<String, dynamic> json) =
@@ -204,9 +300,17 @@ abstract class _SararyModel implements SararyModel {
   @override
   int get emp_id;
   @override
-  int get current_salary;
+  String get emp_name;
+  @override
+  String get position;
+  @override
+  int get base_salary;
   @override
   int get net_salary;
+  @override
+  int get total_deduction;
+  @override
+  int get total_bonus;
 
   /// Create a copy of SararyModel
   /// with the given fields replaced by the non-null parameter values.

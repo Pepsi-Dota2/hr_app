@@ -20,6 +20,9 @@ mixin _$EmployeeState {
   Status get status => throw _privateConstructorUsedError;
   dynamic get image => throw _privateConstructorUsedError;
   String get localImagePath => throw _privateConstructorUsedError;
+  List<SararyModel> get salary => throw _privateConstructorUsedError;
+  EmployeesModel? get user => throw _privateConstructorUsedError;
+  List<EmployeesModel> get employee => throw _privateConstructorUsedError;
 
   /// Create a copy of EmployeeState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,7 +38,16 @@ abstract class $EmployeeStateCopyWith<$Res> {
     $Res Function(EmployeeState) then,
   ) = _$EmployeeStateCopyWithImpl<$Res, EmployeeState>;
   @useResult
-  $Res call({Status status, dynamic image, String localImagePath});
+  $Res call({
+    Status status,
+    dynamic image,
+    String localImagePath,
+    List<SararyModel> salary,
+    EmployeesModel? user,
+    List<EmployeesModel> employee,
+  });
+
+  $EmployeesModelCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -56,6 +68,9 @@ class _$EmployeeStateCopyWithImpl<$Res, $Val extends EmployeeState>
     Object? status = null,
     Object? image = freezed,
     Object? localImagePath = null,
+    Object? salary = null,
+    Object? user = freezed,
+    Object? employee = null,
   }) {
     return _then(
       _value.copyWith(
@@ -71,31 +86,67 @@ class _$EmployeeStateCopyWithImpl<$Res, $Val extends EmployeeState>
                 ? _value.localImagePath
                 : localImagePath // ignore: cast_nullable_to_non_nullable
                       as String,
+            salary: null == salary
+                ? _value.salary
+                : salary // ignore: cast_nullable_to_non_nullable
+                      as List<SararyModel>,
+            user: freezed == user
+                ? _value.user
+                : user // ignore: cast_nullable_to_non_nullable
+                      as EmployeesModel?,
+            employee: null == employee
+                ? _value.employee
+                : employee // ignore: cast_nullable_to_non_nullable
+                      as List<EmployeesModel>,
           )
           as $Val,
     );
   }
+
+  /// Create a copy of EmployeeState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EmployeesModelCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $EmployeesModelCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res>
+abstract class _$$EmployeeStateImplCopyWith<$Res>
     implements $EmployeeStateCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+  factory _$$EmployeeStateImplCopyWith(
+    _$EmployeeStateImpl value,
+    $Res Function(_$EmployeeStateImpl) then,
+  ) = __$$EmployeeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Status status, dynamic image, String localImagePath});
+  $Res call({
+    Status status,
+    dynamic image,
+    String localImagePath,
+    List<SararyModel> salary,
+    EmployeesModel? user,
+    List<EmployeesModel> employee,
+  });
+
+  @override
+  $EmployeesModelCopyWith<$Res>? get user;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$EmployeeStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
+class __$$EmployeeStateImplCopyWithImpl<$Res>
+    extends _$EmployeeStateCopyWithImpl<$Res, _$EmployeeStateImpl>
+    implements _$$EmployeeStateImplCopyWith<$Res> {
+  __$$EmployeeStateImplCopyWithImpl(
+    _$EmployeeStateImpl _value,
+    $Res Function(_$EmployeeStateImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of EmployeeState
@@ -106,9 +157,12 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? status = null,
     Object? image = freezed,
     Object? localImagePath = null,
+    Object? salary = null,
+    Object? user = freezed,
+    Object? employee = null,
   }) {
     return _then(
-      _$InitialImpl(
+      _$EmployeeStateImpl(
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
@@ -118,6 +172,18 @@ class __$$InitialImplCopyWithImpl<$Res>
             ? _value.localImagePath
             : localImagePath // ignore: cast_nullable_to_non_nullable
                   as String,
+        salary: null == salary
+            ? _value._salary
+            : salary // ignore: cast_nullable_to_non_nullable
+                  as List<SararyModel>,
+        user: freezed == user
+            ? _value.user
+            : user // ignore: cast_nullable_to_non_nullable
+                  as EmployeesModel?,
+        employee: null == employee
+            ? _value._employee
+            : employee // ignore: cast_nullable_to_non_nullable
+                  as List<EmployeesModel>,
       ),
     );
   }
@@ -125,12 +191,16 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl({
+class _$EmployeeStateImpl implements _EmployeeState {
+  const _$EmployeeStateImpl({
     this.status = Status.initial,
     this.image = "",
     this.localImagePath = "",
-  });
+    final List<SararyModel> salary = const [],
+    this.user,
+    final List<EmployeesModel> employee = const [],
+  }) : _salary = salary,
+       _employee = employee;
 
   @override
   @JsonKey()
@@ -141,21 +211,43 @@ class _$InitialImpl implements _Initial {
   @override
   @JsonKey()
   final String localImagePath;
+  final List<SararyModel> _salary;
+  @override
+  @JsonKey()
+  List<SararyModel> get salary {
+    if (_salary is EqualUnmodifiableListView) return _salary;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_salary);
+  }
+
+  @override
+  final EmployeesModel? user;
+  final List<EmployeesModel> _employee;
+  @override
+  @JsonKey()
+  List<EmployeesModel> get employee {
+    if (_employee is EqualUnmodifiableListView) return _employee;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_employee);
+  }
 
   @override
   String toString() {
-    return 'EmployeeState(status: $status, image: $image, localImagePath: $localImagePath)';
+    return 'EmployeeState(status: $status, image: $image, localImagePath: $localImagePath, salary: $salary, user: $user, employee: $employee)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
+            other is _$EmployeeStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other.image, image) &&
             (identical(other.localImagePath, localImagePath) ||
-                other.localImagePath == localImagePath));
+                other.localImagePath == localImagePath) &&
+            const DeepCollectionEquality().equals(other._salary, _salary) &&
+            (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality().equals(other._employee, _employee));
   }
 
   @override
@@ -164,6 +256,9 @@ class _$InitialImpl implements _Initial {
     status,
     const DeepCollectionEquality().hash(image),
     localImagePath,
+    const DeepCollectionEquality().hash(_salary),
+    user,
+    const DeepCollectionEquality().hash(_employee),
   );
 
   /// Create a copy of EmployeeState
@@ -171,16 +266,19 @@ class _$InitialImpl implements _Initial {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+  _$$EmployeeStateImplCopyWith<_$EmployeeStateImpl> get copyWith =>
+      __$$EmployeeStateImplCopyWithImpl<_$EmployeeStateImpl>(this, _$identity);
 }
 
-abstract class _Initial implements EmployeeState {
-  const factory _Initial({
+abstract class _EmployeeState implements EmployeeState {
+  const factory _EmployeeState({
     final Status status,
     final dynamic image,
     final String localImagePath,
-  }) = _$InitialImpl;
+    final List<SararyModel> salary,
+    final EmployeesModel? user,
+    final List<EmployeesModel> employee,
+  }) = _$EmployeeStateImpl;
 
   @override
   Status get status;
@@ -188,11 +286,17 @@ abstract class _Initial implements EmployeeState {
   dynamic get image;
   @override
   String get localImagePath;
+  @override
+  List<SararyModel> get salary;
+  @override
+  EmployeesModel? get user;
+  @override
+  List<EmployeesModel> get employee;
 
   /// Create a copy of EmployeeState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+  _$$EmployeeStateImplCopyWith<_$EmployeeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

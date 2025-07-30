@@ -20,6 +20,14 @@ class WorkTimeRecordCubit extends Cubit<WorkTimeRecordState> {
     emit(state.copyWith(timer: _stopWatchTimer, isStart: true, startDateTime: now));
   }
 
+  Future<void> onStartWorking() async {
+    try {
+      emit(state.copyWith(status: Status.loading));
+    } catch (e) {
+      emit(state.copyWith(status: Status.failure));
+    }
+  }
+
   void onStop() {
     _stopWatchTimer.onStopTimer();
     _midnightResetTimer?.cancel();

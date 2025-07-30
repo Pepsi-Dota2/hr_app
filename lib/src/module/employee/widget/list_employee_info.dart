@@ -8,6 +8,9 @@ class ListEmployeeInfoWidget extends StatelessWidget {
   final String? salary;
   final String? accountBank;
   final String? startWorking;
+  final String? empGender;
+  final String? departmentName;
+  final String? departmentCode;
 
   const ListEmployeeInfoWidget({
     super.key,
@@ -18,6 +21,9 @@ class ListEmployeeInfoWidget extends StatelessWidget {
     this.salary,
     this.accountBank,
     this.startWorking,
+    this.empGender,
+    this.departmentName,
+    this.departmentCode,
   });
 
   @override
@@ -30,13 +36,37 @@ class ListEmployeeInfoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-            leading: Icon(Icons.badge, color: Colors.blue.shade400),
+            leading: Icon(Icons.card_membership, color: Colors.blue.shade400),
             title: Text("employee ID"),
             subtitle: Text(empId ?? ""),
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.phone, color: Colors.blue.shade400),
+            leading: Icon(Icons.person, color: Colors.blue.shade400),
+            title: Text("employee Name"),
+            subtitle: Text(empName ?? ""),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.wc, color: Colors.blue.shade400),
+            title: Text("gender"),
+            subtitle: Text(empGender ?? ""),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.apartment, color: Colors.blue.shade400),
+            title: Text("department"),
+            subtitle: Text(departmentName ?? ""),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.code, color: Colors.blue.shade400),
+            title: Text("department code"),
+            subtitle: Text(departmentCode ?? ""),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.phone_android, color: Colors.blue.shade400),
             title: Text("tel"),
             subtitle: Text(empTel ?? ""),
           ),
@@ -48,7 +78,7 @@ class ListEmployeeInfoWidget extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.attach_money, color: Colors.blue.shade400),
+            leading: Icon(Icons.monetization_on, color: Colors.blue.shade400),
             title: Text("salary"),
             subtitle: Text(salary ?? ""),
           ),
