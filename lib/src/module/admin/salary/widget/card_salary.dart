@@ -4,10 +4,10 @@ import 'package:hr_app/src/module/admin/salary/widget/salary_item.dart';
 class SalaryCard extends StatelessWidget {
   final String empName;
   final String position;
-  final int baseSalary;
-  final int totalBonus;
-  final int totalDeduction;
-  final int netSalary;
+  final String baseSalary;
+  final String totalBonus;
+  final String totalDeduction;
+  final String netSalary;
 
   const SalaryCard({
     super.key,
@@ -53,7 +53,7 @@ class SalaryCard extends StatelessWidget {
             SalaryItem(label: 'Bonus', value: totalBonus, icon: Icons.card_giftcard, color: Colors.green.shade600),
             SalaryItem(label: 'Deduction', value: totalDeduction, icon: Icons.remove_circle_outline, color: Colors.red.shade600),
             const Divider(height: 24, thickness: 1),
-            SalaryItem(label: 'Net Salary', value: netSalary, icon: Icons.attach_money, color: Colors.purple.shade700, isBold: true),
+            SalaryItem(label: 'Total Salary', value: netSalary, icon: Icons.attach_money, color: Colors.purple.shade700, isBold: true),
           ],
         ),
       ),

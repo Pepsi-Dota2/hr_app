@@ -21,6 +21,9 @@ mixin _$SalaryadminState {
   List<SararyModel> get salary => throw _privateConstructorUsedError;
   List<SararyModel> get filteredSalary => throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
+  List<EmployeesModel> get employee => throw _privateConstructorUsedError;
+  List<DeductionModel> get deduction => throw _privateConstructorUsedError;
+  String get selectedDeduction => throw _privateConstructorUsedError;
 
   /// Create a copy of SalaryadminState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,6 +44,9 @@ abstract class $SalaryadminStateCopyWith<$Res> {
     List<SararyModel> salary,
     List<SararyModel> filteredSalary,
     String searchQuery,
+    List<EmployeesModel> employee,
+    List<DeductionModel> deduction,
+    String selectedDeduction,
   });
 }
 
@@ -63,6 +69,9 @@ class _$SalaryadminStateCopyWithImpl<$Res, $Val extends SalaryadminState>
     Object? salary = null,
     Object? filteredSalary = null,
     Object? searchQuery = null,
+    Object? employee = null,
+    Object? deduction = null,
+    Object? selectedDeduction = null,
   }) {
     return _then(
       _value.copyWith(
@@ -81,6 +90,18 @@ class _$SalaryadminStateCopyWithImpl<$Res, $Val extends SalaryadminState>
             searchQuery: null == searchQuery
                 ? _value.searchQuery
                 : searchQuery // ignore: cast_nullable_to_non_nullable
+                      as String,
+            employee: null == employee
+                ? _value.employee
+                : employee // ignore: cast_nullable_to_non_nullable
+                      as List<EmployeesModel>,
+            deduction: null == deduction
+                ? _value.deduction
+                : deduction // ignore: cast_nullable_to_non_nullable
+                      as List<DeductionModel>,
+            selectedDeduction: null == selectedDeduction
+                ? _value.selectedDeduction
+                : selectedDeduction // ignore: cast_nullable_to_non_nullable
                       as String,
           )
           as $Val,
@@ -102,6 +123,9 @@ abstract class _$$SalaryadminStateImplCopyWith<$Res>
     List<SararyModel> salary,
     List<SararyModel> filteredSalary,
     String searchQuery,
+    List<EmployeesModel> employee,
+    List<DeductionModel> deduction,
+    String selectedDeduction,
   });
 }
 
@@ -123,6 +147,9 @@ class __$$SalaryadminStateImplCopyWithImpl<$Res>
     Object? salary = null,
     Object? filteredSalary = null,
     Object? searchQuery = null,
+    Object? employee = null,
+    Object? deduction = null,
+    Object? selectedDeduction = null,
   }) {
     return _then(
       _$SalaryadminStateImpl(
@@ -142,6 +169,18 @@ class __$$SalaryadminStateImplCopyWithImpl<$Res>
             ? _value.searchQuery
             : searchQuery // ignore: cast_nullable_to_non_nullable
                   as String,
+        employee: null == employee
+            ? _value._employee
+            : employee // ignore: cast_nullable_to_non_nullable
+                  as List<EmployeesModel>,
+        deduction: null == deduction
+            ? _value._deduction
+            : deduction // ignore: cast_nullable_to_non_nullable
+                  as List<DeductionModel>,
+        selectedDeduction: null == selectedDeduction
+            ? _value.selectedDeduction
+            : selectedDeduction // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }
@@ -155,8 +194,13 @@ class _$SalaryadminStateImpl implements _SalaryadminState {
     final List<SararyModel> salary = const [],
     final List<SararyModel> filteredSalary = const [],
     this.searchQuery = '',
+    final List<EmployeesModel> employee = const [],
+    final List<DeductionModel> deduction = const [],
+    this.selectedDeduction = "late",
   }) : _salary = salary,
-       _filteredSalary = filteredSalary;
+       _filteredSalary = filteredSalary,
+       _employee = employee,
+       _deduction = deduction;
 
   @override
   @JsonKey()
@@ -182,10 +226,31 @@ class _$SalaryadminStateImpl implements _SalaryadminState {
   @override
   @JsonKey()
   final String searchQuery;
+  final List<EmployeesModel> _employee;
+  @override
+  @JsonKey()
+  List<EmployeesModel> get employee {
+    if (_employee is EqualUnmodifiableListView) return _employee;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_employee);
+  }
+
+  final List<DeductionModel> _deduction;
+  @override
+  @JsonKey()
+  List<DeductionModel> get deduction {
+    if (_deduction is EqualUnmodifiableListView) return _deduction;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deduction);
+  }
+
+  @override
+  @JsonKey()
+  final String selectedDeduction;
 
   @override
   String toString() {
-    return 'SalaryadminState(status: $status, salary: $salary, filteredSalary: $filteredSalary, searchQuery: $searchQuery)';
+    return 'SalaryadminState(status: $status, salary: $salary, filteredSalary: $filteredSalary, searchQuery: $searchQuery, employee: $employee, deduction: $deduction, selectedDeduction: $selectedDeduction)';
   }
 
   @override
@@ -200,7 +265,14 @@ class _$SalaryadminStateImpl implements _SalaryadminState {
               _filteredSalary,
             ) &&
             (identical(other.searchQuery, searchQuery) ||
-                other.searchQuery == searchQuery));
+                other.searchQuery == searchQuery) &&
+            const DeepCollectionEquality().equals(other._employee, _employee) &&
+            const DeepCollectionEquality().equals(
+              other._deduction,
+              _deduction,
+            ) &&
+            (identical(other.selectedDeduction, selectedDeduction) ||
+                other.selectedDeduction == selectedDeduction));
   }
 
   @override
@@ -210,6 +282,9 @@ class _$SalaryadminStateImpl implements _SalaryadminState {
     const DeepCollectionEquality().hash(_salary),
     const DeepCollectionEquality().hash(_filteredSalary),
     searchQuery,
+    const DeepCollectionEquality().hash(_employee),
+    const DeepCollectionEquality().hash(_deduction),
+    selectedDeduction,
   );
 
   /// Create a copy of SalaryadminState
@@ -230,6 +305,9 @@ abstract class _SalaryadminState implements SalaryadminState {
     final List<SararyModel> salary,
     final List<SararyModel> filteredSalary,
     final String searchQuery,
+    final List<EmployeesModel> employee,
+    final List<DeductionModel> deduction,
+    final String selectedDeduction,
   }) = _$SalaryadminStateImpl;
 
   @override
@@ -240,6 +318,12 @@ abstract class _SalaryadminState implements SalaryadminState {
   List<SararyModel> get filteredSalary;
   @override
   String get searchQuery;
+  @override
+  List<EmployeesModel> get employee;
+  @override
+  List<DeductionModel> get deduction;
+  @override
+  String get selectedDeduction;
 
   /// Create a copy of SalaryadminState
   /// with the given fields replaced by the non-null parameter values.

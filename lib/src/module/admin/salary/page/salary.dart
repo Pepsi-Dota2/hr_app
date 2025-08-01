@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
+import 'package:hr_app/src/core/router/router.dart';
 import 'package:hr_app/src/module/admin/salary/cubit/salaryadmin_cubit.dart';
 import 'package:hr_app/src/module/admin/salary/widget/card_salary.dart';
+import 'package:intl/intl.dart';
 
 @RoutePage()
 class SalaryAdminPage extends StatelessWidget implements AutoRouteWrapper {
@@ -27,6 +29,14 @@ class SalaryAdminPage extends StatelessWidget implements AutoRouteWrapper {
         ),
         centerTitle: true,
         backgroundColor: Colors.blue.shade700,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.all_inbox, color: Colors.white),
+            onPressed: () {
+              context.router.push(HistoryDeductionAdminRoute());
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -67,13 +77,20 @@ class SalaryAdminPage extends StatelessWidget implements AutoRouteWrapper {
                   itemCount: state.filteredSalary.length,
                   itemBuilder: (BuildContext context, int index) {
                     final salary = state.filteredSalary[index];
-                    return SalaryCard(
-                      empName: salary.emp_name,
-                      position: salary.position,
-                      baseSalary: salary.base_salary,
-                      totalBonus: salary.total_bonus,
-                      totalDeduction: salary.total_deduction,
-                      netSalary: salary.net_salary,
+                    return InkWell(
+                      onTap: () async {
+                        await context.pushRoute(DeductionAdminRoute(empid: salary.emp_id.toString()));
+                        context.read<SalaryadminCubit>().getSalaryEmp();
+                      },
+
+                      child: SalaryCard(
+                        empName: salary.emp_name,
+                        position: salary.position,
+                        baseSalary: NumberFormat("#,##0.00", "en_US").format(salary.base_salary),
+                        totalBonus: NumberFormat("#,##0.00", "en_US").format(salary.total_bonus),
+                        totalDeduction: NumberFormat("#,##0.00", "en_US").format(salary.total_deduction),
+                        netSalary: NumberFormat("#,##0.00", "en_US").format(salary.net_salary),
+                      ),
                     );
                   },
                 );

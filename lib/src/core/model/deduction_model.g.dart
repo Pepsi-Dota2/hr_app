@@ -13,6 +13,7 @@ _$DeductionModelImpl _$$DeductionModelImplFromJson(Map<String, dynamic> json) =>
       deduction_type: json['deduction_type'] as String? ?? '',
       amount: (json['amount'] as num?)?.toInt() ?? 0,
       note: json['note'] as String? ?? "",
+      created_at: json['created_at'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$DeductionModelImplToJson(
@@ -23,4 +24,5 @@ Map<String, dynamic> _$$DeductionModelImplToJson(
   'deduction_type': instance.deduction_type,
   'amount': instance.amount,
   'note': instance.note,
+  'created_at': instance.created_at,
 };

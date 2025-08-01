@@ -1,10 +1,15 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:hr_app/src/core/router/router_guard.dart';
 import 'package:hr_app/src/module/admin/dashboard_admin/page/dashboard_admin.dart';
 import 'package:hr_app/src/module/admin/department/page/department_admin.dart';
 import 'package:hr_app/src/module/admin/employee/page/employee_admin.dart';
 import 'package:hr_app/src/module/admin/home/page/home_admin.dart';
+import 'package:hr_app/src/module/admin/leave/page/leave_admin.dart';
+import 'package:hr_app/src/module/admin/leave/page/leave_admin_detail.dart';
 import 'package:hr_app/src/module/admin/postion/page/position_admin.dart';
+import 'package:hr_app/src/module/admin/salary/page/deduction.dart';
+import 'package:hr_app/src/module/admin/salary/page/history_deduction.dart';
 import 'package:hr_app/src/module/admin/salary/page/salary.dart';
 import 'package:hr_app/src/module/admin/setting/page/setting.dart';
 import 'package:hr_app/src/module/auth/pages/auth.dart';
@@ -45,5 +50,9 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SalaryAdminRoute.page, guards: [AdminGuard()]),
     AutoRoute(page: DepartmentAdminRoute.page, guards: [AdminGuard()]),
     AutoRoute(page: PositionAdminRoute.page, guards: [AdminGuard()]),
+    AutoRoute(page: DeductionAdminRoute.page, path: "/deduction/:emp_id", guards: [AdminGuard()]),
+    AutoRoute(page: HistoryDeductionAdminRoute.page, guards: [AdminGuard()]),
+    AutoRoute(page: LeaveAdminRoute.page, guards: [AdminGuard()]),
+    AutoRoute(page: LeaveAdminDetailAdminRoute.page, guards: [AdminGuard()]),
   ];
 }

@@ -91,6 +91,60 @@ class DashboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [DeductionAdminPage]
+class DeductionAdminRoute extends PageRouteInfo<DeductionAdminRouteArgs> {
+  DeductionAdminRoute({
+    Key? key,
+    required String empid,
+    List<PageRouteInfo>? children,
+  }) : super(
+         DeductionAdminRoute.name,
+         args: DeductionAdminRouteArgs(key: key, empid: empid),
+         rawPathParams: {'emp_id': empid},
+         initialChildren: children,
+       );
+
+  static const String name = 'DeductionAdminRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<DeductionAdminRouteArgs>(
+        orElse: () =>
+            DeductionAdminRouteArgs(empid: pathParams.getString('emp_id')),
+      );
+      return WrappedRoute(
+        child: DeductionAdminPage(key: args.key, empid: args.empid),
+      );
+    },
+  );
+}
+
+class DeductionAdminRouteArgs {
+  const DeductionAdminRouteArgs({this.key, required this.empid});
+
+  final Key? key;
+
+  final String empid;
+
+  @override
+  String toString() {
+    return 'DeductionAdminRouteArgs{key: $key, empid: $empid}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! DeductionAdminRouteArgs) return false;
+    return key == other.key && empid == other.empid;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ empid.hashCode;
+}
+
+/// generated route for
 /// [DepartmentAdminPage]
 class DepartmentAdminRoute extends PageRouteInfo<void> {
   const DepartmentAdminRoute({List<PageRouteInfo>? children})
@@ -139,6 +193,22 @@ class EmployeeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [HistoryDeductionAdminPage]
+class HistoryDeductionAdminRoute extends PageRouteInfo<void> {
+  const HistoryDeductionAdminRoute({List<PageRouteInfo>? children})
+    : super(HistoryDeductionAdminRoute.name, initialChildren: children);
+
+  static const String name = 'HistoryDeductionAdminRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const HistoryDeductionAdminPage());
+    },
+  );
+}
+
+/// generated route for
 /// [HomeAdminPage]
 class HomeAdminRoute extends PageRouteInfo<void> {
   const HomeAdminRoute({List<PageRouteInfo>? children})
@@ -166,6 +236,78 @@ class HomeRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return WrappedRoute(child: const HomePage());
+    },
+  );
+}
+
+/// generated route for
+/// [LeaveAdminDetailAdminPage]
+class LeaveAdminDetailAdminRoute
+    extends PageRouteInfo<LeaveAdminDetailAdminRouteArgs> {
+  LeaveAdminDetailAdminRoute({
+    Key? key,
+    required String userId,
+    List<PageRouteInfo>? children,
+  }) : super(
+         LeaveAdminDetailAdminRoute.name,
+         args: LeaveAdminDetailAdminRouteArgs(key: key, userId: userId),
+         rawPathParams: {'userId': userId},
+         initialChildren: children,
+       );
+
+  static const String name = 'LeaveAdminDetailAdminRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<LeaveAdminDetailAdminRouteArgs>(
+        orElse: () => LeaveAdminDetailAdminRouteArgs(
+          userId: pathParams.getString('userId'),
+        ),
+      );
+      return WrappedRoute(
+        child: LeaveAdminDetailAdminPage(key: args.key, userId: args.userId),
+      );
+    },
+  );
+}
+
+class LeaveAdminDetailAdminRouteArgs {
+  const LeaveAdminDetailAdminRouteArgs({this.key, required this.userId});
+
+  final Key? key;
+
+  final String userId;
+
+  @override
+  String toString() {
+    return 'LeaveAdminDetailAdminRouteArgs{key: $key, userId: $userId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! LeaveAdminDetailAdminRouteArgs) return false;
+    return key == other.key && userId == other.userId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ userId.hashCode;
+}
+
+/// generated route for
+/// [LeaveAdminPage]
+class LeaveAdminRoute extends PageRouteInfo<void> {
+  const LeaveAdminRoute({List<PageRouteInfo>? children})
+    : super(LeaveAdminRoute.name, initialChildren: children);
+
+  static const String name = 'LeaveAdminRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const LeaveAdminPage());
     },
   );
 }

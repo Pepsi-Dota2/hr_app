@@ -26,6 +26,7 @@ mixin _$DeductionModel {
   String get deduction_type => throw _privateConstructorUsedError;
   int get amount => throw _privateConstructorUsedError;
   String get note => throw _privateConstructorUsedError;
+  String get created_at => throw _privateConstructorUsedError;
 
   /// Serializes this DeductionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $DeductionModelCopyWith<$Res> {
     String deduction_type,
     int amount,
     String note,
+    String created_at,
   });
 }
 
@@ -73,6 +75,7 @@ class _$DeductionModelCopyWithImpl<$Res, $Val extends DeductionModel>
     Object? deduction_type = null,
     Object? amount = null,
     Object? note = null,
+    Object? created_at = null,
   }) {
     return _then(
       _value.copyWith(
@@ -96,6 +99,10 @@ class _$DeductionModelCopyWithImpl<$Res, $Val extends DeductionModel>
                 ? _value.note
                 : note // ignore: cast_nullable_to_non_nullable
                       as String,
+            created_at: null == created_at
+                ? _value.created_at
+                : created_at // ignore: cast_nullable_to_non_nullable
+                      as String,
           )
           as $Val,
     );
@@ -117,6 +124,7 @@ abstract class _$$DeductionModelImplCopyWith<$Res>
     String deduction_type,
     int amount,
     String note,
+    String created_at,
   });
 }
 
@@ -139,6 +147,7 @@ class __$$DeductionModelImplCopyWithImpl<$Res>
     Object? deduction_type = null,
     Object? amount = null,
     Object? note = null,
+    Object? created_at = null,
   }) {
     return _then(
       _$DeductionModelImpl(
@@ -162,6 +171,10 @@ class __$$DeductionModelImplCopyWithImpl<$Res>
             ? _value.note
             : note // ignore: cast_nullable_to_non_nullable
                   as String,
+        created_at: null == created_at
+            ? _value.created_at
+            : created_at // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }
@@ -176,6 +189,7 @@ class _$DeductionModelImpl implements _DeductionModel {
     this.deduction_type = '',
     this.amount = 0,
     this.note = "",
+    this.created_at = "",
   });
 
   factory _$DeductionModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -196,10 +210,13 @@ class _$DeductionModelImpl implements _DeductionModel {
   @override
   @JsonKey()
   final String note;
+  @override
+  @JsonKey()
+  final String created_at;
 
   @override
   String toString() {
-    return 'DeductionModel(emp_id: $emp_id, salary_month: $salary_month, deduction_type: $deduction_type, amount: $amount, note: $note)';
+    return 'DeductionModel(emp_id: $emp_id, salary_month: $salary_month, deduction_type: $deduction_type, amount: $amount, note: $note, created_at: $created_at)';
   }
 
   @override
@@ -213,7 +230,9 @@ class _$DeductionModelImpl implements _DeductionModel {
             (identical(other.deduction_type, deduction_type) ||
                 other.deduction_type == deduction_type) &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.note, note) || other.note == note));
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -225,6 +244,7 @@ class _$DeductionModelImpl implements _DeductionModel {
     deduction_type,
     amount,
     note,
+    created_at,
   );
 
   /// Create a copy of DeductionModel
@@ -251,6 +271,7 @@ abstract class _DeductionModel implements DeductionModel {
     final String deduction_type,
     final int amount,
     final String note,
+    final String created_at,
   }) = _$DeductionModelImpl;
 
   factory _DeductionModel.fromJson(Map<String, dynamic> json) =
@@ -266,6 +287,8 @@ abstract class _DeductionModel implements DeductionModel {
   int get amount;
   @override
   String get note;
+  @override
+  String get created_at;
 
   /// Create a copy of DeductionModel
   /// with the given fields replaced by the non-null parameter values.

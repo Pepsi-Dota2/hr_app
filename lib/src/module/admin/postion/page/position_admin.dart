@@ -28,6 +28,8 @@ class PositionAdminPage extends StatelessWidget implements AutoRouteWrapper {
         centerTitle: true,
         backgroundColor: Colors.blue.shade700,
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {}, shape: const CircleBorder(), child: Icon(Icons.add)),
+
       body: Column(
         children: [
           Padding(

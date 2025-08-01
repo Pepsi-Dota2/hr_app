@@ -7,5 +7,8 @@ class SalaryadminState with _$SalaryadminState {
     @Default([]) List<SararyModel> salary,
     @Default([]) List<SararyModel> filteredSalary,
     @Default('') String searchQuery,
+    @Default([]) List<EmployeesModel> employee,
+    @Default([]) List<DeductionModel> deduction,
+    @Default("late") String selectedDeduction,
   }) = _SalaryadminState;
 }

@@ -18,9 +18,15 @@ class AppApiPath {
   //admin
   static const String getAllEmployee = "${baseUrl}/quickserve/employee";
   static const String getAllSalary = "${baseUrl}/quickserve/employee/salary-counter";
+  static const String getOneSalary = "${baseUrl}//quickserve/employee";
   static const String getAllDepartment = "${baseUrl}/quickserve/department";
   static const String getAllPosition = "${baseUrl}/quickserve/position";
-
+  static const String createDeduction = "${baseUrl}/quickserve/employee/deduction/add";
+  static const String getAllDeduction = "${baseUrl}/quickserve/employee/deduction";
+  static const String getAllleave = "${baseUrl}/quickserve/employee/leave-detail/nofilter";
+  static const String getOneleave = "${baseUrl}/quickserve/employee";
+  static const String createleave = "${baseUrl}/quickserve/employee/leave-detail/add";
+  static const String updateLeave = "${baseUrl}/quickserve/employee";
   //upload
   static const String uploadImage = "${baseUrl}/upload/image/local";
 }

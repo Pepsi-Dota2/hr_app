@@ -11,6 +11,7 @@ class DeductionModel with _$DeductionModel {
     @Default('') String deduction_type,
     @Default(0) int amount,
     @Default("") String note,
+    @Default("") String created_at,
   }) = _DeductionModel;
   factory DeductionModel.fromJson(Map<String, dynamic> json) => _$DeductionModelFromJson(json);
 }

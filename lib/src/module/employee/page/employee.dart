@@ -68,7 +68,7 @@ class EmployeePage extends StatelessWidget implements AutoRouteWrapper {
                         departmentCode: state.user?.department_code ?? "N/A",
                         accountBank: state.employee.isNotEmpty ? state.employee[0].emp_bank_account : "N/A",
                         startWorking: state.employee.isNotEmpty && state.employee[0].created_at != null
-                            ? DateFormat('dd/MM/yyyy').format(DateTime.parse(state.employee[0].created_at!))
+                            ? DateFormat('dd/MM/yyyy').format(DateTime.parse(state.employee[0].created_at))
                             : "N/A",
                       ),
                     ],

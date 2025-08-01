@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SalaryItem extends StatelessWidget {
   final String label;
-  final int value;
+  final String value;
   final IconData icon;
   final Color color;
   final bool isBold;
