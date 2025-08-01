@@ -187,6 +187,22 @@ class LeaveRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [PositionAdminPage]
+class PositionAdminRoute extends PageRouteInfo<void> {
+  const PositionAdminRoute({List<PageRouteInfo>? children})
+    : super(PositionAdminRoute.name, initialChildren: children);
+
+  static const String name = 'PositionAdminRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const PositionAdminPage());
+    },
+  );
+}
+
+/// generated route for
 /// [ProfilePage]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})

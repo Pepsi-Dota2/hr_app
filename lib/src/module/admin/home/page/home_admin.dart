@@ -64,7 +64,14 @@ class HomeAdminPage extends StatelessWidget {
                       context.router.push(DepartmentAdminRoute());
                     },
                   ),
-                  AdminCard(title: "Position", icon: Icons.home, color: Colors.teal.shade700, onTap: () {}),
+                  AdminCard(
+                    title: "Position",
+                    icon: Icons.home,
+                    color: Colors.teal.shade700,
+                    onTap: () {
+                      context.router.push(PositionAdminRoute());
+                    },
+                  ),
                   AdminCard(title: "Assign Work", icon: Icons.assignment_turned_in_outlined, color: Colors.orange.shade700, onTap: () {}),
                   AdminCard(title: "Reports", icon: Icons.bar_chart_outlined, color: Colors.teal.shade700, onTap: () {}),
                 ],

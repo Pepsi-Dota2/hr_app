@@ -4,6 +4,7 @@ import 'package:hr_app/src/module/admin/dashboard_admin/page/dashboard_admin.dar
 import 'package:hr_app/src/module/admin/department/page/department_admin.dart';
 import 'package:hr_app/src/module/admin/employee/page/employee_admin.dart';
 import 'package:hr_app/src/module/admin/home/page/home_admin.dart';
+import 'package:hr_app/src/module/admin/postion/page/position_admin.dart';
 import 'package:hr_app/src/module/admin/salary/page/salary.dart';
 import 'package:hr_app/src/module/admin/setting/page/setting.dart';
 import 'package:hr_app/src/module/auth/pages/auth.dart';
@@ -43,5 +44,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SettingRoute.page, guards: [AdminGuard()]),
     AutoRoute(page: SalaryAdminRoute.page, guards: [AdminGuard()]),
     AutoRoute(page: DepartmentAdminRoute.page, guards: [AdminGuard()]),
+    AutoRoute(page: PositionAdminRoute.page, guards: [AdminGuard()]),
   ];
 }
