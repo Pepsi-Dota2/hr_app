@@ -21,6 +21,8 @@ mixin _$WorkTimeRecordState {
   StopWatchTimer? get timer => throw _privateConstructorUsedError;
   bool get isStart => throw _privateConstructorUsedError;
   DateTime? get startDateTime => throw _privateConstructorUsedError;
+  double? get latitude => throw _privateConstructorUsedError;
+  double? get longitude => throw _privateConstructorUsedError;
 
   /// Create a copy of WorkTimeRecordState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,6 +43,8 @@ abstract class $WorkTimeRecordStateCopyWith<$Res> {
     StopWatchTimer? timer,
     bool isStart,
     DateTime? startDateTime,
+    double? latitude,
+    double? longitude,
   });
 }
 
@@ -63,6 +67,8 @@ class _$WorkTimeRecordStateCopyWithImpl<$Res, $Val extends WorkTimeRecordState>
     Object? timer = freezed,
     Object? isStart = null,
     Object? startDateTime = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -82,6 +88,14 @@ class _$WorkTimeRecordStateCopyWithImpl<$Res, $Val extends WorkTimeRecordState>
                 ? _value.startDateTime
                 : startDateTime // ignore: cast_nullable_to_non_nullable
                       as DateTime?,
+            latitude: freezed == latitude
+                ? _value.latitude
+                : latitude // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            longitude: freezed == longitude
+                ? _value.longitude
+                : longitude // ignore: cast_nullable_to_non_nullable
+                      as double?,
           )
           as $Val,
     );
@@ -102,6 +116,8 @@ abstract class _$$InitialImplCopyWith<$Res>
     StopWatchTimer? timer,
     bool isStart,
     DateTime? startDateTime,
+    double? latitude,
+    double? longitude,
   });
 }
 
@@ -123,6 +139,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? timer = freezed,
     Object? isStart = null,
     Object? startDateTime = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
   }) {
     return _then(
       _$InitialImpl(
@@ -142,6 +160,14 @@ class __$$InitialImplCopyWithImpl<$Res>
             ? _value.startDateTime
             : startDateTime // ignore: cast_nullable_to_non_nullable
                   as DateTime?,
+        latitude: freezed == latitude
+            ? _value.latitude
+            : latitude // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        longitude: freezed == longitude
+            ? _value.longitude
+            : longitude // ignore: cast_nullable_to_non_nullable
+                  as double?,
       ),
     );
   }
@@ -155,6 +181,8 @@ class _$InitialImpl implements _Initial {
     this.timer,
     this.isStart = false,
     this.startDateTime,
+    this.latitude,
+    this.longitude,
   });
 
   @override
@@ -167,10 +195,14 @@ class _$InitialImpl implements _Initial {
   final bool isStart;
   @override
   final DateTime? startDateTime;
+  @override
+  final double? latitude;
+  @override
+  final double? longitude;
 
   @override
   String toString() {
-    return 'WorkTimeRecordState(status: $status, timer: $timer, isStart: $isStart, startDateTime: $startDateTime)';
+    return 'WorkTimeRecordState(status: $status, timer: $timer, isStart: $isStart, startDateTime: $startDateTime, latitude: $latitude, longitude: $longitude)';
   }
 
   @override
@@ -182,12 +214,23 @@ class _$InitialImpl implements _Initial {
             (identical(other.timer, timer) || other.timer == timer) &&
             (identical(other.isStart, isStart) || other.isStart == isStart) &&
             (identical(other.startDateTime, startDateTime) ||
-                other.startDateTime == startDateTime));
+                other.startDateTime == startDateTime) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, timer, isStart, startDateTime);
+  int get hashCode => Object.hash(
+    runtimeType,
+    status,
+    timer,
+    isStart,
+    startDateTime,
+    latitude,
+    longitude,
+  );
 
   /// Create a copy of WorkTimeRecordState
   /// with the given fields replaced by the non-null parameter values.
@@ -204,6 +247,8 @@ abstract class _Initial implements WorkTimeRecordState {
     final StopWatchTimer? timer,
     final bool isStart,
     final DateTime? startDateTime,
+    final double? latitude,
+    final double? longitude,
   }) = _$InitialImpl;
 
   @override
@@ -214,6 +259,10 @@ abstract class _Initial implements WorkTimeRecordState {
   bool get isStart;
   @override
   DateTime? get startDateTime;
+  @override
+  double? get latitude;
+  @override
+  double? get longitude;
 
   /// Create a copy of WorkTimeRecordState
   /// with the given fields replaced by the non-null parameter values.

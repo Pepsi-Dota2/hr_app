@@ -6,6 +6,7 @@ import 'package:hr_app/src/core/constant/app_image.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
 import 'package:hr_app/src/core/model/user_auth_model.dart';
 import 'package:hr_app/src/core/router/router.dart';
+import 'package:hr_app/src/core/service/token_storage.dart';
 import 'package:hr_app/src/core/widget/elevented_button.dart';
 import 'package:hr_app/src/core/widget/input_form.dart';
 import 'package:hr_app/src/core/widget/input_form_password.dart';
@@ -28,11 +29,18 @@ class AuthPage extends StatelessWidget implements AutoRouteWrapper {
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state.status == Status.loading) {
             const Center(child: CircularProgressIndicator());
           } else if (state.status == Status.success) {
-            context.router.replace(const DashboardRoute());
+            final role = await UserRole.getRole();
+            if (!context.mounted) return;
+
+            if (role == '2') {
+              context.router.replace(const EmployeeAdminRoute());
+            } else {
+              context.router.replace(const DashboardRoute());
+            }
           } else if (state.status == Status.failure) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login failed"), backgroundColor: Colors.red));
           }

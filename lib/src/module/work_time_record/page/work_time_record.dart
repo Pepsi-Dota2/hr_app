@@ -48,17 +48,36 @@ class WorkTimeRecordPage extends StatelessWidget implements AutoRouteWrapper {
                           ),
                         ),
                         Gap(10),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStateProperty.all(Colors.blue),
-                            shape: WidgetStateProperty.all(const CircleBorder()),
-                            minimumSize: WidgetStateProperty.all(const Size(120, 120)),
-                            padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
-                          ),
-                          onPressed: () {
-                            state.isStart ? cubit.onStop() : cubit.onStart();
-                          },
-                          child: Icon(state.isStart ? Icons.stop : Icons.play_arrow, size: 80, color: Colors.white),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor: WidgetStateProperty.all(Colors.blue),
+                                shape: WidgetStateProperty.all(const CircleBorder()),
+                                minimumSize: WidgetStateProperty.all(const Size(120, 120)),
+                                padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
+                              ),
+                              onPressed: () {
+                                state.isStart ? cubit.onStop() : cubit.startWorkSession();
+                              },
+                              child: Icon(state.isStart ? Icons.stop : Icons.play_arrow, size: 80, color: Colors.white),
+                            ),
+                            Gap(10),
+                            if (!state.isStart)
+                              ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: WidgetStateProperty.all(Colors.blue),
+                                  shape: WidgetStateProperty.all(const CircleBorder()),
+                                  minimumSize: WidgetStateProperty.all(const Size(120, 120)),
+                                  padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
+                                ),
+                                onPressed: () {
+                                  cubit.endWorkRecord();
+                                },
+                                child: Icon(Icons.cloud_done, size: 80, color: Colors.white),
+                              ),
+                          ],
                         ),
                       ],
                     ),

@@ -7,5 +7,7 @@ class WorkTimeRecordState with _$WorkTimeRecordState {
     StopWatchTimer? timer,
     @Default(false) bool isStart,
     DateTime? startDateTime,
+    double? latitude,
+    double? longitude,
   }) = _Initial;
 }

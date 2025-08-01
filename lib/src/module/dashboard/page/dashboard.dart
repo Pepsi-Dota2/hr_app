@@ -18,7 +18,13 @@ class DashboardPage extends StatelessWidget {
     return PersistentTabView(
       context,
       screens: [
-        BlocProvider<HomeCubit>(create: (_) => HomeCubit()..scheduleNextUpdate(), child: HomePage()),
+        BlocProvider<HomeCubit>(
+          create: (_) => HomeCubit()
+            ..scheduleNextUpdate()
+            ..getStartTime()
+            ..getEndTime(),
+          child: HomePage(),
+        ),
         BlocProvider<WorkTimeRecordCubit>(create: (_) => WorkTimeRecordCubit(), child: WorkTimeRecordPage()),
         BlocProvider<ProfileCubit>(create: (_) => ProfileCubit()..getMe(), child: ProfilePage()),
       ],

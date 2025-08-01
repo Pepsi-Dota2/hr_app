@@ -6,7 +6,7 @@ class ReusableElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   final EdgeInsetsGeometry? padding;
-  final Widget? icon;
+  final IconData? icon;
   final double borderRadius;
 
   const ReusableElevatedButton({
@@ -32,7 +32,7 @@ class ReusableElevatedButton extends StatelessWidget {
         elevation: 4,
       ),
       onPressed: onPressed,
-      child: Row(mainAxisSize: MainAxisSize.min, children: [const SizedBox(width: 8), Text(label)]),
+      child: Row(mainAxisSize: MainAxisSize.min, children: [const SizedBox(width: 8), Icon(icon), Text(label)]),
     );
   }
 }

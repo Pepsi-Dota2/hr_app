@@ -26,9 +26,11 @@ class AuthCubit extends Cubit<AuthState> {
         final responseData = response.data['data'];
         final token = responseData['token'];
         final user_id = responseData['user_id'];
+        final role = responseData['user_role_id'];
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('accessToken', token);
         await prefs.setString('user_id', user_id.toString());
+        await prefs.setString('user_role_id', role.toString());
         final userAuthModel = UserAuthModel.fromJson(responseData);
 
         emit(state.copyWith(status: Status.success, user: userAuthModel));

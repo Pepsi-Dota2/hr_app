@@ -27,3 +27,10 @@ class TokenStorage {
     await prefs.remove('refreshToken');
   }
 }
+
+class UserRole {
+  static Future<String?> getRole() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('user_role_id');
+  }
+}

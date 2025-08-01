@@ -19,6 +19,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   Status get status => throw _privateConstructorUsedError;
   DateTime? get date => throw _privateConstructorUsedError;
+  String? get getStart => throw _privateConstructorUsedError;
+  String? get endtime => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +34,7 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({Status status, DateTime? date});
+  $Res call({Status status, DateTime? date, String? getStart, String? endtime});
 }
 
 /// @nodoc
@@ -49,7 +51,12 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = null, Object? date = freezed}) {
+  $Res call({
+    Object? status = null,
+    Object? date = freezed,
+    Object? getStart = freezed,
+    Object? endtime = freezed,
+  }) {
     return _then(
       _value.copyWith(
             status: null == status
@@ -60,6 +67,14 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
                 ? _value.date
                 : date // ignore: cast_nullable_to_non_nullable
                       as DateTime?,
+            getStart: freezed == getStart
+                ? _value.getStart
+                : getStart // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            endtime: freezed == endtime
+                ? _value.endtime
+                : endtime // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -75,7 +90,7 @@ abstract class _$$InitialImplCopyWith<$Res>
   ) = __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Status status, DateTime? date});
+  $Res call({Status status, DateTime? date, String? getStart, String? endtime});
 }
 
 /// @nodoc
@@ -91,7 +106,12 @@ class __$$InitialImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = null, Object? date = freezed}) {
+  $Res call({
+    Object? status = null,
+    Object? date = freezed,
+    Object? getStart = freezed,
+    Object? endtime = freezed,
+  }) {
     return _then(
       _$InitialImpl(
         status: null == status
@@ -102,6 +122,14 @@ class __$$InitialImplCopyWithImpl<$Res>
             ? _value.date
             : date // ignore: cast_nullable_to_non_nullable
                   as DateTime?,
+        getStart: freezed == getStart
+            ? _value.getStart
+            : getStart // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        endtime: freezed == endtime
+            ? _value.endtime
+            : endtime // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -110,17 +138,26 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({this.status = Status.initial, this.date});
+  const _$InitialImpl({
+    this.status = Status.initial,
+    this.date,
+    this.getStart,
+    this.endtime,
+  });
 
   @override
   @JsonKey()
   final Status status;
   @override
   final DateTime? date;
+  @override
+  final String? getStart;
+  @override
+  final String? endtime;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, date: $date)';
+    return 'HomeState(status: $status, date: $date, getStart: $getStart, endtime: $endtime)';
   }
 
   @override
@@ -129,11 +166,14 @@ class _$InitialImpl implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.getStart, getStart) ||
+                other.getStart == getStart) &&
+            (identical(other.endtime, endtime) || other.endtime == endtime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, date);
+  int get hashCode => Object.hash(runtimeType, status, date, getStart, endtime);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -145,13 +185,21 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements HomeState {
-  const factory _Initial({final Status status, final DateTime? date}) =
-      _$InitialImpl;
+  const factory _Initial({
+    final Status status,
+    final DateTime? date,
+    final String? getStart,
+    final String? endtime,
+  }) = _$InitialImpl;
 
   @override
   Status get status;
   @override
   DateTime? get date;
+  @override
+  String? get getStart;
+  @override
+  String? get endtime;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
