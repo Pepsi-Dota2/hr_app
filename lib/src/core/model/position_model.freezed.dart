@@ -21,7 +21,7 @@ PositionModel _$PositionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PositionModel {
-  int get position_number => throw _privateConstructorUsedError;
+  int get position_id => throw _privateConstructorUsedError;
   String get position_name => throw _privateConstructorUsedError;
   int get position_salary => throw _privateConstructorUsedError;
 
@@ -42,7 +42,7 @@ abstract class $PositionModelCopyWith<$Res> {
     $Res Function(PositionModel) then,
   ) = _$PositionModelCopyWithImpl<$Res, PositionModel>;
   @useResult
-  $Res call({int position_number, String position_name, int position_salary});
+  $Res call({int position_id, String position_name, int position_salary});
 }
 
 /// @nodoc
@@ -60,15 +60,15 @@ class _$PositionModelCopyWithImpl<$Res, $Val extends PositionModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position_number = null,
+    Object? position_id = null,
     Object? position_name = null,
     Object? position_salary = null,
   }) {
     return _then(
       _value.copyWith(
-            position_number: null == position_number
-                ? _value.position_number
-                : position_number // ignore: cast_nullable_to_non_nullable
+            position_id: null == position_id
+                ? _value.position_id
+                : position_id // ignore: cast_nullable_to_non_nullable
                       as int,
             position_name: null == position_name
                 ? _value.position_name
@@ -93,7 +93,7 @@ abstract class _$$PositionModelImplCopyWith<$Res>
   ) = __$$PositionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int position_number, String position_name, int position_salary});
+  $Res call({int position_id, String position_name, int position_salary});
 }
 
 /// @nodoc
@@ -110,15 +110,15 @@ class __$$PositionModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position_number = null,
+    Object? position_id = null,
     Object? position_name = null,
     Object? position_salary = null,
   }) {
     return _then(
       _$PositionModelImpl(
-        position_number: null == position_number
-            ? _value.position_number
-            : position_number // ignore: cast_nullable_to_non_nullable
+        position_id: null == position_id
+            ? _value.position_id
+            : position_id // ignore: cast_nullable_to_non_nullable
                   as int,
         position_name: null == position_name
             ? _value.position_name
@@ -137,7 +137,7 @@ class __$$PositionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PositionModelImpl implements _PositionModel {
   const _$PositionModelImpl({
-    this.position_number = 0,
+    this.position_id = 0,
     this.position_name = "",
     this.position_salary = 0,
   });
@@ -147,7 +147,7 @@ class _$PositionModelImpl implements _PositionModel {
 
   @override
   @JsonKey()
-  final int position_number;
+  final int position_id;
   @override
   @JsonKey()
   final String position_name;
@@ -157,7 +157,7 @@ class _$PositionModelImpl implements _PositionModel {
 
   @override
   String toString() {
-    return 'PositionModel(position_number: $position_number, position_name: $position_name, position_salary: $position_salary)';
+    return 'PositionModel(position_id: $position_id, position_name: $position_name, position_salary: $position_salary)';
   }
 
   @override
@@ -165,8 +165,8 @@ class _$PositionModelImpl implements _PositionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PositionModelImpl &&
-            (identical(other.position_number, position_number) ||
-                other.position_number == position_number) &&
+            (identical(other.position_id, position_id) ||
+                other.position_id == position_id) &&
             (identical(other.position_name, position_name) ||
                 other.position_name == position_name) &&
             (identical(other.position_salary, position_salary) ||
@@ -176,7 +176,7 @@ class _$PositionModelImpl implements _PositionModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, position_number, position_name, position_salary);
+      Object.hash(runtimeType, position_id, position_name, position_salary);
 
   /// Create a copy of PositionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -194,7 +194,7 @@ class _$PositionModelImpl implements _PositionModel {
 
 abstract class _PositionModel implements PositionModel {
   const factory _PositionModel({
-    final int position_number,
+    final int position_id,
     final String position_name,
     final int position_salary,
   }) = _$PositionModelImpl;
@@ -203,7 +203,7 @@ abstract class _PositionModel implements PositionModel {
       _$PositionModelImpl.fromJson;
 
   @override
-  int get position_number;
+  int get position_id;
   @override
   String get position_name;
   @override

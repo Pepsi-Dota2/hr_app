@@ -8,6 +8,7 @@ import 'package:hr_app/src/module/admin/employee/page/employee_admin.dart';
 import 'package:hr_app/src/module/admin/home/page/home_admin.dart';
 import 'package:hr_app/src/module/admin/leave/page/leave_admin.dart';
 import 'package:hr_app/src/module/admin/leave/page/leave_admin_detail.dart';
+import 'package:hr_app/src/module/admin/postion/page/create_position.dart';
 import 'package:hr_app/src/module/admin/postion/page/position_admin.dart';
 import 'package:hr_app/src/module/admin/salary/page/deduction.dart';
 import 'package:hr_app/src/module/admin/salary/page/history_deduction.dart';
@@ -56,5 +57,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: LeaveAdminRoute.page, guards: [AdminGuard()]),
     AutoRoute(page: LeaveAdminDetailAdminRoute.page, guards: [AdminGuard()]),
     AutoRoute(page: CreateDepartmentRoute.page, guards: [AdminGuard()]),
+    AutoRoute(page: CreatePositionRoute.page, guards: [AdminGuard()]),
   ];
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hr_app/src/core/widget/rounded_button.dart';
 
 class PositionCard extends StatelessWidget {
   final String position_name;
   final int position_salary;
+  final VoidCallback onUpdate;
 
-  const PositionCard({super.key, required this.position_name, required this.position_salary});
+  const PositionCard({super.key, required this.position_name, required this.position_salary, required this.onUpdate});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +22,30 @@ class PositionCard extends StatelessWidget {
             Text(position_name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 4),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.code, size: 16, color: Colors.grey),
-                const SizedBox(width: 6),
-                Text("Salary: $position_salary", style: const TextStyle(color: Colors.grey)),
+                Row(
+                  children: [
+                    const Icon(Icons.code, size: 16, color: Colors.grey),
+                    const SizedBox(width: 6),
+                    Text("Salary: $position_salary", style: const TextStyle(color: Colors.grey)),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    RoundedIconButton(
+                      onPressed: onUpdate,
+                      icon: Icons.edit,
+                      borderColor: Colors.blue,
+                      color: Colors.amber.withAlpha(60),
+                      radius: 100,
+                      width: 40,
+                      height: 40,
+                      size: 16,
+                    ),
+                  ],
+                ),
               ],
             ),
           ],

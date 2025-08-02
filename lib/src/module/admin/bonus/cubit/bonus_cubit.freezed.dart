@@ -50,10 +50,10 @@ class _$BonusStateCopyWithImpl<$Res, $Val extends BonusState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = freezed}) {
+  $Res call({Object? status = null}) {
     return _then(
       _value.copyWith(
-            status: freezed == status
+            status: null == status
                 ? _value.status
                 : status // ignore: cast_nullable_to_non_nullable
                       as Status,
@@ -88,10 +88,10 @@ class __$$BonusStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = freezed}) {
+  $Res call({Object? status = null}) {
     return _then(
       _$BonusStateImpl(
-        status: freezed == status
+        status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
                   as Status,
@@ -119,12 +119,11 @@ class _$BonusStateImpl implements _BonusState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BonusStateImpl &&
-            const DeepCollectionEquality().equals(other.status, status));
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(status));
+  int get hashCode => Object.hash(runtimeType, status);
 
   /// Create a copy of BonusState
   /// with the given fields replaced by the non-null parameter values.

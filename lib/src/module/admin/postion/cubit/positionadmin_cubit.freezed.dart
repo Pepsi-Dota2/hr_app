@@ -19,8 +19,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PositionadminState {
   Status get status => throw _privateConstructorUsedError;
   List<PositionModel> get position => throw _privateConstructorUsedError;
-  List<PositionModel> get filteredSalary => throw _privateConstructorUsedError;
+  List<PositionModel> get filterPosition => throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
+  PositionModel? get selecpositionted => throw _privateConstructorUsedError;
 
   /// Create a copy of PositionadminState
   /// with the given fields replaced by the non-null parameter values.
@@ -39,9 +40,12 @@ abstract class $PositionadminStateCopyWith<$Res> {
   $Res call({
     Status status,
     List<PositionModel> position,
-    List<PositionModel> filteredSalary,
+    List<PositionModel> filterPosition,
     String searchQuery,
+    PositionModel? selecpositionted,
   });
+
+  $PositionModelCopyWith<$Res>? get selecpositionted;
 }
 
 /// @nodoc
@@ -61,8 +65,9 @@ class _$PositionadminStateCopyWithImpl<$Res, $Val extends PositionadminState>
   $Res call({
     Object? status = null,
     Object? position = null,
-    Object? filteredSalary = null,
+    Object? filterPosition = null,
     Object? searchQuery = null,
+    Object? selecpositionted = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -74,17 +79,35 @@ class _$PositionadminStateCopyWithImpl<$Res, $Val extends PositionadminState>
                 ? _value.position
                 : position // ignore: cast_nullable_to_non_nullable
                       as List<PositionModel>,
-            filteredSalary: null == filteredSalary
-                ? _value.filteredSalary
-                : filteredSalary // ignore: cast_nullable_to_non_nullable
+            filterPosition: null == filterPosition
+                ? _value.filterPosition
+                : filterPosition // ignore: cast_nullable_to_non_nullable
                       as List<PositionModel>,
             searchQuery: null == searchQuery
                 ? _value.searchQuery
                 : searchQuery // ignore: cast_nullable_to_non_nullable
                       as String,
+            selecpositionted: freezed == selecpositionted
+                ? _value.selecpositionted
+                : selecpositionted // ignore: cast_nullable_to_non_nullable
+                      as PositionModel?,
           )
           as $Val,
     );
+  }
+
+  /// Create a copy of PositionadminState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PositionModelCopyWith<$Res>? get selecpositionted {
+    if (_value.selecpositionted == null) {
+      return null;
+    }
+
+    return $PositionModelCopyWith<$Res>(_value.selecpositionted!, (value) {
+      return _then(_value.copyWith(selecpositionted: value) as $Val);
+    });
   }
 }
 
@@ -100,9 +123,13 @@ abstract class _$$PositionadminStateImplCopyWith<$Res>
   $Res call({
     Status status,
     List<PositionModel> position,
-    List<PositionModel> filteredSalary,
+    List<PositionModel> filterPosition,
     String searchQuery,
+    PositionModel? selecpositionted,
   });
+
+  @override
+  $PositionModelCopyWith<$Res>? get selecpositionted;
 }
 
 /// @nodoc
@@ -121,8 +148,9 @@ class __$$PositionadminStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? position = null,
-    Object? filteredSalary = null,
+    Object? filterPosition = null,
     Object? searchQuery = null,
+    Object? selecpositionted = freezed,
   }) {
     return _then(
       _$PositionadminStateImpl(
@@ -134,14 +162,18 @@ class __$$PositionadminStateImplCopyWithImpl<$Res>
             ? _value._position
             : position // ignore: cast_nullable_to_non_nullable
                   as List<PositionModel>,
-        filteredSalary: null == filteredSalary
-            ? _value._filteredSalary
-            : filteredSalary // ignore: cast_nullable_to_non_nullable
+        filterPosition: null == filterPosition
+            ? _value._filterPosition
+            : filterPosition // ignore: cast_nullable_to_non_nullable
                   as List<PositionModel>,
         searchQuery: null == searchQuery
             ? _value.searchQuery
             : searchQuery // ignore: cast_nullable_to_non_nullable
                   as String,
+        selecpositionted: freezed == selecpositionted
+            ? _value.selecpositionted
+            : selecpositionted // ignore: cast_nullable_to_non_nullable
+                  as PositionModel?,
       ),
     );
   }
@@ -153,10 +185,11 @@ class _$PositionadminStateImpl implements _PositionadminState {
   const _$PositionadminStateImpl({
     this.status = Status.initial,
     final List<PositionModel> position = const [],
-    final List<PositionModel> filteredSalary = const [],
+    final List<PositionModel> filterPosition = const [],
     this.searchQuery = '',
+    this.selecpositionted,
   }) : _position = position,
-       _filteredSalary = filteredSalary;
+       _filterPosition = filterPosition;
 
   @override
   @JsonKey()
@@ -170,22 +203,24 @@ class _$PositionadminStateImpl implements _PositionadminState {
     return EqualUnmodifiableListView(_position);
   }
 
-  final List<PositionModel> _filteredSalary;
+  final List<PositionModel> _filterPosition;
   @override
   @JsonKey()
-  List<PositionModel> get filteredSalary {
-    if (_filteredSalary is EqualUnmodifiableListView) return _filteredSalary;
+  List<PositionModel> get filterPosition {
+    if (_filterPosition is EqualUnmodifiableListView) return _filterPosition;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_filteredSalary);
+    return EqualUnmodifiableListView(_filterPosition);
   }
 
   @override
   @JsonKey()
   final String searchQuery;
+  @override
+  final PositionModel? selecpositionted;
 
   @override
   String toString() {
-    return 'PositionadminState(status: $status, position: $position, filteredSalary: $filteredSalary, searchQuery: $searchQuery)';
+    return 'PositionadminState(status: $status, position: $position, filterPosition: $filterPosition, searchQuery: $searchQuery, selecpositionted: $selecpositionted)';
   }
 
   @override
@@ -196,11 +231,13 @@ class _$PositionadminStateImpl implements _PositionadminState {
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._position, _position) &&
             const DeepCollectionEquality().equals(
-              other._filteredSalary,
-              _filteredSalary,
+              other._filterPosition,
+              _filterPosition,
             ) &&
             (identical(other.searchQuery, searchQuery) ||
-                other.searchQuery == searchQuery));
+                other.searchQuery == searchQuery) &&
+            (identical(other.selecpositionted, selecpositionted) ||
+                other.selecpositionted == selecpositionted));
   }
 
   @override
@@ -208,8 +245,9 @@ class _$PositionadminStateImpl implements _PositionadminState {
     runtimeType,
     status,
     const DeepCollectionEquality().hash(_position),
-    const DeepCollectionEquality().hash(_filteredSalary),
+    const DeepCollectionEquality().hash(_filterPosition),
     searchQuery,
+    selecpositionted,
   );
 
   /// Create a copy of PositionadminState
@@ -228,8 +266,9 @@ abstract class _PositionadminState implements PositionadminState {
   const factory _PositionadminState({
     final Status status,
     final List<PositionModel> position,
-    final List<PositionModel> filteredSalary,
+    final List<PositionModel> filterPosition,
     final String searchQuery,
+    final PositionModel? selecpositionted,
   }) = _$PositionadminStateImpl;
 
   @override
@@ -237,9 +276,11 @@ abstract class _PositionadminState implements PositionadminState {
   @override
   List<PositionModel> get position;
   @override
-  List<PositionModel> get filteredSalary;
+  List<PositionModel> get filterPosition;
   @override
   String get searchQuery;
+  @override
+  PositionModel? get selecpositionted;
 
   /// Create a copy of PositionadminState
   /// with the given fields replaced by the non-null parameter values.

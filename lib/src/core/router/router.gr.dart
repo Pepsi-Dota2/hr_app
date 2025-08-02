@@ -109,6 +109,56 @@ class CreateEmployeeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CreatePositionPage]
+class CreatePositionRoute extends PageRouteInfo<CreatePositionRouteArgs> {
+  CreatePositionRoute({Key? key, int? id, List<PageRouteInfo>? children})
+    : super(
+        CreatePositionRoute.name,
+        args: CreatePositionRouteArgs(key: key, id: id),
+        rawPathParams: {'id': id},
+        initialChildren: children,
+      );
+
+  static const String name = 'CreatePositionRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<CreatePositionRouteArgs>(
+        orElse: () => CreatePositionRouteArgs(id: pathParams.optInt('id')),
+      );
+      return WrappedRoute(
+        child: CreatePositionPage(key: args.key, id: args.id),
+      );
+    },
+  );
+}
+
+class CreatePositionRouteArgs {
+  const CreatePositionRouteArgs({this.key, this.id});
+
+  final Key? key;
+
+  final int? id;
+
+  @override
+  String toString() {
+    return 'CreatePositionRouteArgs{key: $key, id: $id}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CreatePositionRouteArgs) return false;
+    return key == other.key && id == other.id;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ id.hashCode;
+}
+
+/// generated route for
 /// [DashboardAdminPage]
 class DashboardAdminRoute extends PageRouteInfo<void> {
   const DashboardAdminRoute({List<PageRouteInfo>? children})

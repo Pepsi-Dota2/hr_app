@@ -36,7 +36,7 @@ class DepartmentAdminPage extends StatelessWidget implements AutoRouteWrapper {
         foregroundColor: Colors.blueGrey,
         onPressed: () async {
           await context.router.push(CreateDepartmentRoute());
-          cubit.getAllDepartment();
+          await cubit.getAllDepartment();
         },
         child: Icon(Icons.add, color: Colors.white),
       ),
@@ -83,8 +83,9 @@ class DepartmentAdminPage extends StatelessWidget implements AutoRouteWrapper {
                       name: department.department_name,
                       code: department.department_code,
                       description: department.description,
-                      onUpdate: () {
-                        context.router.push(CreateDepartmentRoute(id: department.department_id));
+                      onUpdate: () async {
+                        await context.router.push(CreateDepartmentRoute(id: department.department_id));
+                        await cubit.getAllDepartment();
                       },
                     );
                   },

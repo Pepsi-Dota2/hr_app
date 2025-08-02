@@ -5,7 +5,8 @@ class PositionadminState with _$PositionadminState {
   const factory PositionadminState({
     @Default(Status.initial) Status status,
     @Default([]) List<PositionModel> position,
-    @Default([]) List<PositionModel> filteredSalary,
+    @Default([]) List<PositionModel> filterPosition,
     @Default('') String searchQuery,
+    PositionModel? selecpositionted,
   }) = _PositionadminState;
 }

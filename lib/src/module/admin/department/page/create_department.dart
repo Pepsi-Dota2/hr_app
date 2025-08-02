@@ -80,8 +80,10 @@ class CreateDepartmentPage extends StatelessWidget implements AutoRouteWrapper {
                       onPressed: () async {
                         if (isUpdate && id != null) {
                           await cubit.updateDepartment(id!, departmentNameController.text, departmentCodeController.text, descriptionController.text);
+                          await cubit.getAllDepartment();
                         } else {
                           await cubit.createDepartment(departmentNameController.text, departmentCodeController.text, descriptionController.text);
+                          await cubit.getAllDepartment();
                         }
                         context.router.pop();
                       },

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hr_app/src/core/config/dio_client.dart';
 import 'package:hr_app/src/core/constant/app_api_path.dart';
@@ -19,7 +20,7 @@ class PositionadminCubit extends Cubit<PositionadminState> {
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = response.data['data'];
         final List<PositionModel> position = jsonList.map((json) => PositionModel.fromJson(json)).toList();
-        emit(state.copyWith(status: Status.success, position: position, filteredSalary: position));
+        emit(state.copyWith(status: Status.success, position: position, filterPosition: position));
       }
     } catch (e) {
       if (e is DioException && e.response != null) {
@@ -36,11 +37,11 @@ class PositionadminCubit extends Cubit<PositionadminState> {
       return item.position_name.toLowerCase().contains(lowerQuery);
     }).toList();
 
-    emit(state.copyWith(filteredSalary: filtered, searchQuery: query));
+    emit(state.copyWith(filterPosition: filtered, searchQuery: query));
   }
 
   void clearSearch() {
-    emit(state.copyWith(filteredSalary: state.position, searchQuery: ''));
+    emit(state.copyWith(filterPosition: state.position, searchQuery: ''));
   }
 
   Future<void> onCreatePosition(String positionName, String positionSalary) async {
@@ -58,6 +59,40 @@ class PositionadminCubit extends Cubit<PositionadminState> {
       if (e is DioException && e.response != null) {
         print('Server response: ${e.response!.data}');
       }
+      emit(state.copyWith(status: Status.failure));
+    }
+  }
+
+  Future<void> onUpdatePosition(int id, String positionName, String positionSalary) async {
+    try {
+      emit(state.copyWith(status: Status.loading));
+      final body = {'position_name': positionName, 'position_salary': int.tryParse(positionSalary) ?? 0};
+      final response = await dio.patch("${AppApiPath.updatePosition}/$id/update", data: body);
+      if (response.statusCode == 200) {
+        await getPosition();
+        emit(state.copyWith(status: Status.success));
+      } else {
+        emit(state.copyWith(status: Status.failure));
+      }
+    } catch (e) {
+      if (e is DioException && e.response != null) {
+        print('Server response: ${e.response!.data}');
+      }
+      emit(state.copyWith(status: Status.failure));
+    }
+  }
+
+  Future<void> getOnePosition(int id) async {
+    try {
+      emit(state.copyWith(status: Status.loading));
+      final response = await dio.get("${AppApiPath.getOnePosition}/$id");
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonList = response.data['data'];
+        final List<PositionModel> position = jsonList.map((json) => PositionModel.fromJson(json)).toList();
+        final selectedDepartment = position.isNotEmpty ? position.first : null;
+        emit(state.copyWith(status: Status.success, position: position, selecpositionted: selectedDepartment));
+      }
+    } catch (e) {
       emit(state.copyWith(status: Status.failure));
     }
   }

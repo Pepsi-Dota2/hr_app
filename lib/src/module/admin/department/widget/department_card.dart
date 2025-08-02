@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:hr_app/src/core/widget/rounded_button.dart';
 
 class DepartmentCard extends StatelessWidget {
@@ -12,7 +11,6 @@ class DepartmentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Card(
       color: Colors.white,
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),

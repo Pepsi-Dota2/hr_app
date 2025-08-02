@@ -32,6 +32,8 @@ class AppApiPath {
   static const String updateDepartment = "${baseUrl}/quickserve/department";
   static const String getOneDepartment = "${baseUrl}/quickserve/department";
   static const String getAllBonus = "${baseUrl}/quickserve/employee/bonus";
+  static const String updatePosition = "${baseUrl}/quickserve/position";
+  static const String getOnePosition = "${baseUrl}/quickserve/position";
   //upload
   static const String uploadImage = "${baseUrl}/upload/image/local";
 }
