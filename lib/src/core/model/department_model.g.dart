@@ -9,6 +9,7 @@ part of 'department_model.dart';
 _$DepartmentModelImpl _$$DepartmentModelImplFromJson(
   Map<String, dynamic> json,
 ) => _$DepartmentModelImpl(
+  department_id: (json['department_id'] as num?)?.toInt() ?? 0,
   department_name: json['department_name'] as String? ?? "",
   department_code: json['department_code'] as String? ?? "",
   description: json['description'] as String? ?? "",
@@ -18,6 +19,7 @@ _$DepartmentModelImpl _$$DepartmentModelImplFromJson(
 Map<String, dynamic> _$$DepartmentModelImplToJson(
   _$DepartmentModelImpl instance,
 ) => <String, dynamic>{
+  'department_id': instance.department_id,
   'department_name': instance.department_name,
   'department_code': instance.department_code,
   'description': instance.description,

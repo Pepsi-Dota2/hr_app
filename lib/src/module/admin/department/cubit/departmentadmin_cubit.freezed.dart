@@ -22,6 +22,7 @@ mixin _$DepartmentadminState {
   String get searchQuery => throw _privateConstructorUsedError;
   List<DepartmentModel> get filteredSalary =>
       throw _privateConstructorUsedError;
+  DepartmentModel? get selected => throw _privateConstructorUsedError;
 
   /// Create a copy of DepartmentadminState
   /// with the given fields replaced by the non-null parameter values.
@@ -42,7 +43,10 @@ abstract class $DepartmentadminStateCopyWith<$Res> {
     List<DepartmentModel> departments,
     String searchQuery,
     List<DepartmentModel> filteredSalary,
+    DepartmentModel? selected,
   });
+
+  $DepartmentModelCopyWith<$Res>? get selected;
 }
 
 /// @nodoc
@@ -67,6 +71,7 @@ class _$DepartmentadminStateCopyWithImpl<
     Object? departments = null,
     Object? searchQuery = null,
     Object? filteredSalary = null,
+    Object? selected = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -86,9 +91,27 @@ class _$DepartmentadminStateCopyWithImpl<
                 ? _value.filteredSalary
                 : filteredSalary // ignore: cast_nullable_to_non_nullable
                       as List<DepartmentModel>,
+            selected: freezed == selected
+                ? _value.selected
+                : selected // ignore: cast_nullable_to_non_nullable
+                      as DepartmentModel?,
           )
           as $Val,
     );
+  }
+
+  /// Create a copy of DepartmentadminState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DepartmentModelCopyWith<$Res>? get selected {
+    if (_value.selected == null) {
+      return null;
+    }
+
+    return $DepartmentModelCopyWith<$Res>(_value.selected!, (value) {
+      return _then(_value.copyWith(selected: value) as $Val);
+    });
   }
 }
 
@@ -106,7 +129,11 @@ abstract class _$$DepartmentadminStateImplCopyWith<$Res>
     List<DepartmentModel> departments,
     String searchQuery,
     List<DepartmentModel> filteredSalary,
+    DepartmentModel? selected,
   });
+
+  @override
+  $DepartmentModelCopyWith<$Res>? get selected;
 }
 
 /// @nodoc
@@ -127,6 +154,7 @@ class __$$DepartmentadminStateImplCopyWithImpl<$Res>
     Object? departments = null,
     Object? searchQuery = null,
     Object? filteredSalary = null,
+    Object? selected = freezed,
   }) {
     return _then(
       _$DepartmentadminStateImpl(
@@ -146,6 +174,10 @@ class __$$DepartmentadminStateImplCopyWithImpl<$Res>
             ? _value._filteredSalary
             : filteredSalary // ignore: cast_nullable_to_non_nullable
                   as List<DepartmentModel>,
+        selected: freezed == selected
+            ? _value.selected
+            : selected // ignore: cast_nullable_to_non_nullable
+                  as DepartmentModel?,
       ),
     );
   }
@@ -159,6 +191,7 @@ class _$DepartmentadminStateImpl implements _DepartmentadminState {
     final List<DepartmentModel> departments = const [],
     this.searchQuery = '',
     final List<DepartmentModel> filteredSalary = const [],
+    this.selected,
   }) : _departments = departments,
        _filteredSalary = filteredSalary;
 
@@ -187,8 +220,11 @@ class _$DepartmentadminStateImpl implements _DepartmentadminState {
   }
 
   @override
+  final DepartmentModel? selected;
+
+  @override
   String toString() {
-    return 'DepartmentadminState(status: $status, departments: $departments, searchQuery: $searchQuery, filteredSalary: $filteredSalary)';
+    return 'DepartmentadminState(status: $status, departments: $departments, searchQuery: $searchQuery, filteredSalary: $filteredSalary, selected: $selected)';
   }
 
   @override
@@ -206,7 +242,9 @@ class _$DepartmentadminStateImpl implements _DepartmentadminState {
             const DeepCollectionEquality().equals(
               other._filteredSalary,
               _filteredSalary,
-            ));
+            ) &&
+            (identical(other.selected, selected) ||
+                other.selected == selected));
   }
 
   @override
@@ -216,6 +254,7 @@ class _$DepartmentadminStateImpl implements _DepartmentadminState {
     const DeepCollectionEquality().hash(_departments),
     searchQuery,
     const DeepCollectionEquality().hash(_filteredSalary),
+    selected,
   );
 
   /// Create a copy of DepartmentadminState
@@ -237,6 +276,7 @@ abstract class _DepartmentadminState implements DepartmentadminState {
     final List<DepartmentModel> departments,
     final String searchQuery,
     final List<DepartmentModel> filteredSalary,
+    final DepartmentModel? selected,
   }) = _$DepartmentadminStateImpl;
 
   @override
@@ -247,6 +287,8 @@ abstract class _DepartmentadminState implements DepartmentadminState {
   String get searchQuery;
   @override
   List<DepartmentModel> get filteredSalary;
+  @override
+  DepartmentModel? get selected;
 
   /// Create a copy of DepartmentadminState
   /// with the given fields replaced by the non-null parameter values.

@@ -43,6 +43,56 @@ class CreateApproveRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CreateDepartmentPage]
+class CreateDepartmentRoute extends PageRouteInfo<CreateDepartmentRouteArgs> {
+  CreateDepartmentRoute({Key? key, int? id, List<PageRouteInfo>? children})
+    : super(
+        CreateDepartmentRoute.name,
+        args: CreateDepartmentRouteArgs(key: key, id: id),
+        rawPathParams: {'id': id},
+        initialChildren: children,
+      );
+
+  static const String name = 'CreateDepartmentRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<CreateDepartmentRouteArgs>(
+        orElse: () => CreateDepartmentRouteArgs(id: pathParams.optInt('id')),
+      );
+      return WrappedRoute(
+        child: CreateDepartmentPage(key: args.key, id: args.id),
+      );
+    },
+  );
+}
+
+class CreateDepartmentRouteArgs {
+  const CreateDepartmentRouteArgs({this.key, this.id});
+
+  final Key? key;
+
+  final int? id;
+
+  @override
+  String toString() {
+    return 'CreateDepartmentRouteArgs{key: $key, id: $id}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CreateDepartmentRouteArgs) return false;
+    return key == other.key && id == other.id;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ id.hashCode;
+}
+
+/// generated route for
 /// [CreateEmployeePage]
 class CreateEmployeeRoute extends PageRouteInfo<void> {
   const CreateEmployeeRoute({List<PageRouteInfo>? children})

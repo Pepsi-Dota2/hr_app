@@ -7,5 +7,6 @@ class DepartmentadminState with _$DepartmentadminState {
     @Default([]) List<DepartmentModel> departments,
     @Default('') String searchQuery,
     @Default([]) List<DepartmentModel> filteredSalary,
+    DepartmentModel? selected,
   }) = _DepartmentadminState;
 }

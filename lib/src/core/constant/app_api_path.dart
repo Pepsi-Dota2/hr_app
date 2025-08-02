@@ -27,6 +27,11 @@ class AppApiPath {
   static const String getOneleave = "${baseUrl}/quickserve/employee";
   static const String createleave = "${baseUrl}/quickserve/employee/leave-detail/add";
   static const String updateLeave = "${baseUrl}/quickserve/employee";
+  static const String createPosition = "${baseUrl}/quickserve/position/add";
+  static const String createDepartment = "${baseUrl}/quickserve/department/add";
+  static const String updateDepartment = "${baseUrl}/quickserve/department";
+  static const String getOneDepartment = "${baseUrl}/quickserve/department";
+  static const String getAllBonus = "${baseUrl}/quickserve/employee/bonus";
   //upload
   static const String uploadImage = "${baseUrl}/upload/image/local";
 }

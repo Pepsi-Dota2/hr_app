@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
+import 'package:hr_app/src/core/router/router.dart';
 import 'package:hr_app/src/module/admin/department/cubit/departmentadmin_cubit.dart';
 import 'package:hr_app/src/module/admin/department/widget/department_card.dart';
 
@@ -12,7 +13,7 @@ class DepartmentAdminPage extends StatelessWidget implements AutoRouteWrapper {
   const DepartmentAdminPage({super.key});
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(create: (context) => DepartmentadminCubit()..getAllEmployee(), child: this);
+    return BlocProvider(create: (context) => DepartmentadminCubit()..getAllDepartment(), child: this);
   }
 
   @override
@@ -29,6 +30,16 @@ class DepartmentAdminPage extends StatelessWidget implements AutoRouteWrapper {
         backgroundColor: Colors.blue.shade700,
       ),
       backgroundColor: Colors.blue.shade50,
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        backgroundColor: Colors.blue.shade700,
+        foregroundColor: Colors.blueGrey,
+        onPressed: () async {
+          await context.router.push(CreateDepartmentRoute());
+          cubit.getAllDepartment();
+        },
+        child: Icon(Icons.add, color: Colors.white),
+      ),
       body: Column(
         children: [
           Padding(
@@ -68,7 +79,14 @@ class DepartmentAdminPage extends StatelessWidget implements AutoRouteWrapper {
                   itemCount: state.filteredSalary.length,
                   itemBuilder: (BuildContext context, int index) {
                     final department = state.filteredSalary[index];
-                    return DepartmentCard(name: department.department_name, code: department.department_code, description: department.description);
+                    return DepartmentCard(
+                      name: department.department_name,
+                      code: department.department_code,
+                      description: department.description,
+                      onUpdate: () {
+                        context.router.push(CreateDepartmentRoute(id: department.department_id));
+                      },
+                    );
                   },
                 );
               },

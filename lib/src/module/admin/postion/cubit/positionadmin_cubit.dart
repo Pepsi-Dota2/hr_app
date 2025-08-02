@@ -42,4 +42,23 @@ class PositionadminCubit extends Cubit<PositionadminState> {
   void clearSearch() {
     emit(state.copyWith(filteredSalary: state.position, searchQuery: ''));
   }
+
+  Future<void> onCreatePosition(String positionName, String positionSalary) async {
+    try {
+      emit(state.copyWith(status: Status.loading));
+      final body = {'position_name': positionName, 'position_salary': int.tryParse(positionSalary) ?? 0};
+      final response = await dio.post(AppApiPath.createPosition, data: body);
+      if (response.statusCode == 200) {
+        await getPosition();
+        emit(state.copyWith(status: Status.success));
+      } else {
+        emit(state.copyWith(status: Status.failure));
+      }
+    } catch (e) {
+      if (e is DioException && e.response != null) {
+        print('Server response: ${e.response!.data}');
+      }
+      emit(state.copyWith(status: Status.failure));
+    }
+  }
 }

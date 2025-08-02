@@ -6,6 +6,7 @@ part 'department_model.g.dart';
 @freezed
 class DepartmentModel with _$DepartmentModel {
   const factory DepartmentModel({
+    @Default(0) int department_id,
     @Default("") String department_name,
     @Default("") String department_code,
     @Default("") String description,

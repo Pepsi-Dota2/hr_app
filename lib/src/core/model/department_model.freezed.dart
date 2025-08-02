@@ -21,6 +21,7 @@ DepartmentModel _$DepartmentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DepartmentModel {
+  int get department_id => throw _privateConstructorUsedError;
   String get department_name => throw _privateConstructorUsedError;
   String get department_code => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $DepartmentModelCopyWith<$Res> {
   ) = _$DepartmentModelCopyWithImpl<$Res, DepartmentModel>;
   @useResult
   $Res call({
+    int department_id,
     String department_name,
     String department_code,
     String description,
@@ -66,6 +68,7 @@ class _$DepartmentModelCopyWithImpl<$Res, $Val extends DepartmentModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? department_id = null,
     Object? department_name = null,
     Object? department_code = null,
     Object? description = null,
@@ -73,6 +76,10 @@ class _$DepartmentModelCopyWithImpl<$Res, $Val extends DepartmentModel>
   }) {
     return _then(
       _value.copyWith(
+            department_id: null == department_id
+                ? _value.department_id
+                : department_id // ignore: cast_nullable_to_non_nullable
+                      as int,
             department_name: null == department_name
                 ? _value.department_name
                 : department_name // ignore: cast_nullable_to_non_nullable
@@ -105,6 +112,7 @@ abstract class _$$DepartmentModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
+    int department_id,
     String department_name,
     String department_code,
     String description,
@@ -126,6 +134,7 @@ class __$$DepartmentModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? department_id = null,
     Object? department_name = null,
     Object? department_code = null,
     Object? description = null,
@@ -133,6 +142,10 @@ class __$$DepartmentModelImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$DepartmentModelImpl(
+        department_id: null == department_id
+            ? _value.department_id
+            : department_id // ignore: cast_nullable_to_non_nullable
+                  as int,
         department_name: null == department_name
             ? _value.department_name
             : department_name // ignore: cast_nullable_to_non_nullable
@@ -158,6 +171,7 @@ class __$$DepartmentModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DepartmentModelImpl implements _DepartmentModel {
   const _$DepartmentModelImpl({
+    this.department_id = 0,
     this.department_name = "",
     this.department_code = "",
     this.description = "",
@@ -167,6 +181,9 @@ class _$DepartmentModelImpl implements _DepartmentModel {
   factory _$DepartmentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DepartmentModelImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final int department_id;
   @override
   @JsonKey()
   final String department_name;
@@ -182,7 +199,7 @@ class _$DepartmentModelImpl implements _DepartmentModel {
 
   @override
   String toString() {
-    return 'DepartmentModel(department_name: $department_name, department_code: $department_code, description: $description, manager_emp_id: $manager_emp_id)';
+    return 'DepartmentModel(department_id: $department_id, department_name: $department_name, department_code: $department_code, description: $description, manager_emp_id: $manager_emp_id)';
   }
 
   @override
@@ -190,6 +207,8 @@ class _$DepartmentModelImpl implements _DepartmentModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DepartmentModelImpl &&
+            (identical(other.department_id, department_id) ||
+                other.department_id == department_id) &&
             (identical(other.department_name, department_name) ||
                 other.department_name == department_name) &&
             (identical(other.department_code, department_code) ||
@@ -204,6 +223,7 @@ class _$DepartmentModelImpl implements _DepartmentModel {
   @override
   int get hashCode => Object.hash(
     runtimeType,
+    department_id,
     department_name,
     department_code,
     description,
@@ -229,6 +249,7 @@ class _$DepartmentModelImpl implements _DepartmentModel {
 
 abstract class _DepartmentModel implements DepartmentModel {
   const factory _DepartmentModel({
+    final int department_id,
     final String department_name,
     final String department_code,
     final String description,
@@ -238,6 +259,8 @@ abstract class _DepartmentModel implements DepartmentModel {
   factory _DepartmentModel.fromJson(Map<String, dynamic> json) =
       _$DepartmentModelImpl.fromJson;
 
+  @override
+  int get department_id;
   @override
   String get department_name;
   @override

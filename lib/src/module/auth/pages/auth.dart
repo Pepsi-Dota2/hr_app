@@ -37,7 +37,7 @@ class AuthPage extends StatelessWidget implements AutoRouteWrapper {
             if (!context.mounted) return;
 
             if (role == '2') {
-              context.router.replace(const EmployeeAdminRoute());
+              context.router.replace(const DashboardAdminRoute());
             } else {
               context.router.replace(const DashboardRoute());
             }
