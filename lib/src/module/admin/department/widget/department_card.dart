@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:hr_app/src/core/widget/rounded_button.dart';
 
 class DepartmentCard extends StatelessWidget {
@@ -6,8 +7,16 @@ class DepartmentCard extends StatelessWidget {
   final String code;
   final String description;
   final VoidCallback onUpdate;
+  final VoidCallback onDelete;
 
-  const DepartmentCard({super.key, required this.name, required this.code, required this.description, required this.onUpdate});
+  const DepartmentCard({
+    super.key,
+    required this.name,
+    required this.code,
+    required this.description,
+    required this.onUpdate,
+    required this.onDelete,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +57,17 @@ class DepartmentCard extends StatelessWidget {
                       icon: Icons.edit,
                       borderColor: Colors.blue,
                       color: Colors.amber.withAlpha(60),
+                      radius: 100,
+                      width: 40,
+                      height: 40,
+                      size: 16,
+                    ),
+                    Gap(10),
+                    RoundedIconButton(
+                      onPressed: onDelete,
+                      icon: Icons.delete,
+                      borderColor: Colors.blue,
+                      color: Colors.red.withAlpha(60),
                       radius: 100,
                       width: 40,
                       height: 40,

@@ -97,4 +97,20 @@ class DepartmentadminCubit extends Cubit<DepartmentadminState> {
       emit(state.copyWith(status: Status.failure));
     }
   }
+
+  Future<void> deleteDepartment(int id) async {
+    try {
+      emit(state.copyWith(status: Status.loading));
+      final response = await dio.delete("${AppApiPath.deleteDepartment}/$id/delete");
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonList = response.data['data'];
+        final List<DepartmentModel> department = jsonList.map((json) => DepartmentModel.fromJson(json)).toList();
+        emit(state.copyWith(status: Status.success, departments: department));
+      }
+    } on DioException catch (_) {
+      emit(state.copyWith(status: Status.failure));
+    } catch (_) {
+      emit(state.copyWith(status: Status.failure));
+    }
+  }
 }

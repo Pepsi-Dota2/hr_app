@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
 import 'package:hr_app/src/core/router/router.dart';
+import 'package:hr_app/src/core/widget/alert_dialog.dart';
 import 'package:hr_app/src/module/admin/department/cubit/departmentadmin_cubit.dart';
 import 'package:hr_app/src/module/admin/department/widget/department_card.dart';
 
@@ -86,6 +87,19 @@ class DepartmentAdminPage extends StatelessWidget implements AutoRouteWrapper {
                       onUpdate: () async {
                         await context.router.push(CreateDepartmentRoute(id: department.department_id));
                         await cubit.getAllDepartment();
+                      },
+                      onDelete: () async {
+                        final confirmed = await showConfirmDialog(
+                          context: context,
+                          title: "Are you sure?",
+                          content: "This action will permanently delete the item.",
+                        );
+                        if (confirmed == true) {
+                          await cubit.deleteDepartment(state.departments[index].department_id);
+                          await cubit.getAllDepartment();
+                        } else {
+                          print("Delete cancelled");
+                        }
                       },
                     );
                   },

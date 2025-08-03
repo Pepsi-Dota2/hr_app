@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
 import 'package:hr_app/src/core/router/router.dart';
+import 'package:hr_app/src/core/widget/alert_dialog.dart';
 import 'package:hr_app/src/module/admin/postion/cubit/positionadmin_cubit.dart';
 import 'package:hr_app/src/module/admin/postion/widget/position.dart';
 
@@ -84,6 +85,19 @@ class PositionAdminPage extends StatelessWidget implements AutoRouteWrapper {
                       onUpdate: () async {
                         await context.router.push(CreatePositionRoute(id: position.position_id));
                         await cubit.getPosition();
+                      },
+                      onDelete: () async {
+                        final confirmed = await showConfirmDialog(
+                          context: context,
+                          title: "Are you sure?",
+                          content: "This action will permanently delete the item.",
+                        );
+                        if (confirmed == true) {
+                          await cubit.deletePosition(state.position[index].position_id);
+                          await cubit.getPosition();
+                        } else {
+                          print("Delete cancelled");
+                        }
                       },
                     );
                   },

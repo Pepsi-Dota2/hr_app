@@ -95,4 +95,20 @@ class PositionadminCubit extends Cubit<PositionadminState> {
       emit(state.copyWith(status: Status.failure));
     }
   }
+
+  // delete
+  Future<void> deletePosition(int id) async {
+    try {
+      emit(state.copyWith(status: Status.loading));
+      final response = await dio.delete("${AppApiPath.deletePosition}/$id/delete");
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonList = response.data['data'];
+        final List<PositionModel> position = jsonList.map((json) => PositionModel.fromJson(json)).toList();
+        await getPosition();
+        emit(state.copyWith(status: Status.success, position: position));
+      }
+    } catch (e) {
+      emit(state.copyWith(status: Status.failure));
+    }
+  }
 }
