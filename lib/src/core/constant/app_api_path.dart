@@ -1,6 +1,6 @@
 class AppApiPath {
   static const String version = "v1";
-  static const String baseUrl = "http://10.216.236.59:5002/${version}";
+  static const String baseUrl = "http://192.168.1.44:5002/${version}";
   static const String refreshToken = "${baseUrl}/auth/refresh-token";
   static const String signUp = "${baseUrl}/auth/sign-up";
   static const String signIn = "${baseUrl}/auth/sign-in";
@@ -17,6 +17,12 @@ class AppApiPath {
 
   //admin
   static const String getAllEmployee = "${baseUrl}/quickserve/employee";
+  static const String getAllAuth = "${baseUrl}/quickserve/employee/auth";
+  static const String getOneEmployee = "${baseUrl}/quickserve/employee";
+  static const String createEmployee = "${baseUrl}/quickserve/employee/add";
+  static const String updateEmployee = "${baseUrl}/quickserve/employee";
+  static const String deleteEmployee = "${baseUrl}/quickserve/employee";
+
   static const String getAllSalary = "${baseUrl}/quickserve/employee/salary-counter";
   static const String getOneSalary = "${baseUrl}//quickserve/employee";
   static const String getAllDepartment = "${baseUrl}/quickserve/department";

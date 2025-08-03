@@ -93,6 +93,57 @@ class CreateDepartmentRouteArgs {
 }
 
 /// generated route for
+/// [CreateEmployeeAdminPage]
+class CreateEmployeeAdminRoute
+    extends PageRouteInfo<CreateEmployeeAdminRouteArgs> {
+  CreateEmployeeAdminRoute({Key? key, int? id, List<PageRouteInfo>? children})
+    : super(
+        CreateEmployeeAdminRoute.name,
+        args: CreateEmployeeAdminRouteArgs(key: key, id: id),
+        rawPathParams: {'id': id},
+        initialChildren: children,
+      );
+
+  static const String name = 'CreateEmployeeAdminRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<CreateEmployeeAdminRouteArgs>(
+        orElse: () => CreateEmployeeAdminRouteArgs(id: pathParams.optInt('id')),
+      );
+      return WrappedRoute(
+        child: CreateEmployeeAdminPage(key: args.key, id: args.id),
+      );
+    },
+  );
+}
+
+class CreateEmployeeAdminRouteArgs {
+  const CreateEmployeeAdminRouteArgs({this.key, this.id});
+
+  final Key? key;
+
+  final int? id;
+
+  @override
+  String toString() {
+    return 'CreateEmployeeAdminRouteArgs{key: $key, id: $id}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CreateEmployeeAdminRouteArgs) return false;
+    return key == other.key && id == other.id;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ id.hashCode;
+}
+
+/// generated route for
 /// [CreateEmployeePage]
 class CreateEmployeeRoute extends PageRouteInfo<void> {
   const CreateEmployeeRoute({List<PageRouteInfo>? children})

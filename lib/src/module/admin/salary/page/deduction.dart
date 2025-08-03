@@ -1,17 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, BlocProvider, read, ReadContext;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
 import 'package:hr_app/src/core/widget/card_skeleton.dart';
 import 'package:hr_app/src/core/widget/form_dropdown.dart';
 import 'package:hr_app/src/core/widget/form_text_area.dart';
-import 'package:hr_app/src/core/widget/input_form.dart';
 import 'package:hr_app/src/module/admin/salary/cubit/salaryadmin_cubit.dart';
 import 'package:hr_app/src/module/admin/salary/widget/employee_card.dart';
 import 'package:intl/intl.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class DeductionAdminPage extends StatelessWidget implements AutoRouteWrapper {

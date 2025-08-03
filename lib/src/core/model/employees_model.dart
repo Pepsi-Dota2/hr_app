@@ -6,6 +6,7 @@ part 'employees_model.g.dart';
 @freezed
 class EmployeesModel with _$EmployeesModel {
   const factory EmployeesModel({
+    @Default(0) int emp_id,
     @Default(0) int user_id,
     @Default("") String emp_name,
     @Default(0) int emp_department_id,
@@ -22,6 +23,7 @@ class EmployeesModel with _$EmployeesModel {
     @Default("") String emp_bank_account,
     @Default("") String emp_img,
     @Default("") String created_at,
+    @Default([]) List<String> emp_day_off,
   }) = _EmployeesModel;
   factory EmployeesModel.fromJson(Map<String, dynamic> json) => _$EmployeesModelFromJson(json);
 }

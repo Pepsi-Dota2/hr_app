@@ -3,8 +3,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
+import 'package:hr_app/src/core/router/router.dart';
+import 'package:hr_app/src/core/widget/rounded_button.dart';
 import 'package:hr_app/src/module/admin/employee/cubit/employeeadmin_cubit.dart';
 
 @RoutePage()
@@ -18,6 +21,7 @@ class EmployeeAdminPage extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<EmployeeadminCubit>();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -28,6 +32,16 @@ class EmployeeAdminPage extends StatelessWidget implements AutoRouteWrapper {
         backgroundColor: Colors.blue.shade700,
       ),
       backgroundColor: Colors.blue.shade50,
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        backgroundColor: Colors.blue.shade700,
+        foregroundColor: Colors.blueGrey,
+        onPressed: () async {
+          await context.router.push(CreateEmployeeAdminRoute());
+          await cubit.getAllEmployee();
+        },
+        child: Icon(Icons.add, color: Colors.white),
+      ),
       body: BlocBuilder<EmployeeadminCubit, EmployeeadminState>(
         builder: (context, state) {
           if (state.status == Status.loading) {
@@ -64,6 +78,32 @@ class EmployeeAdminPage extends StatelessWidget implements AutoRouteWrapper {
                       Text(emp.emp_email, style: const TextStyle(fontSize: 14, color: Colors.grey)),
                       const SizedBox(height: 2),
                       Text("📞 ${emp.emp_tel}", style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                    ],
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min, // Important to avoid expanding Row
+                    children: [
+                      RoundedIconButton(
+                        onPressed: () {},
+                        icon: Icons.edit,
+                        borderColor: Colors.blue,
+                        color: Colors.amber.withAlpha(60),
+                        radius: 100,
+                        width: 40,
+                        height: 40,
+                        size: 16,
+                      ),
+                      Gap(4),
+                      RoundedIconButton(
+                        onPressed: () {},
+                        icon: Icons.delete,
+                        borderColor: Colors.blue,
+                        color: Colors.red.withAlpha(60),
+                        radius: 100,
+                        width: 40,
+                        height: 40,
+                        size: 16,
+                      ),
                     ],
                   ),
                 ),

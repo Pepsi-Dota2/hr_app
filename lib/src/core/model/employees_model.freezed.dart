@@ -21,6 +21,7 @@ EmployeesModel _$EmployeesModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EmployeesModel {
+  int get emp_id => throw _privateConstructorUsedError;
   int get user_id => throw _privateConstructorUsedError;
   String get emp_name => throw _privateConstructorUsedError;
   int get emp_department_id => throw _privateConstructorUsedError;
@@ -37,6 +38,7 @@ mixin _$EmployeesModel {
   String get emp_bank_account => throw _privateConstructorUsedError;
   String get emp_img => throw _privateConstructorUsedError;
   String get created_at => throw _privateConstructorUsedError;
+  List<String> get emp_day_off => throw _privateConstructorUsedError;
 
   /// Serializes this EmployeesModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,6 +58,7 @@ abstract class $EmployeesModelCopyWith<$Res> {
   ) = _$EmployeesModelCopyWithImpl<$Res, EmployeesModel>;
   @useResult
   $Res call({
+    int emp_id,
     int user_id,
     String emp_name,
     int emp_department_id,
@@ -72,6 +75,7 @@ abstract class $EmployeesModelCopyWith<$Res> {
     String emp_bank_account,
     String emp_img,
     String created_at,
+    List<String> emp_day_off,
   });
 }
 
@@ -90,6 +94,7 @@ class _$EmployeesModelCopyWithImpl<$Res, $Val extends EmployeesModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? emp_id = null,
     Object? user_id = null,
     Object? emp_name = null,
     Object? emp_department_id = null,
@@ -106,9 +111,14 @@ class _$EmployeesModelCopyWithImpl<$Res, $Val extends EmployeesModel>
     Object? emp_bank_account = null,
     Object? emp_img = null,
     Object? created_at = null,
+    Object? emp_day_off = null,
   }) {
     return _then(
       _value.copyWith(
+            emp_id: null == emp_id
+                ? _value.emp_id
+                : emp_id // ignore: cast_nullable_to_non_nullable
+                      as int,
             user_id: null == user_id
                 ? _value.user_id
                 : user_id // ignore: cast_nullable_to_non_nullable
@@ -173,6 +183,10 @@ class _$EmployeesModelCopyWithImpl<$Res, $Val extends EmployeesModel>
                 ? _value.created_at
                 : created_at // ignore: cast_nullable_to_non_nullable
                       as String,
+            emp_day_off: null == emp_day_off
+                ? _value.emp_day_off
+                : emp_day_off // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
           )
           as $Val,
     );
@@ -189,6 +203,7 @@ abstract class _$$EmployeesModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
+    int emp_id,
     int user_id,
     String emp_name,
     int emp_department_id,
@@ -205,6 +220,7 @@ abstract class _$$EmployeesModelImplCopyWith<$Res>
     String emp_bank_account,
     String emp_img,
     String created_at,
+    List<String> emp_day_off,
   });
 }
 
@@ -222,6 +238,7 @@ class __$$EmployeesModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? emp_id = null,
     Object? user_id = null,
     Object? emp_name = null,
     Object? emp_department_id = null,
@@ -238,9 +255,14 @@ class __$$EmployeesModelImplCopyWithImpl<$Res>
     Object? emp_bank_account = null,
     Object? emp_img = null,
     Object? created_at = null,
+    Object? emp_day_off = null,
   }) {
     return _then(
       _$EmployeesModelImpl(
+        emp_id: null == emp_id
+            ? _value.emp_id
+            : emp_id // ignore: cast_nullable_to_non_nullable
+                  as int,
         user_id: null == user_id
             ? _value.user_id
             : user_id // ignore: cast_nullable_to_non_nullable
@@ -305,6 +327,10 @@ class __$$EmployeesModelImplCopyWithImpl<$Res>
             ? _value.created_at
             : created_at // ignore: cast_nullable_to_non_nullable
                   as String,
+        emp_day_off: null == emp_day_off
+            ? _value._emp_day_off
+            : emp_day_off // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
       ),
     );
   }
@@ -314,6 +340,7 @@ class __$$EmployeesModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EmployeesModelImpl implements _EmployeesModel {
   const _$EmployeesModelImpl({
+    this.emp_id = 0,
     this.user_id = 0,
     this.emp_name = "",
     this.emp_department_id = 0,
@@ -330,11 +357,15 @@ class _$EmployeesModelImpl implements _EmployeesModel {
     this.emp_bank_account = "",
     this.emp_img = "",
     this.created_at = "",
-  });
+    final List<String> emp_day_off = const [],
+  }) : _emp_day_off = emp_day_off;
 
   factory _$EmployeesModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EmployeesModelImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final int emp_id;
   @override
   @JsonKey()
   final int user_id;
@@ -383,10 +414,18 @@ class _$EmployeesModelImpl implements _EmployeesModel {
   @override
   @JsonKey()
   final String created_at;
+  final List<String> _emp_day_off;
+  @override
+  @JsonKey()
+  List<String> get emp_day_off {
+    if (_emp_day_off is EqualUnmodifiableListView) return _emp_day_off;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_emp_day_off);
+  }
 
   @override
   String toString() {
-    return 'EmployeesModel(user_id: $user_id, emp_name: $emp_name, emp_department_id: $emp_department_id, emp_position_id: $emp_position_id, emp_email: $emp_email, emp_tel: $emp_tel, emp_birth_date: $emp_birth_date, position_name: $position_name, position_salary: $position_salary, department_name: $department_name, department_code: $department_code, emp_gender: $emp_gender, emp_religion: $emp_religion, emp_bank_account: $emp_bank_account, emp_img: $emp_img, created_at: $created_at)';
+    return 'EmployeesModel(emp_id: $emp_id, user_id: $user_id, emp_name: $emp_name, emp_department_id: $emp_department_id, emp_position_id: $emp_position_id, emp_email: $emp_email, emp_tel: $emp_tel, emp_birth_date: $emp_birth_date, position_name: $position_name, position_salary: $position_salary, department_name: $department_name, department_code: $department_code, emp_gender: $emp_gender, emp_religion: $emp_religion, emp_bank_account: $emp_bank_account, emp_img: $emp_img, created_at: $created_at, emp_day_off: $emp_day_off)';
   }
 
   @override
@@ -394,6 +433,7 @@ class _$EmployeesModelImpl implements _EmployeesModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EmployeesModelImpl &&
+            (identical(other.emp_id, emp_id) || other.emp_id == emp_id) &&
             (identical(other.user_id, user_id) || other.user_id == user_id) &&
             (identical(other.emp_name, emp_name) ||
                 other.emp_name == emp_name) &&
@@ -422,13 +462,18 @@ class _$EmployeesModelImpl implements _EmployeesModel {
                 other.emp_bank_account == emp_bank_account) &&
             (identical(other.emp_img, emp_img) || other.emp_img == emp_img) &&
             (identical(other.created_at, created_at) ||
-                other.created_at == created_at));
+                other.created_at == created_at) &&
+            const DeepCollectionEquality().equals(
+              other._emp_day_off,
+              _emp_day_off,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
     runtimeType,
+    emp_id,
     user_id,
     emp_name,
     emp_department_id,
@@ -445,6 +490,7 @@ class _$EmployeesModelImpl implements _EmployeesModel {
     emp_bank_account,
     emp_img,
     created_at,
+    const DeepCollectionEquality().hash(_emp_day_off),
   );
 
   /// Create a copy of EmployeesModel
@@ -466,6 +512,7 @@ class _$EmployeesModelImpl implements _EmployeesModel {
 
 abstract class _EmployeesModel implements EmployeesModel {
   const factory _EmployeesModel({
+    final int emp_id,
     final int user_id,
     final String emp_name,
     final int emp_department_id,
@@ -482,11 +529,14 @@ abstract class _EmployeesModel implements EmployeesModel {
     final String emp_bank_account,
     final String emp_img,
     final String created_at,
+    final List<String> emp_day_off,
   }) = _$EmployeesModelImpl;
 
   factory _EmployeesModel.fromJson(Map<String, dynamic> json) =
       _$EmployeesModelImpl.fromJson;
 
+  @override
+  int get emp_id;
   @override
   int get user_id;
   @override
@@ -519,6 +569,8 @@ abstract class _EmployeesModel implements EmployeesModel {
   String get emp_img;
   @override
   String get created_at;
+  @override
+  List<String> get emp_day_off;
 
   /// Create a copy of EmployeesModel
   /// with the given fields replaced by the non-null parameter values.

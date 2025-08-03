@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hr_app/src/core/config/dio_client.dart';
 import 'package:hr_app/src/core/constant/app_api_path.dart';

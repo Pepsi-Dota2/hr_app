@@ -7,7 +7,6 @@ import 'package:hr_app/src/core/enum/enum.dart';
 import 'package:hr_app/src/core/model/deduction_model.dart';
 import 'package:hr_app/src/core/model/employees_model.dart';
 import 'package:hr_app/src/core/model/sarary_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'salaryadmin_state.dart';
 part 'salaryadmin_cubit.freezed.dart';
