@@ -14,7 +14,7 @@ class LeaveAdminDetailAdminPage extends StatelessWidget implements AutoRouteWrap
   final String userId;
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(create: (context) => LeaveadminCubit()..getOneEmployee(userId), child: this);
+    return BlocProvider(create: (context) => LeaveadminCubit()..getOneLeave(userId), child: this);
   }
 
   @override
@@ -46,12 +46,12 @@ class LeaveAdminDetailAdminPage extends StatelessWidget implements AutoRouteWrap
                 userId: item.emp_id.toString(),
                 imageUrl: item.image,
                 onApprove: () {
-                  cubit.updateLeaveEmployee(userId, LeaveState.approved, item.leave_detail_id);
-                  cubit.getOneEmployee(userId);
+                  cubit.updateLeaveEmployee(userId, LeaveStatus.approved, item.leave_detail_id);
+                  cubit.getOneLeave(userId);
                 },
                 onReject: () {
-                  cubit.updateLeaveEmployee(userId, LeaveState.rejected, item.leave_detail_id);
-                  cubit.getOneEmployee(userId);
+                  cubit.updateLeaveEmployee(userId, LeaveStatus.rejected, item.leave_detail_id);
+                  cubit.getOneLeave(userId);
                 },
                 onDelete: () async {
                   final confirmed = await showConfirmDialog(
@@ -61,7 +61,7 @@ class LeaveAdminDetailAdminPage extends StatelessWidget implements AutoRouteWrap
                   );
                   if (confirmed == true) {
                     await cubit.deleteLeaveEmployee(item.leave_detail_id);
-                    cubit.getOneEmployee(userId);
+                    cubit.getOneLeave(userId);
                   } else {
                     print("Delete cancelled");
                   }

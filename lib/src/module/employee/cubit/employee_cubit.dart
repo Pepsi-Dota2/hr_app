@@ -69,24 +69,31 @@ class EmployeeCubit extends Cubit<EmployeeState> {
       emit(state.copyWith(status: Status.loading));
       final prefs = await SharedPreferences.getInstance();
       final userId = prefs.getString('user_id');
+      await prefs.getString('user_id');
       final response = await dio.get("${AppApiPath.getMe}/$userId");
       final user = EmployeesModel.fromJson(response.data['data']);
+      await prefs.setString('emp_id', user.emp_id.toString());
       emit(state.copyWith(user: user, status: Status.success));
     } catch (e) {
       emit(state.copyWith(status: Status.failure));
     }
   }
 
-  Future<void> getEmployee() async {
+  Future<void> getOneEmployee() async {
     try {
       emit(state.copyWith(status: Status.loading));
       final prefs = await SharedPreferences.getInstance();
-      final userId = prefs.getString('user_id');
-      final response = await dio.get("${AppApiPath.getEmployee}/$userId");
-      final List data = response.data['data'];
-      final employee = data.map((e) => EmployeesModel.fromJson(e)).toList();
-      emit(state.copyWith(employee: employee, status: Status.success));
-    } catch (e) {
+      final userId = prefs.getString('emp_id');
+      final response = await dio.get("${AppApiPath.getOneEmployee}/$userId");
+
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonList = response.data['data'];
+        final List<EmployeesModel> employees = jsonList.map((json) => EmployeesModel.fromJson(json)).toList();
+        emit(state.copyWith(status: Status.success, employee: employees));
+      }
+    } on DioException catch (_) {
+      emit(state.copyWith(status: Status.failure));
+    } catch (_) {
       emit(state.copyWith(status: Status.failure));
     }
   }

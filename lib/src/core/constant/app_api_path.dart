@@ -14,6 +14,7 @@ class AppApiPath {
   //work record
   static const String startWorkRecord = "${baseUrl}/quickserve/employee/work-record/start";
   static const String endWorkRecord = "${baseUrl}/quickserve/employee";
+  static const String recordWorking = "${baseUrl}/quickserve/employee";
 
   //admin
   static const String getAllEmployee = "${baseUrl}/quickserve/employee";

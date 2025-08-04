@@ -20,6 +20,7 @@ class SettingCubit extends Cubit<SettingState> {
       final prefs = await SharedPreferences.getInstance();
       final userId = prefs.getString('user_id');
       await prefs.remove('accessToken');
+      await prefs.remove('accessToken');
       if (userId == null || userId.isEmpty) {
         emit(state.copyWith(status: Status.failure));
         return;

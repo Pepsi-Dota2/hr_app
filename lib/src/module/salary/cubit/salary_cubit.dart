@@ -32,7 +32,7 @@ class SalaryCubit extends Cubit<SalaryState> {
     try {
       emit(state.copyWith(status: Status.loading));
       final prefs = await SharedPreferences.getInstance();
-      final userId = prefs.getString('user_id');
+      final userId = prefs.getString('emp_id');
       final response = await dio.get("${AppApiPath.getSalary}/$userId/salary-counter");
       final List data = response.data['data'];
       final salaries = data.map((e) => SararyModel.fromJson(e)).toList();

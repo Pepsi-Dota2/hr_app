@@ -19,6 +19,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LeaveState {
   Status get status => throw _privateConstructorUsedError;
   dynamic get image => throw _privateConstructorUsedError;
+  LeaveModel? get leave => throw _privateConstructorUsedError;
+  List<LeaveModel> get leaves => throw _privateConstructorUsedError;
 
   /// Create a copy of LeaveState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +36,14 @@ abstract class $LeaveStateCopyWith<$Res> {
     $Res Function(LeaveState) then,
   ) = _$LeaveStateCopyWithImpl<$Res, LeaveState>;
   @useResult
-  $Res call({Status status, dynamic image});
+  $Res call({
+    Status status,
+    dynamic image,
+    LeaveModel? leave,
+    List<LeaveModel> leaves,
+  });
+
+  $LeaveModelCopyWith<$Res>? get leave;
 }
 
 /// @nodoc
@@ -51,7 +60,12 @@ class _$LeaveStateCopyWithImpl<$Res, $Val extends LeaveState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = null, Object? image = freezed}) {
+  $Res call({
+    Object? status = null,
+    Object? image = freezed,
+    Object? leave = freezed,
+    Object? leaves = null,
+  }) {
     return _then(
       _value.copyWith(
             status: null == status
@@ -62,9 +76,31 @@ class _$LeaveStateCopyWithImpl<$Res, $Val extends LeaveState>
                 ? _value.image
                 : image // ignore: cast_nullable_to_non_nullable
                       as dynamic,
+            leave: freezed == leave
+                ? _value.leave
+                : leave // ignore: cast_nullable_to_non_nullable
+                      as LeaveModel?,
+            leaves: null == leaves
+                ? _value.leaves
+                : leaves // ignore: cast_nullable_to_non_nullable
+                      as List<LeaveModel>,
           )
           as $Val,
     );
+  }
+
+  /// Create a copy of LeaveState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LeaveModelCopyWith<$Res>? get leave {
+    if (_value.leave == null) {
+      return null;
+    }
+
+    return $LeaveModelCopyWith<$Res>(_value.leave!, (value) {
+      return _then(_value.copyWith(leave: value) as $Val);
+    });
   }
 }
 
@@ -77,7 +113,15 @@ abstract class _$$LeaveStateImplCopyWith<$Res>
   ) = __$$LeaveStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Status status, dynamic image});
+  $Res call({
+    Status status,
+    dynamic image,
+    LeaveModel? leave,
+    List<LeaveModel> leaves,
+  });
+
+  @override
+  $LeaveModelCopyWith<$Res>? get leave;
 }
 
 /// @nodoc
@@ -93,7 +137,12 @@ class __$$LeaveStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = null, Object? image = freezed}) {
+  $Res call({
+    Object? status = null,
+    Object? image = freezed,
+    Object? leave = freezed,
+    Object? leaves = null,
+  }) {
     return _then(
       _$LeaveStateImpl(
         status: null == status
@@ -101,6 +150,14 @@ class __$$LeaveStateImplCopyWithImpl<$Res>
             : status // ignore: cast_nullable_to_non_nullable
                   as Status,
         image: freezed == image ? _value.image! : image,
+        leave: freezed == leave
+            ? _value.leave
+            : leave // ignore: cast_nullable_to_non_nullable
+                  as LeaveModel?,
+        leaves: null == leaves
+            ? _value._leaves
+            : leaves // ignore: cast_nullable_to_non_nullable
+                  as List<LeaveModel>,
       ),
     );
   }
@@ -109,7 +166,12 @@ class __$$LeaveStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LeaveStateImpl implements _LeaveState {
-  const _$LeaveStateImpl({this.status = Status.initial, this.image = ""});
+  const _$LeaveStateImpl({
+    this.status = Status.initial,
+    this.image = "",
+    this.leave,
+    final List<LeaveModel> leaves = const [],
+  }) : _leaves = leaves;
 
   @override
   @JsonKey()
@@ -117,10 +179,20 @@ class _$LeaveStateImpl implements _LeaveState {
   @override
   @JsonKey()
   final dynamic image;
+  @override
+  final LeaveModel? leave;
+  final List<LeaveModel> _leaves;
+  @override
+  @JsonKey()
+  List<LeaveModel> get leaves {
+    if (_leaves is EqualUnmodifiableListView) return _leaves;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_leaves);
+  }
 
   @override
   String toString() {
-    return 'LeaveState(status: $status, image: $image)';
+    return 'LeaveState(status: $status, image: $image, leave: $leave, leaves: $leaves)';
   }
 
   @override
@@ -129,7 +201,9 @@ class _$LeaveStateImpl implements _LeaveState {
         (other.runtimeType == runtimeType &&
             other is _$LeaveStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other.image, image));
+            const DeepCollectionEquality().equals(other.image, image) &&
+            (identical(other.leave, leave) || other.leave == leave) &&
+            const DeepCollectionEquality().equals(other._leaves, _leaves));
   }
 
   @override
@@ -137,6 +211,8 @@ class _$LeaveStateImpl implements _LeaveState {
     runtimeType,
     status,
     const DeepCollectionEquality().hash(image),
+    leave,
+    const DeepCollectionEquality().hash(_leaves),
   );
 
   /// Create a copy of LeaveState
@@ -149,13 +225,21 @@ class _$LeaveStateImpl implements _LeaveState {
 }
 
 abstract class _LeaveState implements LeaveState {
-  const factory _LeaveState({final Status status, final dynamic image}) =
-      _$LeaveStateImpl;
+  const factory _LeaveState({
+    final Status status,
+    final dynamic image,
+    final LeaveModel? leave,
+    final List<LeaveModel> leaves,
+  }) = _$LeaveStateImpl;
 
   @override
   Status get status;
   @override
   dynamic get image;
+  @override
+  LeaveModel? get leave;
+  @override
+  List<LeaveModel> get leaves;
 
   /// Create a copy of LeaveState
   /// with the given fields replaced by the non-null parameter values.

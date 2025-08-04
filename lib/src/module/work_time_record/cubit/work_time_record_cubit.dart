@@ -53,7 +53,7 @@ class WorkTimeRecordCubit extends Cubit<WorkTimeRecordState> {
       emit(state.copyWith(status: Status.loading));
 
       final prefs = await SharedPreferences.getInstance();
-      final userId = prefs.getString('user_id');
+      final userId = prefs.getString('emp_id');
       final latStr = await SecureStorage.read('latitude');
       final lngStr = await SecureStorage.read('longitude');
 
@@ -108,7 +108,7 @@ class WorkTimeRecordCubit extends Cubit<WorkTimeRecordState> {
     try {
       emit(state.copyWith(status: Status.loading));
       final prefs = await SharedPreferences.getInstance();
-      final userId = prefs.getString('user_id');
+      final userId = prefs.getString('emp_id');
       final latStr = await SecureStorage.read('latitude');
       final lngStr = await SecureStorage.read('longitude');
       if (userId == null) {

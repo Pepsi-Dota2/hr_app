@@ -83,7 +83,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(state.copyWith(status: Status.loading));
       final prefs = await SharedPreferences.getInstance();
       final userId = prefs.getString('user_id');
-      await prefs.remove('accessToken');
       if (userId == null || userId.isEmpty) {
         emit(state.copyWith(status: Status.failure));
         return;
@@ -94,6 +93,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
       if (response.statusCode == 200) {
         await prefs.remove('accessToken');
+        await prefs.remove('emp_id');
         await prefs.remove('user_id');
         emit(state.copyWith(status: Status.success, user: null));
       } else {

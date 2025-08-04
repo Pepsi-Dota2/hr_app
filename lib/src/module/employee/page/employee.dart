@@ -15,7 +15,7 @@ class EmployeePage extends StatelessWidget implements AutoRouteWrapper {
     return BlocProvider(
       create: (context) => EmployeeCubit()
         ..loadImagePath()
-        ..getEmployee()
+        ..getOneEmployee()
         ..getSalary()
         ..getMe(),
       child: this,
@@ -36,6 +36,8 @@ class EmployeePage extends StatelessWidget implements AutoRouteWrapper {
           if (state.status == Status.loading) {
             return const Center(child: CircularProgressIndicator());
           }
+          print("User: ${state.user}");
+          print("emp_day_off: ${state.user?.emp_day_off}");
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -58,18 +60,16 @@ class EmployeePage extends StatelessWidget implements AutoRouteWrapper {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ListEmployeeInfoWidget(
-                        empId: "EMP123",
-                        empName: state.employee.isNotEmpty ? state.employee[0].emp_name : "N/A",
+                        empId: state.employee.isNotEmpty ? state.employee[0].emp_name : "N/A",
+                        empName: state.user?.emp_name ?? "",
                         empTel: state.user?.emp_tel ?? "N/A",
                         empReligion: state.user?.emp_religion ?? "N/A",
-                        empGender: state.employee.isNotEmpty ? state.employee[0].emp_gender : "N/A",
-                        salary: state.salary.isNotEmpty ? state.salary[0].base_salary.toString() : "0",
+                        empGender: state.user?.emp_gender ?? "",
+                        salary: state.user?.position_salary.toString() ?? "",
                         departmentName: state.user?.department_name ?? "N/A",
                         departmentCode: state.user?.department_code ?? "N/A",
-                        accountBank: state.employee.isNotEmpty ? state.employee[0].emp_bank_account : "N/A",
-                        startWorking: state.employee.isNotEmpty && state.employee[0].created_at != null
-                            ? DateFormat('dd/MM/yyyy').format(DateTime.parse(state.employee[0].created_at))
-                            : "N/A",
+                        accountBank: state.user?.emp_bank_account ?? "",
+                        empDayOff: state.employee.isNotEmpty ? state.employee[0].emp_day_off : ["N/A", "N/A"],
                       ),
                     ],
                   ),

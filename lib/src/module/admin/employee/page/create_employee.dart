@@ -73,16 +73,19 @@ class CreateEmployeeAdminPage extends StatelessWidget implements AutoRouteWrappe
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    CustomDropdownField(
-                      label: 'user',
-                      value: state.selectUser.isEmpty ? null : state.selectUser,
-                      items: state.user.map((user) => DropdownMenuItem<String>(value: user.user_id.toString(), child: Text(user.user_name))).toList(),
-                      onChanged: (value) {
-                        if (value is String) {
-                          cubit.updateSelectUser(value);
-                        }
-                      },
-                    ),
+                    if (!isEdit)
+                      CustomDropdownField(
+                        label: 'user',
+                        value: state.selectUser.isEmpty ? null : state.selectUser,
+                        items: state.user
+                            .map((user) => DropdownMenuItem<String>(value: user.user_id.toString(), child: Text(user.user_name)))
+                            .toList(),
+                        onChanged: (value) {
+                          if (value is String) {
+                            cubit.updateSelectUser(value);
+                          }
+                        },
+                      ),
                     InputForm(
                       controller: cubit.empEmailController,
                       name: 'emp_email',

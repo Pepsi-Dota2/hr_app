@@ -28,7 +28,7 @@ class LeaveadminCubit extends Cubit<LeaveadminState> {
     }
   }
 
-  Future<void> getOneEmployee(String userId) async {
+  Future<void> getOneLeave(String userId) async {
     try {
       emit(state.copyWith(status: Status.loading));
       final response = await dio.get("${AppApiPath.getOneleave}/$userId/leave-detail/nofilter");
@@ -44,13 +44,13 @@ class LeaveadminCubit extends Cubit<LeaveadminState> {
     }
   }
 
-  Future<void> updateLeaveEmployee(String userId, LeaveState leaveState, int? leaveId) async {
+  Future<void> updateLeaveEmployee(String userId, LeaveStatus leaveState, int? leaveId) async {
     try {
       emit(state.copyWith(status: Status.loading));
       final body = {"leave_state": leaveState.name, "leave_detail_id": leaveId};
       final response = await dio.patch("${AppApiPath.updateLeave}/$userId/leave-detail", data: body);
       if (response.statusCode == 200) {
-        await getOneEmployee(userId);
+        await getOneLeave(userId);
         emit(state.copyWith(status: Status.success));
       }
     } on DioException catch (e) {
@@ -65,7 +65,7 @@ class LeaveadminCubit extends Cubit<LeaveadminState> {
     try {
       final response = await dio.delete("${AppApiPath.deleteLeave}/$id/delete");
       if (response.statusCode == 200) {
-        await getOneEmployee(id.toString());
+        await getOneLeave(id.toString());
         emit(state.copyWith(status: Status.success));
       }
     } on DioException catch (e) {

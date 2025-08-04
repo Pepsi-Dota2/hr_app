@@ -17,7 +17,8 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
       create: (context) => HomeCubit()
         ..scheduleNextUpdate()
         ..getEndTime()
-        ..getStartTime(),
+        ..getStartTime()
+        ..getRecord(),
       child: this,
     );
   }

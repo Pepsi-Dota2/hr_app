@@ -112,7 +112,7 @@ class EmployeeAdminPage extends StatelessWidget implements AutoRouteWrapper {
                             );
                             if (confirmed == true) {
                               await cubit.deleteEmployee(state.employee[index].emp_id);
-                              await cubit.getAllDepartment();
+                              await cubit.getAllEmployee();
                             } else {
                               print("Delete cancelled");
                             }

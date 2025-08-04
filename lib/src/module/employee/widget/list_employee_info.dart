@@ -7,7 +7,7 @@ class ListEmployeeInfoWidget extends StatelessWidget {
   final String? empReligion;
   final String? salary;
   final String? accountBank;
-  final String? startWorking;
+  final List<String>? empDayOff;
   final String? empGender;
   final String? departmentName;
   final String? departmentCode;
@@ -20,15 +20,21 @@ class ListEmployeeInfoWidget extends StatelessWidget {
     this.empReligion,
     this.salary,
     this.accountBank,
-    this.startWorking,
     this.empGender,
     this.departmentName,
     this.departmentCode,
+    this.empDayOff,
   });
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final List<String> dayOffList =
+        empDayOff?.map((e) {
+          final trimmed = e.trim();
+          return trimmed[0].toUpperCase() + trimmed.substring(1);
+        }).toList() ??
+        [];
     return Container(
       width: size.width * 1.0,
       decoration: BoxDecoration(color: Colors.blue.shade50, borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -92,7 +98,14 @@ class ListEmployeeInfoWidget extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.calendar_today, color: Colors.blue.shade400),
             title: Text("start working"),
-            subtitle: Text(startWorking ?? ""),
+            subtitle: Expanded(
+              child: Text(
+                dayOffList.join(', '),
+                style: const TextStyle(color: Colors.black87),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
+            ),
           ),
         ],
       ),
