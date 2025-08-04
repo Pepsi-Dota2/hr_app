@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
+import 'package:hr_app/src/core/widget/alert_dialog.dart';
 import 'package:hr_app/src/module/admin/leave/cubit/leaveadmin_cubit.dart';
 import 'package:hr_app/src/module/admin/leave/widget/card_leave_status.dart';
 import 'package:intl/intl.dart';
@@ -51,6 +52,19 @@ class LeaveAdminDetailAdminPage extends StatelessWidget implements AutoRouteWrap
                 onReject: () {
                   cubit.updateLeaveEmployee(userId, LeaveState.rejected, item.leave_detail_id);
                   cubit.getOneEmployee(userId);
+                },
+                onDelete: () async {
+                  final confirmed = await showConfirmDialog(
+                    context: context,
+                    title: "Are you sure?",
+                    content: "This action will permanently delete the item.",
+                  );
+                  if (confirmed == true) {
+                    await cubit.deleteLeaveEmployee(item.leave_detail_id);
+                    cubit.getOneEmployee(userId);
+                  } else {
+                    print("Delete cancelled");
+                  }
                 },
               );
             },

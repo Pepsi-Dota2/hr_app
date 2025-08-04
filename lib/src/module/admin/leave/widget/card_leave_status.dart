@@ -14,6 +14,7 @@ class CardLeaveStatusWidget extends StatelessWidget {
     this.imageUrl,
     this.onApprove,
     this.onReject,
+    this.onDelete,
   });
 
   final String leaveType;
@@ -27,6 +28,7 @@ class CardLeaveStatusWidget extends StatelessWidget {
 
   final VoidCallback? onApprove;
   final VoidCallback? onReject;
+  final VoidCallback? onDelete;
 
   Color stateColor(String state) {
     switch (state.toLowerCase()) {
@@ -155,6 +157,15 @@ class CardLeaveStatusWidget extends StatelessWidget {
                     onPressed: onApprove,
                   ),
                 ],
+              ),
+            ],
+            if (onDelete != null) ...[
+              const SizedBox(width: 12),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.delete_forever),
+                label: const Text('Delete'),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.grey.shade700, foregroundColor: Colors.white),
+                onPressed: onDelete,
               ),
             ],
           ],

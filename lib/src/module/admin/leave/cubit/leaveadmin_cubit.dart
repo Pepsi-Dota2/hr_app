@@ -60,4 +60,19 @@ class LeaveadminCubit extends Cubit<LeaveadminState> {
       emit(state.copyWith(status: Status.failure));
     }
   }
+
+  Future<void> deleteLeaveEmployee(int id) async {
+    try {
+      final response = await dio.delete("${AppApiPath.deleteLeave}/$id/delete");
+      if (response.statusCode == 200) {
+        await getOneEmployee(id.toString());
+        emit(state.copyWith(status: Status.success));
+      }
+    } on DioException catch (e) {
+      print("DioException: ${e.response?.data ?? e.message}");
+      emit(state.copyWith(status: Status.failure));
+    } catch (_) {
+      emit(state.copyWith(status: Status.failure));
+    }
+  }
 }
