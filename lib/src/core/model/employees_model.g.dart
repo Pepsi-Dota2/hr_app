@@ -25,11 +25,9 @@ _$EmployeesModelImpl _$$EmployeesModelImplFromJson(Map<String, dynamic> json) =>
       emp_bank_account: json['emp_bank_account'] as String? ?? "",
       emp_img: json['emp_img'] as String? ?? "",
       created_at: json['created_at'] as String? ?? "",
-      emp_day_off:
-          (json['emp_day_off'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      emp_day_off: json['emp_day_off'] == null
+          ? const []
+          : parseDayOff(json['emp_day_off']),
     );
 
 Map<String, dynamic> _$$EmployeesModelImplToJson(
@@ -52,5 +50,5 @@ Map<String, dynamic> _$$EmployeesModelImplToJson(
   'emp_bank_account': instance.emp_bank_account,
   'emp_img': instance.emp_img,
   'created_at': instance.created_at,
-  'emp_day_off': instance.emp_day_off,
+  'emp_day_off': dayOffToString(instance.emp_day_off),
 };

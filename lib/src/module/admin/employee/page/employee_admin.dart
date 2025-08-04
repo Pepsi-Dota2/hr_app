@@ -7,6 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
 import 'package:hr_app/src/core/router/router.dart';
+import 'package:hr_app/src/core/widget/alert_dialog.dart';
 import 'package:hr_app/src/core/widget/rounded_button.dart';
 import 'package:hr_app/src/module/admin/employee/cubit/employeeadmin_cubit.dart';
 
@@ -54,57 +55,78 @@ class EmployeeAdminPage extends StatelessWidget implements AutoRouteWrapper {
             separatorBuilder: (_, __) => const SizedBox(height: 12),
             itemBuilder: (BuildContext context, int index) {
               final emp = state.employee[index];
-              return Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                child: ListTile(
-                  contentPadding: const EdgeInsets.all(16),
-                  leading: CircleAvatar(
-                    radius: 28,
-                    backgroundColor: Colors.blue.shade100,
-                    child: CachedNetworkImage(
-                      imageUrl: emp.emp_img,
-                      fit: BoxFit.cover,
-                      width: 120,
-                      height: 120,
-                      progressIndicatorBuilder: (context, url, progress) => CircularProgressIndicator(value: progress.progress),
-                      errorWidget: (context, url, error) => const Icon(Icons.error, color: Colors.red),
+              return InkWell(
+                onTap: () async {
+                  await context.router.push(UserDetailAdminRoute(id: emp.emp_id));
+                  await cubit.getAllEmployee();
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.all(16),
+                    leading: CircleAvatar(
+                      radius: 28,
+                      backgroundColor: Colors.blue.shade100,
+                      child: CachedNetworkImage(
+                        imageUrl: emp.emp_img,
+                        fit: BoxFit.cover,
+                        width: 120,
+                        height: 120,
+                        progressIndicatorBuilder: (context, url, progress) => CircularProgressIndicator(value: progress.progress),
+                        errorWidget: (context, url, error) => const Icon(Icons.error, color: Colors.red),
+                      ),
                     ),
-                  ),
-                  title: Text(emp.emp_name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 4),
-                      Text(emp.emp_email, style: const TextStyle(fontSize: 14, color: Colors.grey)),
-                      const SizedBox(height: 2),
-                      Text("📞 ${emp.emp_tel}", style: const TextStyle(fontSize: 14, color: Colors.grey)),
-                    ],
-                  ),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min, // Important to avoid expanding Row
-                    children: [
-                      RoundedIconButton(
-                        onPressed: () {},
-                        icon: Icons.edit,
-                        borderColor: Colors.blue,
-                        color: Colors.amber.withAlpha(60),
-                        radius: 100,
-                        width: 40,
-                        height: 40,
-                        size: 16,
-                      ),
-                      Gap(4),
-                      RoundedIconButton(
-                        onPressed: () {},
-                        icon: Icons.delete,
-                        borderColor: Colors.blue,
-                        color: Colors.red.withAlpha(60),
-                        radius: 100,
-                        width: 40,
-                        height: 40,
-                        size: 16,
-                      ),
-                    ],
+                    title: Text(emp.emp_name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 4),
+                        Text(emp.emp_email, style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                        const SizedBox(height: 2),
+                        Text("📞 ${emp.emp_tel}", style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                      ],
+                    ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        RoundedIconButton(
+                          onPressed: () async {
+                            await context.router.push(CreateEmployeeAdminRoute(id: state.employee[index].emp_id));
+                            await cubit.getAllEmployee();
+                          },
+                          icon: Icons.edit,
+                          borderColor: Colors.blue,
+                          color: Colors.amber.withAlpha(60),
+                          radius: 100,
+                          width: 40,
+                          height: 40,
+                          size: 16,
+                        ),
+                        Gap(4),
+                        RoundedIconButton(
+                          onPressed: () async {
+                            final confirmed = await showConfirmDialog(
+                              context: context,
+                              title: "Are you sure?",
+                              content: "This action will permanently delete the item.",
+                            );
+                            if (confirmed == true) {
+                              await cubit.deleteEmployee(state.employee[index].emp_id);
+                              await cubit.getAllDepartment();
+                            } else {
+                              print("Delete cancelled");
+                            }
+                          },
+                          icon: Icons.delete,
+                          borderColor: Colors.blue,
+                          color: Colors.red.withAlpha(60),
+                          radius: 100,
+                          width: 40,
+                          height: 40,
+                          size: 16,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

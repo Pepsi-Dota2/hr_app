@@ -49,10 +49,16 @@ class EmployeeadminCubit extends Cubit<EmployeeadminState> {
   Future<void> getOneEmployee(int id) async {
     try {
       emit(state.copyWith(status: Status.loading));
+
       final response = await dio.get("${AppApiPath.getOneEmployee}/$id");
+
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = response.data['data'];
         final List<EmployeesModel> employees = jsonList.map((json) => EmployeesModel.fromJson(json)).toList();
+        final result = employees[0];
+        updateSelectedDepartment(result.emp_department_id.toString());
+        updateSelectedPosition(result.emp_position_id.toString());
+        updateSelectUser(result.user_id.toString());
         emit(state.copyWith(status: Status.success, employee: employees));
       }
     } on DioException catch (_) {
@@ -72,7 +78,6 @@ class EmployeeadminCubit extends Cubit<EmployeeadminState> {
         'emp_department_id': data.emp_department_id,
         'emp_position_id': data.emp_position_id,
         'emp_bank_account': data.emp_bank_account,
-
         'emp_email': data.emp_email,
         'emp_gender': data.emp_gender,
         'emp_religion': data.emp_religion,
@@ -99,18 +104,19 @@ class EmployeeadminCubit extends Cubit<EmployeeadminState> {
     try {
       emit(state.copyWith(status: Status.loading));
       final body = {
+        "user_id": data.user_id,
         'emp_name': data.emp_name,
         'emp_department_id': data.emp_department_id,
         'emp_position_id': data.emp_position_id,
         'emp_bank_account': data.emp_bank_account,
-        'emp_img': data.emp_img,
         'emp_email': data.emp_email,
         'emp_gender': data.emp_gender,
         'emp_religion': data.emp_religion,
         'emp_tel': data.emp_tel,
         'emp_birth_date': data.emp_birth_date,
+        'emp_day_off': data.emp_day_off.join(','),
       };
-      final response = await dio.post("${AppApiPath.updateEmployee}/$id/update", data: body);
+      final response = await dio.patch("${AppApiPath.updateEmployee}/$id/update", data: body);
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = response.data['data'];
         final List<EmployeesModel> employees = jsonList.map((json) => EmployeesModel.fromJson(json)).toList();
@@ -178,7 +184,7 @@ class EmployeeadminCubit extends Cubit<EmployeeadminState> {
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = response.data['data'];
         final List<AuthModel> user = jsonList.map((json) => AuthModel.fromJson(json)).toList();
-        emit(state.copyWith(status: Status.success, user: user, selectUser: user.first.user_id.toString()));
+        emit(state.copyWith(status: Status.success, user: user));
       }
     } on DioException catch (_) {
       emit(state.copyWith(status: Status.failure));

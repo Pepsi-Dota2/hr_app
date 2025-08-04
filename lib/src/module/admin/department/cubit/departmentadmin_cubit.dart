@@ -87,7 +87,6 @@ class DepartmentadminCubit extends Cubit<DepartmentadminState> {
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = response.data['data'];
         final List<DepartmentModel> departments = jsonList.map((json) => DepartmentModel.fromJson(json)).toList();
-
         final selectedDepartment = departments.isNotEmpty ? departments.first : null;
         emit(state.copyWith(status: Status.success, departments: departments, selected: selectedDepartment));
       }

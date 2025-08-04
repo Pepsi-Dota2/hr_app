@@ -20,7 +20,8 @@ class CreateEmployeeAdminPage extends StatelessWidget implements AutoRouteWrappe
       create: (context) => EmployeeadminCubit()
         ..getAllDepartment()
         ..getPosition()
-        ..getAllAuth(),
+        ..getAllAuth()
+        ..getOneEmployee(id ?? 0),
       child: this,
     );
   }
@@ -29,10 +30,11 @@ class CreateEmployeeAdminPage extends StatelessWidget implements AutoRouteWrappe
   Widget build(BuildContext context) {
     final cubit = context.read<EmployeeadminCubit>();
     final _formKey = GlobalKey<FormBuilderState>();
+    final isEdit = id != null;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Create Employee",
+          isEdit ? 'Edit Employee' : 'Create Employee',
           style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.w600),
         ),
         centerTitle: true,
@@ -41,8 +43,31 @@ class CreateEmployeeAdminPage extends StatelessWidget implements AutoRouteWrappe
       backgroundColor: Colors.blue.shade50,
       body: BlocBuilder<EmployeeadminCubit, EmployeeadminState>(
         builder: (context, state) {
+          final emp = state.employee.isNotEmpty ? state.employee[0] : null;
+          cubit.empNameController.text = emp?.emp_name ?? '';
+          cubit.empEmailController.text = emp?.emp_email ?? '';
+          cubit.empBankAccountController.text = emp?.emp_bank_account ?? '';
+          cubit.empReligionController.text = emp?.emp_religion ?? '';
+          cubit.empTelController.text = emp?.emp_tel ?? "";
+          cubit.empGenderController.text = emp?.emp_gender ?? '';
+          final parsedDate = DateTime.tryParse(emp?.emp_birth_date ?? '');
+          if (parsedDate != null) {
+            cubit.empBirthDateController.text = DateFormat('yyyy-MM-dd').format(parsedDate);
+          }
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _formKey.currentState?.patchValue({
+              'emp_birth_date': emp?.emp_birth_date != null ? DateTime.tryParse(emp?.emp_birth_date ?? '') : null,
+              'emp_day_off': emp?.emp_day_off.toList() ?? [],
+              'emp_gender': emp?.emp_gender ?? '',
+            });
+          });
+
           return SingleChildScrollView(
             child: FormBuilder(
+              initialValue: {
+                'emp_birth_date': emp?.emp_birth_date != null ? DateTime.tryParse(emp!.emp_birth_date) : null,
+                'emp_day_off': emp?.emp_day_off ?? [],
+              },
               key: _formKey,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -134,6 +159,7 @@ class CreateEmployeeAdminPage extends StatelessWidget implements AutoRouteWrappe
                         FormBuilderFieldOption(value: 'Female'),
                         FormBuilderFieldOption(value: 'Other'),
                       ],
+                      initialValue: emp?.emp_gender,
                     ),
 
                     Gap(20),
@@ -149,9 +175,10 @@ class CreateEmployeeAdminPage extends StatelessWidget implements AutoRouteWrappe
                       firstDate: DateTime(1900),
                       lastDate: DateTime.now(),
                       format: DateFormat('yyyy-MM-dd'),
+                      initialValue: emp?.emp_birth_date != null ? DateTime.tryParse(emp?.emp_birth_date ?? '') : null,
                     ),
                     Gap(20),
-                    FormBuilderCheckboxGroup<String>(
+                    FormBuilderCheckboxGroup(
                       name: 'emp_day_off',
                       decoration: const InputDecoration(
                         labelText: 'Day Off',
@@ -166,7 +193,7 @@ class CreateEmployeeAdminPage extends StatelessWidget implements AutoRouteWrappe
                         FormBuilderFieldOption(value: 'saturday'),
                         FormBuilderFieldOption(value: 'sunday'),
                       ],
-                      initialValue: const [],
+                      initialValue: emp?.emp_day_off.toList() ?? [],
                     ),
 
                     Gap(20),
@@ -186,7 +213,9 @@ class CreateEmployeeAdminPage extends StatelessWidget implements AutoRouteWrappe
                         ),
                         onPressed: () async {
                           if (_formKey.currentState?.saveAndValidate() ?? false) {
-                            final formValues = _formKey.currentState!.value;
+                            final formData = _formKey.currentState!.value;
+                            final birthDate = formData['emp_birth_date'] as DateTime?;
+                            final formattedBirthDate = birthDate != null ? DateFormat('yyyy-MM-dd').format(birthDate) : '';
 
                             final emp = EmployeesModel(
                               emp_name: cubit.empNameController.text,
@@ -195,17 +224,21 @@ class CreateEmployeeAdminPage extends StatelessWidget implements AutoRouteWrappe
                               emp_tel: cubit.empTelController.text,
                               emp_religion: cubit.empReligionController.text,
                               emp_img: cubit.empImgController.text,
-
-                              // from FormBuilder values
-                              emp_day_off: formValues['emp_day_off'] ?? '',
-                              emp_gender: formValues['emp_gender'] ?? '',
-                              emp_birth_date: formValues['emp_birth_date']?.toString() ?? '',
+                              emp_gender: formData['emp_gender'] ?? '',
+                              emp_day_off: List<String>.from(formData['emp_day_off'] ?? []),
+                              emp_birth_date: formattedBirthDate,
                               emp_department_id: int.tryParse(cubit.state.selectDepartment) ?? 0,
                               emp_position_id: int.tryParse(cubit.state.selectPosition) ?? 0,
                               user_id: int.tryParse(cubit.state.selectUser) ?? 0,
                             );
 
-                            await cubit.createEmployee(emp);
+                            if (id != null) {
+                              await cubit.updateEmployee(id ?? 0, emp);
+                              context.router.pop();
+                            } else {
+                              await cubit.createEmployee(emp);
+                              context.router.pop();
+                            }
                           } else {
                             debugPrint("Form validation failed");
                           }

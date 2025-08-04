@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hr_app/src/core/helper/parse_day_off.dart';
 
 part 'employees_model.freezed.dart';
 part 'employees_model.g.dart';
@@ -23,7 +24,7 @@ class EmployeesModel with _$EmployeesModel {
     @Default("") String emp_bank_account,
     @Default("") String emp_img,
     @Default("") String created_at,
-    @Default([]) List<String> emp_day_off,
+    @JsonKey(fromJson: parseDayOff, toJson: dayOffToString) @Default([]) List<String> emp_day_off,
   }) = _EmployeesModel;
   factory EmployeesModel.fromJson(Map<String, dynamic> json) => _$EmployeesModelFromJson(json);
 }

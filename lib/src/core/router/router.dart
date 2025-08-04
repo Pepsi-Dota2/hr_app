@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hr_app/src/core/router/router_guard.dart';
@@ -6,6 +8,7 @@ import 'package:hr_app/src/module/admin/department/page/create_department.dart';
 import 'package:hr_app/src/module/admin/department/page/department_admin.dart';
 import 'package:hr_app/src/module/admin/employee/page/create_employee.dart';
 import 'package:hr_app/src/module/admin/employee/page/employee_admin.dart';
+import 'package:hr_app/src/module/admin/employee/page/user_detail.dart';
 import 'package:hr_app/src/module/admin/home/page/home_admin.dart';
 import 'package:hr_app/src/module/admin/leave/page/leave_admin.dart';
 import 'package:hr_app/src/module/admin/leave/page/leave_admin_detail.dart';
@@ -60,5 +63,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: CreateDepartmentRoute.page, guards: [AdminGuard()]),
     AutoRoute(page: CreatePositionRoute.page, guards: [AdminGuard()]),
     AutoRoute(page: CreateEmployeeAdminRoute.page, guards: [AdminGuard()]),
+    AutoRoute(page: UserDetailAdminRoute.page, guards: [AdminGuard()]),
   ];
 }

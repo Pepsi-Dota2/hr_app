@@ -38,6 +38,7 @@ mixin _$EmployeesModel {
   String get emp_bank_account => throw _privateConstructorUsedError;
   String get emp_img => throw _privateConstructorUsedError;
   String get created_at => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: parseDayOff, toJson: dayOffToString)
   List<String> get emp_day_off => throw _privateConstructorUsedError;
 
   /// Serializes this EmployeesModel to a JSON map.
@@ -75,6 +76,7 @@ abstract class $EmployeesModelCopyWith<$Res> {
     String emp_bank_account,
     String emp_img,
     String created_at,
+    @JsonKey(fromJson: parseDayOff, toJson: dayOffToString)
     List<String> emp_day_off,
   });
 }
@@ -220,6 +222,7 @@ abstract class _$$EmployeesModelImplCopyWith<$Res>
     String emp_bank_account,
     String emp_img,
     String created_at,
+    @JsonKey(fromJson: parseDayOff, toJson: dayOffToString)
     List<String> emp_day_off,
   });
 }
@@ -357,6 +360,7 @@ class _$EmployeesModelImpl implements _EmployeesModel {
     this.emp_bank_account = "",
     this.emp_img = "",
     this.created_at = "",
+    @JsonKey(fromJson: parseDayOff, toJson: dayOffToString)
     final List<String> emp_day_off = const [],
   }) : _emp_day_off = emp_day_off;
 
@@ -416,7 +420,7 @@ class _$EmployeesModelImpl implements _EmployeesModel {
   final String created_at;
   final List<String> _emp_day_off;
   @override
-  @JsonKey()
+  @JsonKey(fromJson: parseDayOff, toJson: dayOffToString)
   List<String> get emp_day_off {
     if (_emp_day_off is EqualUnmodifiableListView) return _emp_day_off;
     // ignore: implicit_dynamic_type
@@ -529,6 +533,7 @@ abstract class _EmployeesModel implements EmployeesModel {
     final String emp_bank_account,
     final String emp_img,
     final String created_at,
+    @JsonKey(fromJson: parseDayOff, toJson: dayOffToString)
     final List<String> emp_day_off,
   }) = _$EmployeesModelImpl;
 
@@ -570,6 +575,7 @@ abstract class _EmployeesModel implements EmployeesModel {
   @override
   String get created_at;
   @override
+  @JsonKey(fromJson: parseDayOff, toJson: dayOffToString)
   List<String> get emp_day_off;
 
   /// Create a copy of EmployeesModel

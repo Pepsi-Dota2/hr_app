@@ -19,6 +19,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EmployeeadminState {
   Status get status => throw _privateConstructorUsedError;
   List<EmployeesModel> get employee => throw _privateConstructorUsedError;
+  EmployeesModel? get selectEmployee => throw _privateConstructorUsedError;
   List<PositionModel> get position => throw _privateConstructorUsedError;
   List<DepartmentModel> get departments => throw _privateConstructorUsedError;
   List<AuthModel> get user => throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $EmployeeadminStateCopyWith<$Res> {
   $Res call({
     Status status,
     List<EmployeesModel> employee,
+    EmployeesModel? selectEmployee,
     List<PositionModel> position,
     List<DepartmentModel> departments,
     List<AuthModel> user,
@@ -50,6 +52,8 @@ abstract class $EmployeeadminStateCopyWith<$Res> {
     dynamic selectPosition,
     dynamic selectUser,
   });
+
+  $EmployeesModelCopyWith<$Res>? get selectEmployee;
 }
 
 /// @nodoc
@@ -69,6 +73,7 @@ class _$EmployeeadminStateCopyWithImpl<$Res, $Val extends EmployeeadminState>
   $Res call({
     Object? status = null,
     Object? employee = null,
+    Object? selectEmployee = freezed,
     Object? position = null,
     Object? departments = null,
     Object? user = null,
@@ -86,6 +91,10 @@ class _$EmployeeadminStateCopyWithImpl<$Res, $Val extends EmployeeadminState>
                 ? _value.employee
                 : employee // ignore: cast_nullable_to_non_nullable
                       as List<EmployeesModel>,
+            selectEmployee: freezed == selectEmployee
+                ? _value.selectEmployee
+                : selectEmployee // ignore: cast_nullable_to_non_nullable
+                      as EmployeesModel?,
             position: null == position
                 ? _value.position
                 : position // ignore: cast_nullable_to_non_nullable
@@ -114,6 +123,20 @@ class _$EmployeeadminStateCopyWithImpl<$Res, $Val extends EmployeeadminState>
           as $Val,
     );
   }
+
+  /// Create a copy of EmployeeadminState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EmployeesModelCopyWith<$Res>? get selectEmployee {
+    if (_value.selectEmployee == null) {
+      return null;
+    }
+
+    return $EmployeesModelCopyWith<$Res>(_value.selectEmployee!, (value) {
+      return _then(_value.copyWith(selectEmployee: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -128,6 +151,7 @@ abstract class _$$EmployeeadminStateImplCopyWith<$Res>
   $Res call({
     Status status,
     List<EmployeesModel> employee,
+    EmployeesModel? selectEmployee,
     List<PositionModel> position,
     List<DepartmentModel> departments,
     List<AuthModel> user,
@@ -135,6 +159,9 @@ abstract class _$$EmployeeadminStateImplCopyWith<$Res>
     dynamic selectPosition,
     dynamic selectUser,
   });
+
+  @override
+  $EmployeesModelCopyWith<$Res>? get selectEmployee;
 }
 
 /// @nodoc
@@ -153,6 +180,7 @@ class __$$EmployeeadminStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? employee = null,
+    Object? selectEmployee = freezed,
     Object? position = null,
     Object? departments = null,
     Object? user = null,
@@ -170,6 +198,10 @@ class __$$EmployeeadminStateImplCopyWithImpl<$Res>
             ? _value._employee
             : employee // ignore: cast_nullable_to_non_nullable
                   as List<EmployeesModel>,
+        selectEmployee: freezed == selectEmployee
+            ? _value.selectEmployee
+            : selectEmployee // ignore: cast_nullable_to_non_nullable
+                  as EmployeesModel?,
         position: null == position
             ? _value._position
             : position // ignore: cast_nullable_to_non_nullable
@@ -200,6 +232,7 @@ class _$EmployeeadminStateImpl implements _EmployeeadminState {
   const _$EmployeeadminStateImpl({
     this.status = Status.initial,
     final List<EmployeesModel> employee = const [],
+    this.selectEmployee,
     final List<PositionModel> position = const [],
     final List<DepartmentModel> departments = const [],
     final List<AuthModel> user = const [],
@@ -223,6 +256,8 @@ class _$EmployeeadminStateImpl implements _EmployeeadminState {
     return EqualUnmodifiableListView(_employee);
   }
 
+  @override
+  final EmployeesModel? selectEmployee;
   final List<PositionModel> _position;
   @override
   @JsonKey()
@@ -262,7 +297,7 @@ class _$EmployeeadminStateImpl implements _EmployeeadminState {
 
   @override
   String toString() {
-    return 'EmployeeadminState(status: $status, employee: $employee, position: $position, departments: $departments, user: $user, selectDepartment: $selectDepartment, selectPosition: $selectPosition, selectUser: $selectUser)';
+    return 'EmployeeadminState(status: $status, employee: $employee, selectEmployee: $selectEmployee, position: $position, departments: $departments, user: $user, selectDepartment: $selectDepartment, selectPosition: $selectPosition, selectUser: $selectUser)';
   }
 
   @override
@@ -272,6 +307,8 @@ class _$EmployeeadminStateImpl implements _EmployeeadminState {
             other is _$EmployeeadminStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._employee, _employee) &&
+            (identical(other.selectEmployee, selectEmployee) ||
+                other.selectEmployee == selectEmployee) &&
             const DeepCollectionEquality().equals(other._position, _position) &&
             const DeepCollectionEquality().equals(
               other._departments,
@@ -297,6 +334,7 @@ class _$EmployeeadminStateImpl implements _EmployeeadminState {
     runtimeType,
     status,
     const DeepCollectionEquality().hash(_employee),
+    selectEmployee,
     const DeepCollectionEquality().hash(_position),
     const DeepCollectionEquality().hash(_departments),
     const DeepCollectionEquality().hash(_user),
@@ -321,6 +359,7 @@ abstract class _EmployeeadminState implements EmployeeadminState {
   const factory _EmployeeadminState({
     final Status status,
     final List<EmployeesModel> employee,
+    final EmployeesModel? selectEmployee,
     final List<PositionModel> position,
     final List<DepartmentModel> departments,
     final List<AuthModel> user,
@@ -333,6 +372,8 @@ abstract class _EmployeeadminState implements EmployeeadminState {
   Status get status;
   @override
   List<EmployeesModel> get employee;
+  @override
+  EmployeesModel? get selectEmployee;
   @override
   List<PositionModel> get position;
   @override

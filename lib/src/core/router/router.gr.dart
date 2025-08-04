@@ -608,6 +608,59 @@ class SumarySalaryRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [UserDetailAdminPage]
+class UserDetailAdminRoute extends PageRouteInfo<UserDetailAdminRouteArgs> {
+  UserDetailAdminRoute({
+    Key? key,
+    required int id,
+    List<PageRouteInfo>? children,
+  }) : super(
+         UserDetailAdminRoute.name,
+         args: UserDetailAdminRouteArgs(key: key, id: id),
+         rawPathParams: {'id': id},
+         initialChildren: children,
+       );
+
+  static const String name = 'UserDetailAdminRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<UserDetailAdminRouteArgs>(
+        orElse: () => UserDetailAdminRouteArgs(id: pathParams.getInt('id')),
+      );
+      return WrappedRoute(
+        child: UserDetailAdminPage(key: args.key, id: args.id),
+      );
+    },
+  );
+}
+
+class UserDetailAdminRouteArgs {
+  const UserDetailAdminRouteArgs({this.key, required this.id});
+
+  final Key? key;
+
+  final int id;
+
+  @override
+  String toString() {
+    return 'UserDetailAdminRouteArgs{key: $key, id: $id}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! UserDetailAdminRouteArgs) return false;
+    return key == other.key && id == other.id;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ id.hashCode;
+}
+
+/// generated route for
 /// [WorkTimeRecordPage]
 class WorkTimeRecordRoute extends PageRouteInfo<void> {
   const WorkTimeRecordRoute({List<PageRouteInfo>? children})
