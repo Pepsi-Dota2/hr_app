@@ -97,7 +97,7 @@ class ListEmployeeInfoWidget extends StatelessWidget {
           Divider(),
           ListTile(
             leading: Icon(Icons.calendar_today, color: Colors.blue.shade400),
-            title: Text("start working"),
+            title: Text("day off"),
             subtitle: Expanded(
               child: Text(
                 dayOffList.join(', '),

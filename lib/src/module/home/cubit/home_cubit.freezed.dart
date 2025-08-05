@@ -19,8 +19,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   Status get status => throw _privateConstructorUsedError;
   DateTime? get date => throw _privateConstructorUsedError;
-  String? get getStart => throw _privateConstructorUsedError;
-  String? get endtime => throw _privateConstructorUsedError;
+  DateTime? get getStart => throw _privateConstructorUsedError;
+  DateTime? get endtime => throw _privateConstructorUsedError;
+  List<WorkRecordModel> get workrecord => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +35,13 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({Status status, DateTime? date, String? getStart, String? endtime});
+  $Res call({
+    Status status,
+    DateTime? date,
+    DateTime? getStart,
+    DateTime? endtime,
+    List<WorkRecordModel> workrecord,
+  });
 }
 
 /// @nodoc
@@ -56,6 +63,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? date = freezed,
     Object? getStart = freezed,
     Object? endtime = freezed,
+    Object? workrecord = null,
   }) {
     return _then(
       _value.copyWith(
@@ -70,11 +78,15 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
             getStart: freezed == getStart
                 ? _value.getStart
                 : getStart // ignore: cast_nullable_to_non_nullable
-                      as String?,
+                      as DateTime?,
             endtime: freezed == endtime
                 ? _value.endtime
                 : endtime // ignore: cast_nullable_to_non_nullable
-                      as String?,
+                      as DateTime?,
+            workrecord: null == workrecord
+                ? _value.workrecord
+                : workrecord // ignore: cast_nullable_to_non_nullable
+                      as List<WorkRecordModel>,
           )
           as $Val,
     );
@@ -82,24 +94,30 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res>
+abstract class _$$HomeStateImplCopyWith<$Res>
     implements $HomeStateCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+  factory _$$HomeStateImplCopyWith(
+    _$HomeStateImpl value,
+    $Res Function(_$HomeStateImpl) then,
+  ) = __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Status status, DateTime? date, String? getStart, String? endtime});
+  $Res call({
+    Status status,
+    DateTime? date,
+    DateTime? getStart,
+    DateTime? endtime,
+    List<WorkRecordModel> workrecord,
+  });
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
+class __$$HomeStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$HomeStateImpl>
+    implements _$$HomeStateImplCopyWith<$Res> {
+  __$$HomeStateImplCopyWithImpl(
+    _$HomeStateImpl _value,
+    $Res Function(_$HomeStateImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of HomeState
@@ -111,9 +129,10 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? date = freezed,
     Object? getStart = freezed,
     Object? endtime = freezed,
+    Object? workrecord = null,
   }) {
     return _then(
-      _$InitialImpl(
+      _$HomeStateImpl(
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
@@ -125,11 +144,15 @@ class __$$InitialImplCopyWithImpl<$Res>
         getStart: freezed == getStart
             ? _value.getStart
             : getStart // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                  as DateTime?,
         endtime: freezed == endtime
             ? _value.endtime
             : endtime // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                  as DateTime?,
+        workrecord: null == workrecord
+            ? _value._workrecord
+            : workrecord // ignore: cast_nullable_to_non_nullable
+                  as List<WorkRecordModel>,
       ),
     );
   }
@@ -137,13 +160,14 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl({
+class _$HomeStateImpl implements _HomeState {
+  const _$HomeStateImpl({
     this.status = Status.initial,
     this.date,
     this.getStart,
     this.endtime,
-  });
+    final List<WorkRecordModel> workrecord = const [],
+  }) : _workrecord = workrecord;
 
   @override
   @JsonKey()
@@ -151,60 +175,82 @@ class _$InitialImpl implements _Initial {
   @override
   final DateTime? date;
   @override
-  final String? getStart;
+  final DateTime? getStart;
   @override
-  final String? endtime;
+  final DateTime? endtime;
+  final List<WorkRecordModel> _workrecord;
+  @override
+  @JsonKey()
+  List<WorkRecordModel> get workrecord {
+    if (_workrecord is EqualUnmodifiableListView) return _workrecord;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_workrecord);
+  }
 
   @override
   String toString() {
-    return 'HomeState(status: $status, date: $date, getStart: $getStart, endtime: $endtime)';
+    return 'HomeState(status: $status, date: $date, getStart: $getStart, endtime: $endtime, workrecord: $workrecord)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
+            other is _$HomeStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.getStart, getStart) ||
                 other.getStart == getStart) &&
-            (identical(other.endtime, endtime) || other.endtime == endtime));
+            (identical(other.endtime, endtime) || other.endtime == endtime) &&
+            const DeepCollectionEquality().equals(
+              other._workrecord,
+              _workrecord,
+            ));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, date, getStart, endtime);
+  int get hashCode => Object.hash(
+    runtimeType,
+    status,
+    date,
+    getStart,
+    endtime,
+    const DeepCollectionEquality().hash(_workrecord),
+  );
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
+      __$$HomeStateImplCopyWithImpl<_$HomeStateImpl>(this, _$identity);
 }
 
-abstract class _Initial implements HomeState {
-  const factory _Initial({
+abstract class _HomeState implements HomeState {
+  const factory _HomeState({
     final Status status,
     final DateTime? date,
-    final String? getStart,
-    final String? endtime,
-  }) = _$InitialImpl;
+    final DateTime? getStart,
+    final DateTime? endtime,
+    final List<WorkRecordModel> workrecord,
+  }) = _$HomeStateImpl;
 
   @override
   Status get status;
   @override
   DateTime? get date;
   @override
-  String? get getStart;
+  DateTime? get getStart;
   @override
-  String? get endtime;
+  DateTime? get endtime;
+  @override
+  List<WorkRecordModel> get workrecord;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

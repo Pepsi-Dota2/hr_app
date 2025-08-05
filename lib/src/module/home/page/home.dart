@@ -16,8 +16,6 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
     return BlocProvider(
       create: (context) => HomeCubit()
         ..scheduleNextUpdate()
-        ..getEndTime()
-        ..getStartTime()
         ..getRecord(),
       child: this,
     );
@@ -35,13 +33,8 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
       backgroundColor: Colors.blue.shade50,
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
-          print('🏗️ UI rebuilt with getStart: ${state.getStart}');
-          final cubit = context.read<HomeCubit>();
           return RefreshIndicator(
-            onRefresh: () async {
-              await cubit.getStartTime();
-              await cubit.getEndTime();
-            },
+            onRefresh: () async {},
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -51,13 +44,32 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                   Gap(6),
                   CardWidget(
                     startTime: '9:00 - 12:00',
-                    endTime: '13:00-18:00',
+                    endTime: '13:00 - 18:00',
                     startWork: formatTime(state.getStart),
                     endWork: formatTime(state.endtime),
                     dateTime: state.date,
                   ),
                   Gap(10),
-
+                  // Remove Row and use padding inside Card for spacing
+                  Card(
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text('1 ພະນັກງານຈະໄດ້ພັກກິນເຂົ້າທ່ຽງໃນມື້ເຮັດວຽກ ມື້ລະ 1ຊົ່ວໂມງ ຄືເວລາກິນເຂົ້າທ່ຽງ 12:00-13:00'),
+                          SizedBox(height: 8),
+                          Text('2 ພະນັກງານຫ້ອງການທຸກຄົນອາທິດ1ຈະໄດ້ພັກ2ມື້ຕາມຕາຕະລາງພັກ ຂອງຕົນເອງ'),
+                          SizedBox(height: 8),
+                          Text('3 ຂາດວຽກບໍ່ມີເຫດຜົນ ຈະຕັດເງີນ 5%ຂອງເງີນເດືອນທັງໝົດ'),
+                          SizedBox(height: 8),
+                          Text('4 ກໍລະນີມາວຽກຊ້າເກີນ3ຄັ້ງ ຈະຕັດເງີນມື້1ເທົ່າກັບ 5%ຂອງເງີນເດືອນທັງໝົດ'),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Gap(8),
                   Expanded(
                     child: GridView.count(
                       crossAxisCount: 3,

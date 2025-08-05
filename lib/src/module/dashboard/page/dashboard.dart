@@ -21,8 +21,7 @@ class DashboardPage extends StatelessWidget {
         BlocProvider<HomeCubit>(
           create: (_) => HomeCubit()
             ..scheduleNextUpdate()
-            ..getStartTime()
-            ..getEndTime(),
+            ..getRecord(),
           child: HomePage(),
         ),
         BlocProvider<WorkTimeRecordCubit>(create: (_) => WorkTimeRecordCubit(), child: WorkTimeRecordPage()),
