@@ -64,6 +64,8 @@ class HolidayAdminPage extends StatelessWidget implements AutoRouteWrapper {
                         item.holiday_name ?? 'Unnamed Holiday',
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                       ),
+                      Text(item.emp_name ?? 'Unnamed Holiday', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                      Text('department: ${item.department_name ?? "-"}', style: Theme.of(context).textTheme.bodySmall),
                       const SizedBox(height: 8),
                       if (startDate != null && endDate != null)
                         Text(

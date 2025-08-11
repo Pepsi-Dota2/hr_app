@@ -10,6 +10,8 @@ class HolidayModel with _$HolidayModel {
     @Default(0) int emp_id,
     @Default(0) int holiday_id,
     @Default('') String reason,
+    @Default('') String department_name,
+    @Default('') String emp_name,
     @Default('') String approved_by,
     @Default('') String created_at,
     @Default('') String updated_at,

@@ -25,6 +25,8 @@ mixin _$HolidayModel {
   int get emp_id => throw _privateConstructorUsedError;
   int get holiday_id => throw _privateConstructorUsedError;
   String get reason => throw _privateConstructorUsedError;
+  String get department_name => throw _privateConstructorUsedError;
+  String get emp_name => throw _privateConstructorUsedError;
   String get approved_by => throw _privateConstructorUsedError;
   String get created_at => throw _privateConstructorUsedError;
   String get updated_at => throw _privateConstructorUsedError;
@@ -38,18 +40,24 @@ mixin _$HolidayModel {
   /// Create a copy of HolidayModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $HolidayModelCopyWith<HolidayModel> get copyWith => throw _privateConstructorUsedError;
+  $HolidayModelCopyWith<HolidayModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HolidayModelCopyWith<$Res> {
-  factory $HolidayModelCopyWith(HolidayModel value, $Res Function(HolidayModel) then) = _$HolidayModelCopyWithImpl<$Res, HolidayModel>;
+  factory $HolidayModelCopyWith(
+    HolidayModel value,
+    $Res Function(HolidayModel) then,
+  ) = _$HolidayModelCopyWithImpl<$Res, HolidayModel>;
   @useResult
   $Res call({
     int emp_holiday_id,
     int emp_id,
     int holiday_id,
     String reason,
+    String department_name,
+    String emp_name,
     String approved_by,
     String created_at,
     String updated_at,
@@ -60,7 +68,8 @@ abstract class $HolidayModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HolidayModelCopyWithImpl<$Res, $Val extends HolidayModel> implements $HolidayModelCopyWith<$Res> {
+class _$HolidayModelCopyWithImpl<$Res, $Val extends HolidayModel>
+    implements $HolidayModelCopyWith<$Res> {
   _$HolidayModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -77,6 +86,8 @@ class _$HolidayModelCopyWithImpl<$Res, $Val extends HolidayModel> implements $Ho
     Object? emp_id = null,
     Object? holiday_id = null,
     Object? reason = null,
+    Object? department_name = null,
+    Object? emp_name = null,
     Object? approved_by = null,
     Object? created_at = null,
     Object? updated_at = null,
@@ -101,6 +112,14 @@ class _$HolidayModelCopyWithImpl<$Res, $Val extends HolidayModel> implements $Ho
             reason: null == reason
                 ? _value.reason
                 : reason // ignore: cast_nullable_to_non_nullable
+                      as String,
+            department_name: null == department_name
+                ? _value.department_name
+                : department_name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            emp_name: null == emp_name
+                ? _value.emp_name
+                : emp_name // ignore: cast_nullable_to_non_nullable
                       as String,
             approved_by: null == approved_by
                 ? _value.approved_by
@@ -133,8 +152,12 @@ class _$HolidayModelCopyWithImpl<$Res, $Val extends HolidayModel> implements $Ho
 }
 
 /// @nodoc
-abstract class _$$HolidayModelImplCopyWith<$Res> implements $HolidayModelCopyWith<$Res> {
-  factory _$$HolidayModelImplCopyWith(_$HolidayModelImpl value, $Res Function(_$HolidayModelImpl) then) = __$$HolidayModelImplCopyWithImpl<$Res>;
+abstract class _$$HolidayModelImplCopyWith<$Res>
+    implements $HolidayModelCopyWith<$Res> {
+  factory _$$HolidayModelImplCopyWith(
+    _$HolidayModelImpl value,
+    $Res Function(_$HolidayModelImpl) then,
+  ) = __$$HolidayModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({
@@ -142,6 +165,8 @@ abstract class _$$HolidayModelImplCopyWith<$Res> implements $HolidayModelCopyWit
     int emp_id,
     int holiday_id,
     String reason,
+    String department_name,
+    String emp_name,
     String approved_by,
     String created_at,
     String updated_at,
@@ -152,9 +177,13 @@ abstract class _$$HolidayModelImplCopyWith<$Res> implements $HolidayModelCopyWit
 }
 
 /// @nodoc
-class __$$HolidayModelImplCopyWithImpl<$Res> extends _$HolidayModelCopyWithImpl<$Res, _$HolidayModelImpl>
+class __$$HolidayModelImplCopyWithImpl<$Res>
+    extends _$HolidayModelCopyWithImpl<$Res, _$HolidayModelImpl>
     implements _$$HolidayModelImplCopyWith<$Res> {
-  __$$HolidayModelImplCopyWithImpl(_$HolidayModelImpl _value, $Res Function(_$HolidayModelImpl) _then) : super(_value, _then);
+  __$$HolidayModelImplCopyWithImpl(
+    _$HolidayModelImpl _value,
+    $Res Function(_$HolidayModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HolidayModel
   /// with the given fields replaced by the non-null parameter values.
@@ -165,6 +194,8 @@ class __$$HolidayModelImplCopyWithImpl<$Res> extends _$HolidayModelCopyWithImpl<
     Object? emp_id = null,
     Object? holiday_id = null,
     Object? reason = null,
+    Object? department_name = null,
+    Object? emp_name = null,
     Object? approved_by = null,
     Object? created_at = null,
     Object? updated_at = null,
@@ -189,6 +220,14 @@ class __$$HolidayModelImplCopyWithImpl<$Res> extends _$HolidayModelCopyWithImpl<
         reason: null == reason
             ? _value.reason
             : reason // ignore: cast_nullable_to_non_nullable
+                  as String,
+        department_name: null == department_name
+            ? _value.department_name
+            : department_name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        emp_name: null == emp_name
+            ? _value.emp_name
+            : emp_name // ignore: cast_nullable_to_non_nullable
                   as String,
         approved_by: null == approved_by
             ? _value.approved_by
@@ -227,6 +266,8 @@ class _$HolidayModelImpl implements _HolidayModel {
     this.emp_id = 0,
     this.holiday_id = 0,
     this.reason = '',
+    this.department_name = '',
+    this.emp_name = '',
     this.approved_by = '',
     this.created_at = '',
     this.updated_at = '',
@@ -235,7 +276,8 @@ class _$HolidayModelImpl implements _HolidayModel {
     this.holiday_end_date = '',
   });
 
-  factory _$HolidayModelImpl.fromJson(Map<String, dynamic> json) => _$$HolidayModelImplFromJson(json);
+  factory _$HolidayModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HolidayModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -249,6 +291,12 @@ class _$HolidayModelImpl implements _HolidayModel {
   @override
   @JsonKey()
   final String reason;
+  @override
+  @JsonKey()
+  final String department_name;
+  @override
+  @JsonKey()
+  final String emp_name;
   @override
   @JsonKey()
   final String approved_by;
@@ -270,7 +318,7 @@ class _$HolidayModelImpl implements _HolidayModel {
 
   @override
   String toString() {
-    return 'HolidayModel(emp_holiday_id: $emp_holiday_id, emp_id: $emp_id, holiday_id: $holiday_id, reason: $reason, approved_by: $approved_by, created_at: $created_at, updated_at: $updated_at, holiday_name: $holiday_name, holiday_start_date: $holiday_start_date, holiday_end_date: $holiday_end_date)';
+    return 'HolidayModel(emp_holiday_id: $emp_holiday_id, emp_id: $emp_id, holiday_id: $holiday_id, reason: $reason, department_name: $department_name, emp_name: $emp_name, approved_by: $approved_by, created_at: $created_at, updated_at: $updated_at, holiday_name: $holiday_name, holiday_start_date: $holiday_start_date, holiday_end_date: $holiday_end_date)';
   }
 
   @override
@@ -278,16 +326,28 @@ class _$HolidayModelImpl implements _HolidayModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HolidayModelImpl &&
-            (identical(other.emp_holiday_id, emp_holiday_id) || other.emp_holiday_id == emp_holiday_id) &&
+            (identical(other.emp_holiday_id, emp_holiday_id) ||
+                other.emp_holiday_id == emp_holiday_id) &&
             (identical(other.emp_id, emp_id) || other.emp_id == emp_id) &&
-            (identical(other.holiday_id, holiday_id) || other.holiday_id == holiday_id) &&
+            (identical(other.holiday_id, holiday_id) ||
+                other.holiday_id == holiday_id) &&
             (identical(other.reason, reason) || other.reason == reason) &&
-            (identical(other.approved_by, approved_by) || other.approved_by == approved_by) &&
-            (identical(other.created_at, created_at) || other.created_at == created_at) &&
-            (identical(other.updated_at, updated_at) || other.updated_at == updated_at) &&
-            (identical(other.holiday_name, holiday_name) || other.holiday_name == holiday_name) &&
-            (identical(other.holiday_start_date, holiday_start_date) || other.holiday_start_date == holiday_start_date) &&
-            (identical(other.holiday_end_date, holiday_end_date) || other.holiday_end_date == holiday_end_date));
+            (identical(other.department_name, department_name) ||
+                other.department_name == department_name) &&
+            (identical(other.emp_name, emp_name) ||
+                other.emp_name == emp_name) &&
+            (identical(other.approved_by, approved_by) ||
+                other.approved_by == approved_by) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at) &&
+            (identical(other.holiday_name, holiday_name) ||
+                other.holiday_name == holiday_name) &&
+            (identical(other.holiday_start_date, holiday_start_date) ||
+                other.holiday_start_date == holiday_start_date) &&
+            (identical(other.holiday_end_date, holiday_end_date) ||
+                other.holiday_end_date == holiday_end_date));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -298,6 +358,8 @@ class _$HolidayModelImpl implements _HolidayModel {
     emp_id,
     holiday_id,
     reason,
+    department_name,
+    emp_name,
     approved_by,
     created_at,
     updated_at,
@@ -311,7 +373,8 @@ class _$HolidayModelImpl implements _HolidayModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$HolidayModelImplCopyWith<_$HolidayModelImpl> get copyWith => __$$HolidayModelImplCopyWithImpl<_$HolidayModelImpl>(this, _$identity);
+  _$$HolidayModelImplCopyWith<_$HolidayModelImpl> get copyWith =>
+      __$$HolidayModelImplCopyWithImpl<_$HolidayModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -325,6 +388,8 @@ abstract class _HolidayModel implements HolidayModel {
     final int emp_id,
     final int holiday_id,
     final String reason,
+    final String department_name,
+    final String emp_name,
     final String approved_by,
     final String created_at,
     final String updated_at,
@@ -333,7 +398,8 @@ abstract class _HolidayModel implements HolidayModel {
     final String holiday_end_date,
   }) = _$HolidayModelImpl;
 
-  factory _HolidayModel.fromJson(Map<String, dynamic> json) = _$HolidayModelImpl.fromJson;
+  factory _HolidayModel.fromJson(Map<String, dynamic> json) =
+      _$HolidayModelImpl.fromJson;
 
   @override
   int get emp_holiday_id;
@@ -343,6 +409,10 @@ abstract class _HolidayModel implements HolidayModel {
   int get holiday_id;
   @override
   String get reason;
+  @override
+  String get department_name;
+  @override
+  String get emp_name;
   @override
   String get approved_by;
   @override
@@ -360,5 +430,6 @@ abstract class _HolidayModel implements HolidayModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HolidayModelImplCopyWith<_$HolidayModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$HolidayModelImplCopyWith<_$HolidayModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
