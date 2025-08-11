@@ -79,7 +79,14 @@ class HomeAdminPage extends StatelessWidget {
                       context.router.push(LeaveAdminRoute());
                     },
                   ),
-                  AdminCard(title: "Reports", icon: Icons.bar_chart_outlined, color: Colors.teal.shade700, onTap: () {}),
+                  AdminCard(
+                    title: "Holiday",
+                    icon: Icons.holiday_village,
+                    color: Colors.orange.shade700,
+                    onTap: () {
+                      context.router.push(HolidayAdminRoute());
+                    },
+                  ),
                 ],
               ),
             ),

@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hr_app/src/core/config/dio_client.dart';
 import 'package:hr_app/src/core/constant/app_api_path.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
+import 'package:hr_app/src/core/model/holiday_model.dart';
 import 'package:hr_app/src/core/model/work_record_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -63,6 +64,41 @@ class HomeCubit extends Cubit<HomeState> {
         emit(state.copyWith(status: Status.failure));
       }
     } catch (e) {
+      emit(state.copyWith(status: Status.failure));
+    }
+  }
+
+  Future<void> getHoliday() async {
+    try {
+      emit(state.copyWith(status: Status.loading));
+
+      final prefs = await SharedPreferences.getInstance();
+      final userId = prefs.getString('emp_id');
+
+      if (userId == null || userId.isEmpty) {
+        print('No employee ID found in SharedPreferences');
+        emit(state.copyWith(status: Status.failure));
+        return;
+      }
+
+      final response = await dio.get("${AppApiPath.getEmployeeHoliday}/$userId/holidays");
+
+      if (response.statusCode == 200) {
+        final responseBody = response.data;
+        if (responseBody is Map<String, dynamic> && responseBody.containsKey('data')) {
+          final rawHolidays = responseBody['data'] as List<dynamic>;
+          final holidays = rawHolidays.map((e) => HolidayModel.fromJson(e as Map<String, dynamic>)).toList();
+          emit(state.copyWith(status: Status.success, holiday: holidays));
+        } else {
+          print("Unexpected response structure: $responseBody");
+          emit(state.copyWith(status: Status.failure));
+        }
+      } else {
+        print("Failed to fetch holidays: ${response.statusCode}");
+        emit(state.copyWith(status: Status.failure));
+      }
+    } catch (e, st) {
+      print("Exception in getHoliday: $e\n$st");
       emit(state.copyWith(status: Status.failure));
     }
   }

@@ -8,5 +8,6 @@ class HomeState with _$HomeState {
     DateTime? getStart,
     DateTime? endtime,
     @Default([]) List<WorkRecordModel> workrecord,
+    @Default([]) List<HolidayModel> holiday,
   }) = _HomeState;
 }

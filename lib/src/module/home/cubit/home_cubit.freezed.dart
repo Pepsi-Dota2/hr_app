@@ -22,6 +22,7 @@ mixin _$HomeState {
   DateTime? get getStart => throw _privateConstructorUsedError;
   DateTime? get endtime => throw _privateConstructorUsedError;
   List<WorkRecordModel> get workrecord => throw _privateConstructorUsedError;
+  List<HolidayModel> get holiday => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,6 +42,7 @@ abstract class $HomeStateCopyWith<$Res> {
     DateTime? getStart,
     DateTime? endtime,
     List<WorkRecordModel> workrecord,
+    List<HolidayModel> holiday,
   });
 }
 
@@ -64,6 +66,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? getStart = freezed,
     Object? endtime = freezed,
     Object? workrecord = null,
+    Object? holiday = null,
   }) {
     return _then(
       _value.copyWith(
@@ -87,6 +90,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
                 ? _value.workrecord
                 : workrecord // ignore: cast_nullable_to_non_nullable
                       as List<WorkRecordModel>,
+            holiday: null == holiday
+                ? _value.holiday
+                : holiday // ignore: cast_nullable_to_non_nullable
+                      as List<HolidayModel>,
           )
           as $Val,
     );
@@ -108,6 +115,7 @@ abstract class _$$HomeStateImplCopyWith<$Res>
     DateTime? getStart,
     DateTime? endtime,
     List<WorkRecordModel> workrecord,
+    List<HolidayModel> holiday,
   });
 }
 
@@ -130,6 +138,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? getStart = freezed,
     Object? endtime = freezed,
     Object? workrecord = null,
+    Object? holiday = null,
   }) {
     return _then(
       _$HomeStateImpl(
@@ -153,6 +162,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
             ? _value._workrecord
             : workrecord // ignore: cast_nullable_to_non_nullable
                   as List<WorkRecordModel>,
+        holiday: null == holiday
+            ? _value._holiday
+            : holiday // ignore: cast_nullable_to_non_nullable
+                  as List<HolidayModel>,
       ),
     );
   }
@@ -167,7 +180,9 @@ class _$HomeStateImpl implements _HomeState {
     this.getStart,
     this.endtime,
     final List<WorkRecordModel> workrecord = const [],
-  }) : _workrecord = workrecord;
+    final List<HolidayModel> holiday = const [],
+  }) : _workrecord = workrecord,
+       _holiday = holiday;
 
   @override
   @JsonKey()
@@ -187,9 +202,18 @@ class _$HomeStateImpl implements _HomeState {
     return EqualUnmodifiableListView(_workrecord);
   }
 
+  final List<HolidayModel> _holiday;
+  @override
+  @JsonKey()
+  List<HolidayModel> get holiday {
+    if (_holiday is EqualUnmodifiableListView) return _holiday;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_holiday);
+  }
+
   @override
   String toString() {
-    return 'HomeState(status: $status, date: $date, getStart: $getStart, endtime: $endtime, workrecord: $workrecord)';
+    return 'HomeState(status: $status, date: $date, getStart: $getStart, endtime: $endtime, workrecord: $workrecord, holiday: $holiday)';
   }
 
   @override
@@ -205,7 +229,8 @@ class _$HomeStateImpl implements _HomeState {
             const DeepCollectionEquality().equals(
               other._workrecord,
               _workrecord,
-            ));
+            ) &&
+            const DeepCollectionEquality().equals(other._holiday, _holiday));
   }
 
   @override
@@ -216,6 +241,7 @@ class _$HomeStateImpl implements _HomeState {
     getStart,
     endtime,
     const DeepCollectionEquality().hash(_workrecord),
+    const DeepCollectionEquality().hash(_holiday),
   );
 
   /// Create a copy of HomeState
@@ -234,6 +260,7 @@ abstract class _HomeState implements HomeState {
     final DateTime? getStart,
     final DateTime? endtime,
     final List<WorkRecordModel> workrecord,
+    final List<HolidayModel> holiday,
   }) = _$HomeStateImpl;
 
   @override
@@ -246,6 +273,8 @@ abstract class _HomeState implements HomeState {
   DateTime? get endtime;
   @override
   List<WorkRecordModel> get workrecord;
+  @override
+  List<HolidayModel> get holiday;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

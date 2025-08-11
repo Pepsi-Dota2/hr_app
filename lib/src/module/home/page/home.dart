@@ -7,6 +7,7 @@ import 'package:hr_app/src/core/utils/format_time.dart';
 import 'package:hr_app/src/module/home/cubit/home_cubit.dart';
 import 'package:hr_app/src/module/home/widget/card.dart';
 import 'package:hr_app/src/module/home/widget/card_feature.dart';
+import 'package:intl/intl.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget implements AutoRouteWrapper {
@@ -16,7 +17,8 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
     return BlocProvider(
       create: (context) => HomeCubit()
         ..scheduleNextUpdate()
-        ..getRecord(),
+        ..getRecord()
+        ..getHoliday(),
       child: this,
     );
   }
@@ -82,6 +84,26 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                         CardFeature(icon: Icons.calendar_today, label: 'Leave', onTap: () => context.router.push(LeaveRoute())),
                       ],
                     ),
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: state.holiday.length,
+                    itemBuilder: (context, index) {
+                      final holiday = state.holiday[index];
+                      final startDate = DateTime.parse(holiday.holiday_start_date);
+                      final endDate = DateTime.parse(holiday.holiday_end_date);
+                      final formattedStartDate = DateFormat.yMMMMd().format(startDate); // e.g. August 11, 2025
+                      final formattedEndDate = DateFormat.yMMMMd().format(endDate);
+                      return Card(
+                        margin: const EdgeInsets.symmetric(vertical: 4),
+                        child: ListTile(
+                          title: Text(holiday.holiday_name, style: const TextStyle(fontWeight: FontWeight.bold)),
+                          subtitle: Text("Reason: ${holiday.reason}"),
+                          trailing: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Text(formattedStartDate), Text(formattedEndDate)]),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

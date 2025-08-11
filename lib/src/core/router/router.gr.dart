@@ -360,6 +360,22 @@ class HistoryDeductionAdminRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [HolidayAdminPage]
+class HolidayAdminRoute extends PageRouteInfo<void> {
+  const HolidayAdminRoute({List<PageRouteInfo>? children})
+    : super(HolidayAdminRoute.name, initialChildren: children);
+
+  static const String name = 'HolidayAdminRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const HolidayAdminPage());
+    },
+  );
+}
+
+/// generated route for
 /// [HomeAdminPage]
 class HomeAdminRoute extends PageRouteInfo<void> {
   const HomeAdminRoute({List<PageRouteInfo>? children})

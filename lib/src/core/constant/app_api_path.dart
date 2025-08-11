@@ -1,6 +1,6 @@
 class AppApiPath {
   static const String version = "v1";
-  static const String baseUrl = "http://10.216.236.59:5002/${version}";
+  static const String baseUrl = "http://172.20.10.4:5002/${version}";
   static const String refreshToken = "${baseUrl}/auth/refresh-token";
   static const String signUp = "${baseUrl}/auth/sign-up";
   static const String signIn = "${baseUrl}/auth/sign-in";
@@ -10,6 +10,8 @@ class AppApiPath {
 
   //employee
   static const String getSalary = "${baseUrl}/quickserve/employee";
+  static const String getEmployeeHoliday = "${baseUrl}/quickserve/employee";
+  static const String getAllEmployeeHoliday = "${baseUrl}/quickserve/employee/holidays";
 
   //work record
   static const String startWorkRecord = "${baseUrl}/quickserve/employee/work-record/start";
