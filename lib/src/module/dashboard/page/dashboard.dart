@@ -22,6 +22,7 @@ class DashboardPage extends StatelessWidget {
           create: (_) => HomeCubit()
             ..scheduleNextUpdate()
             ..getRecord()
+            ..getMe()
             ..getHoliday(),
           child: HomePage(),
         ),

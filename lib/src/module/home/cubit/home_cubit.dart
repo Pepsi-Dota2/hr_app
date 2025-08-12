@@ -78,6 +78,7 @@ class HomeCubit extends Cubit<HomeState> {
       final user = EmployeesModel.fromJson(response.data['data']);
       await prefs.setString('emp_id', user.emp_id.toString());
       emit(state.copyWith(user: user, status: Status.success));
+      await getHoliday();
     } catch (e) {
       emit(state.copyWith(status: Status.failure));
     }

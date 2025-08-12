@@ -37,9 +37,9 @@ class AuthPage extends StatelessWidget implements AutoRouteWrapper {
             if (!context.mounted) return;
 
             if (role == '2') {
-              context.router.replace(const DashboardAdminRoute());
+              await context.router.replace(const DashboardAdminRoute());
             } else {
-              context.router.replace(const DashboardRoute());
+              await context.router.replace(const DashboardRoute());
             }
           } else if (state.status == Status.failure) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login failed"), backgroundColor: Colors.red));
