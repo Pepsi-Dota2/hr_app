@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hr_app/src/core/config/dio_client.dart';
 import 'package:hr_app/src/core/constant/app_api_path.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
+import 'package:hr_app/src/core/model/employees_model.dart';
 import 'package:hr_app/src/core/model/holiday_model.dart';
 import 'package:hr_app/src/core/model/work_record_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -63,6 +64,20 @@ class HomeCubit extends Cubit<HomeState> {
       } else {
         emit(state.copyWith(status: Status.failure));
       }
+    } catch (e) {
+      emit(state.copyWith(status: Status.failure));
+    }
+  }
+
+  Future<void> getMe() async {
+    try {
+      emit(state.copyWith(status: Status.loading));
+      final prefs = await SharedPreferences.getInstance();
+      final userId = prefs.getString('user_id');
+      final response = await dio.get("${AppApiPath.getMe}/$userId");
+      final user = EmployeesModel.fromJson(response.data['data']);
+      await prefs.setString('emp_id', user.emp_id.toString());
+      emit(state.copyWith(user: user, status: Status.success));
     } catch (e) {
       emit(state.copyWith(status: Status.failure));
     }

@@ -69,8 +69,12 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(state.copyWith(status: Status.loading));
       final prefs = await SharedPreferences.getInstance();
       final userId = prefs.getString('user_id');
+
       final response = await dio.get("${AppApiPath.getMe}/$userId");
       final user = EmployeesModel.fromJson(response.data['data']);
+
+      await prefs.setString('emp_id', user.emp_id.toString());
+
       final imagePath = prefs.getString('uploaded_image_path') ?? '';
       emit(state.copyWith(user: user, status: Status.success, image: imagePath));
     } catch (e) {
@@ -83,7 +87,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(state.copyWith(status: Status.loading));
       final prefs = await SharedPreferences.getInstance();
       final userId = prefs.getString('user_id');
-      await prefs.remove('accessToken');
       if (userId == null || userId.isEmpty) {
         emit(state.copyWith(status: Status.failure));
         return;
